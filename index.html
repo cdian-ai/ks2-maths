@@ -2,9 +2,9 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>[Working title] — KS2 maths</title><meta name="theme-color" content="#22303F">
+<title>One Hundred — Year 6 SATs maths</title><meta name="theme-color" content="#22303F">
 <style>
-/* ================= The Climb =================
+/* ================= One Hundred =================
    Built on the 2025 and 2026 KS2 papers rather than on the programme of study:
    every stop names the content-domain codes it serves and carries as many
    questions as that code's weight in the test deserves.
@@ -258,9 +258,29 @@ main{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
 .rsteps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:7px}
 .rsteps li{font-size:var(--t5);font-weight:600;color:var(--ink);line-height:1.35}
 .rsteps li::marker{color:var(--muted);font-size:var(--t3);font-weight:400}
+
+.covart{width:100%;max-width:300px;height:auto;display:block;margin:6px auto 10px}
+.covgot{margin:2px 0 0;font-size:var(--t3);color:var(--muted)}
+.covgot b{font-size:var(--t6);color:var(--band);margin-right:5px}
+.insideh{margin:26px 0 9px;font-size:var(--t3);color:var(--muted);font-weight:600;text-align:center}
+.inside{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%}
+.ic{display:flex;flex-direction:column;align-items:center;gap:2px;padding:13px 6px;border-radius:16px;
+ background:#fff;border:1.5px solid var(--line);font-size:var(--t2);color:var(--muted);
+ text-align:center;line-height:1.3}
+.ic b{font-size:var(--t6);color:var(--ink);font-weight:650}
+.peek{display:flex;justify-content:center;gap:10px;margin-top:12px;font-size:23px}
+.pk{opacity:.75}
+.nameinput{width:100%;max-width:320px;border:2px solid var(--line);border-radius:16px;background:#fff;
+ font:inherit;font-size:var(--t7);font-weight:600;text-align:center;padding:14px;color:var(--ink);
+ margin:6px 0 4px}
+.nameinput:focus{outline:none;border-color:var(--band)}
+.greet{margin:0 0 2px;font-size:var(--t4);color:var(--band);font-weight:650}
+
+.brand{margin:0 0 3px;font-size:var(--t3);font-weight:700;letter-spacing:.14em;color:var(--band)}
+.covwhy{margin:9px 0 0;font-size:var(--t3);color:var(--muted);line-height:1.5;max-width:30ch}
 </style></head><body>
 <header><div class="hrow">
- <div class="htitle"><b id="hT">The Climb</b><span id="hS">KS2 maths</span></div>
+ <div class="htitle"><b id="hT">One Hundred</b><span id="hS">Year 6 SATs maths</span></div>
  <div class="lang"><button id="lEN" class="on" onclick="setLang('en')">EN</button>
  <button id="lFR" onclick="setLang('fr')">FR</button></div></div>
  <div class="track"><i id="bar"></i></div></header>
@@ -1646,12 +1666,12 @@ const TEACH = {
 
 
 const T={
- title:{en:"[Working title]",fr:"[Titre provisoire]"},sub:{en:"KS2 maths",fr:"Maths KS2"},
+ title:{en:"One Hundred",fr:"Cent"},sub:{en:"Year 6 SATs maths",fr:"Maths, fin de primaire"},
  head:{en:"What shall we work on?",fr:"Sur quoi travaille-t-on ?"},
  headsub:{en:"Pick something, or let us find out what you already know.",
           fr:"Choisis quelque chose, ou d\u00e9couvrons ce que tu sais d\u00e9j\u00e0."},
  done:{en:"stops climbed",fr:"\u00e9tapes gravies"},of:{en:"of",fr:"sur"},
- paper:{en:"The big test",fr:"Le grand test"},
+ paper:{en:"The arithmetic paper",fr:"Le test de calcul"},
  papersub:{en:"36 questions \u00b7 30 minutes \u00b7 the real format",fr:"36 questions \u00b7 30 minutes \u00b7 le vrai format"},
  next:{en:"Next",fr:"Suivant"},back:{en:"Back to the mountain",fr:"Retour \u00e0 la montagne"},
  again:{en:"Try again",fr:"R\u00e9essayer"},camp:{en:"Finished",fr:"Termin\u00e9"},
@@ -1668,8 +1688,27 @@ const T={
  nostory:{en:"No story for this one yet \u2014 straight to practice.",
           fr:"Pas encore d'histoire pour celle-ci \u2014 directement \u00e0 l'entra\u00eenement."},
  look:{en:"Look again",fr:"Regarde encore"},
- cov1:{en:"Maths, before the big test",fr:"Maths, avant le grand test"},
- cov2:{en:"Years 5 and 6 \u00b7 ages 9 to 11",fr:"Ann\u00e9es 5 et 6 \u00b7 9 \u00e0 11 ans"},
+ /* One hundred is the scaled score that means a child met the expected
+    standard, so every Year 6 parent already knows the number. For the child it
+    simply means getting them all right. Neither reading is about failing. */
+ cov1:{en:"Let\u2019s get you ready.",fr:"Pr\u00e9parons-toi."},
+ covname:{en:"One Hundred",fr:"Cent"},
+ covwhy:{en:"A hundred is the score that means you got there.",
+         fr:"Cent, c\u2019est le score qui veut dire que tu y es arriv\u00e9."},
+ hello:{en:"Hello.",fr:"Bonjour."},
+ whoare:{en:"What shall I call you?",fr:"Comment je t\u2019appelle ?"},
+ namego:{en:"That\u2019s me",fr:"C\u2019est moi"},
+ namewhy:{en:"Just so I can say hello properly. It stays on this phone.",
+          fr:"Juste pour te dire bonjour comme il faut. \u00c7a reste sur ce t\u00e9l\u00e9phone."},
+ hi:{en:"Hello",fr:"Salut"},
+ wb:{en:"Good to see you again",fr:"Content de te revoir"},
+ inside:{en:"What\u2019s in here",fr:"Ce qu\u2019il y a dedans"},
+ nsub:{en:"things to learn",fr:"choses \u00e0 apprendre"},
+ nq:{en:"questions to try",fr:"questions \u00e0 essayer"},
+ nvid:{en:"short videos",fr:"vid\u00e9os courtes"},
+ sofar:{en:"right so far",fr:"bonnes jusqu\u2019ici"},
+ skipname:{en:"Skip",fr:"Passer"},
+ cov2:{en:"Year 6 SATs maths \u00b7 ages 9 to 11",fr:"Maths de fin de primaire \u00b7 9 \u00e0 11 ans"},
  covwho:{en:"For a child sitting the SATs, and the grown-up sitting next to them.",
          fr:"Pour l'enfant qui passe les tests, et l'adulte assis \u00e0 c\u00f4t\u00e9."},
  covwhat:{en:"Every topic here was counted out of the 2025 and 2026 papers \u2014 all 177 questions, tagged by the exam board with what they test. The topics that carry the most marks get the most time. Nothing is here because a syllabus lists it.",
@@ -1975,18 +2014,51 @@ const DIAG=[
  {g:"pvRound",  en:"Rounding", fr:"Arrondir", marks:4, find:"pvRound"},
  {g:"decMul",   en:"Multiplying decimals", fr:"Multiplier des d\u00e9cimaux", marks:3, find:"decMul"}];
 
+/* ================= the first screen =================
+   It was forty words and then two thirds of an empty screen: I cut the wall of
+   text after the last review and put nothing in its place. Worse, nothing on
+   it belonged to the child — two instructions and a looming title.
+
+   So: it asks their name once and uses it every time after, which is the
+   cheapest personalisation there is and the one that matters most at this age.
+   It shows what is inside rather than describing it. And there is something to
+   look at, drawn in the same language as the rest of the app rather than
+   bolted on from a cartoon. The name never leaves the phone. */
+function coverArt(){
+ const bits=[["7","var(--band)",22,26,0],["\u00bd","var(--sun)",68,14,-9],
+  ["24","var(--scree)",118,30,6],["\u25b3","var(--band)",166,18,0],
+  ["%","var(--sun)",206,28,8],["8","var(--scree)",246,16,-6]];
+ return `<svg class="covart" viewBox="0 0 280 62" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  ${bits.map(([ch,c,x,y,r])=>`<text x="${x}" y="${y+26}" font-size="30" font-weight="600"
+    fill="${c}" opacity=".9" transform="rotate(${r} ${x} ${y+26})">${ch}</text>`).join("")}
+ </svg>`;
+}
 function coverHTML(){
  /* v3: this opened with a hundred and twenty words, two paragraphs of which
     were addressed to the adult — mark schemes, exam boards, syllabuses. A
     nine-year-old had to scroll past all of it to reach the button. The child
     gets one line and the door; the grown-up gets the rest, one tap away. */
+ /* first visit and no name yet: ask for one before anything else */
+ if(!S.name && !S.noname && !V.more) return nameHTML();
+ const got=Object.keys(S.b||{}).reduce((a,k)=>a+(S.b[k]||0),0);
+ const seen=Object.keys(S.d||{}).length>0;
  return `<div class="wrap cover">
-  <div class="covmark">\u{1f9ee}</div>
-  <h1 class="covh">${esc(t("cov1"))}</h1>
+  ${coverArt()}
+  ${S.name?"":`<p class="brand">${esc(t("covname"))}</p>`}
+  <h1 class="covh">${S.name?`${esc(t(seen?"wb":"hi"))}, ${esc(S.name)}.`:esc(t("cov1"))}</h1>
   <p class="covsub">${esc(t("cov2"))}</p>
+  ${S.name?"":`<p class="covwhy">${esc(t("covwhy"))}</p>`}
+  ${got?`<p class="covgot"><b class="num">${got}</b> ${esc(t("sofar"))}</p>`:""}
   <p class="covlead">${esc(t("covlead"))}</p>
   <button class="go2" onclick="startDiag()">${esc(t("covgo"))}</button>
   <button class="go2 quiet" onclick="goShelf()">${esc(t("covbrowse"))}</button>
+  <h2 class="insideh">${esc(t("inside"))}</h2>
+  <div class="inside">
+   <span class="ic"><b class="num">${ALL.length}</b>${esc(t("nsub"))}</span>
+   <span class="ic"><b class="num">${ALL.reduce((a,s)=>a+s.n,0)}</b>${esc(t("nq"))}</span>
+   <span class="ic"><b class="num">${Object.keys(TEACH).length}</b>${esc(t("nvid"))}</span>
+  </div>
+  <div class="peek">${CAMPS.map(c=>`<span class="pk" title="${esc(c[L]||c.en)}">${c.em}</span>`).join("")}</div>
   ${V.more?`<div class="card covcard">
     <p class="covwho">${esc(t("covwho"))}</p>
     <p class="covp">${esc(t("covwhat"))}</p>
@@ -1995,6 +2067,24 @@ function coverHTML(){
    :`<button class="covmore" onclick="showMore()">${esc(t("covmore"))}</button>`}
   </div>`;
 }
+function nameHTML(){
+ return `<div class="wrap cover">
+  ${coverArt()}
+  <h1 class="covh">${esc(t("hello"))}</h1>
+  <p class="covlead">${esc(t("whoare"))}</p>
+  <input class="nameinput" id="nm" type="text" maxlength="18" autocomplete="given-name"
+   value="${esc(V.nm||"")}" oninput="V.nm=this.value" placeholder="\u2026">
+  <button class="go2" onclick="setName()">${esc(t("namego"))}</button>
+  <p class="covsm">${esc(t("namewhy"))}</p>
+  <button class="covmore" onclick="noName()">${esc(t("skipname"))}</button></div>`;
+}
+function setName(){
+ const el=document.getElementById("nm");
+ const v=((el&&el.value)||V.nm||"").trim().slice(0,18);
+ if(!v){ noName(); return; }
+ S.name=v; save(); V={s:"cover"}; render();
+}
+function noName(){ S.noname=1; save(); V={s:"cover"}; render(); }
 function showMore(){V.more=1;render()}
 function goCover(){V={s:"cover"};render()}
 function goShelf(){S.seen=1;save();V={s:"shelf",open:null};render()}
@@ -2064,7 +2154,9 @@ let lastTopic;
 function homeHTML(){
  const done=Object.keys(S.d).length;
  const got=Object.keys(S.b||{}).reduce((a,k)=>a+(S.b[k]||0),0);
- let h=`<div class="wrap"><div class="mhead"><h1>${esc(t("topics"))}</h1>
+ let h=`<div class="wrap"><div class="mhead">
+   ${S.name?`<p class="greet">${esc(t("hi"))}, ${esc(S.name)}</p>`:""}
+   <h1>${esc(t("topics"))}</h1>
    ${got?`<p class="gotline num"><b>${got}</b> ${esc(t("got"))}</p>`:""}</div>`;
  if(S.at && !S.d[S.at.id]){
   const st=byId(S.at.id);
