@@ -2123,61 +2123,65 @@ const GROUND="#FBF8F3", CARD="#FFFFFF", LINE="#E8E1D6", MUTED="#8A8378";
 function MASCOT(pose, course, size){
   const B=BRAND[course]||BRAND.maths;
   const s=size||120;
-  const body="#D9A05B", body2="#C08843", belly="#F4E2C8", dark="#33261A";
-  /* The hat is small and worn back, and the ears are drawn IN FRONT of it, so
-     the same animal is visible in both courses. The first attempt had the cap
-     swallowing the ears entirely, which made maths and English look like two
-     different creatures — the exact confusion the character exists to end. */
-  const hat = B.hat==="cap"
-    ? `<g transform="rotate(-8 100 44)">
-        <path d="M70 44 C70 30 84 22 100 22 C116 22 130 30 130 44 Z" fill="${B.hue}"/>
-        <path d="M126 44 L152 47 L152 52 L126 50 Z" fill="${B.hue}"/>
-        <circle cx="100" cy="24" r="4.5" fill="${B.warm}"/></g>`
-    : `<g transform="rotate(-6 100 40)">
-        <path d="M64 42 L100 30 L136 42 L100 54 Z" fill="${B.hue}"/>
-        <path d="M84 47 L84 56 C84 60 116 60 116 56 L116 47 Z" fill="${B.hue}" opacity=".9"/>
-        <path d="M133 43 L133 62" stroke="${B.warm}" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="133" cy="64" r="4" fill="${B.warm}"/></g>`;
-  const earL = pose==="think"
-    ? `<path d="M79 40 C74 18 79 6 88 7 C97 8 96 24 91 42 Z" fill="${body}" stroke="${body2}" stroke-width="2"/>
-       <path d="M83 37 C81 22 84 14 88 15 C92 16 91 26 88 38 Z" fill="${belly}"/>`
-    : `<path d="M80 40 C76 16 82 4 90 5 C98 6 98 24 92 42 Z" fill="${body}" stroke="${body2}" stroke-width="2"/>
-       <path d="M84 37 C82 22 85 12 89 13 C93 14 92 26 89 38 Z" fill="${belly}"/>`;
-  const earR = pose==="think"
-    ? `<path d="M112 44 C120 26 134 18 140 25 C146 32 132 44 118 52 Z" fill="${body}" stroke="${body2}" stroke-width="2"/>`
-    : `<path d="M108 42 C104 18 110 5 118 6 C126 7 126 24 120 44 Z" fill="${body}" stroke="${body2}" stroke-width="2"/>
-       <path d="M112 38 C110 22 113 13 117 14 C121 15 120 26 117 38 Z" fill="${belly}"/>`;
-  /* arms belong to the body, not floating beside it */
-  const armL = pose==="cheer"
-    ? `<path d="M66 116 C54 104 50 92 57 87 C64 82 71 94 74 108 Z" fill="${body2}"/>`
-    : `<path d="M68 124 C60 122 56 132 62 138 C68 144 76 138 76 130 Z" fill="${body2}"/>`;
-  const armR = pose==="point"
-    ? `<path d="M132 118 C144 110 152 98 146 92 C140 86 130 96 126 110 Z" fill="${body2}"/>
-       <circle cx="149" cy="89" r="5.5" fill="${body}"/>`
+  /* A crow. Counts, uses tools, solves puzzles, and has a hard enough
+     silhouette not to read as soft \u2014 which matters for ten and eleven year
+     olds, who resent being talked down to more than any other age.
+     Two tones and one dark eye, same construction in every pose, so he is
+     recognisably one bird whichever hat he is wearing. */
+  const dk="#2B303B", md="#3C4352", lt="#4E5666", beak=B.warm, D="#1A1D24";
+  /* Wings grow out of the body rather than floating beside it, and there is a
+     tail, so the silhouette is a bird rather than two stacked circles. */
+  const wing = pose==="cheer"
+    ? `<path d="M70 126 C50 118 38 100 48 92 C58 84 68 106 78 124 Z" fill="${md}"/>
+       <path d="M130 126 C150 118 162 100 152 92 C142 84 132 106 122 124 Z" fill="${md}"/>`
+    : pose==="point"
+    ? `<path d="M64 126 C52 122 48 136 60 142 C70 147 76 136 74 126 Z" fill="${md}"/>
+       <path d="M136 124 C158 116 176 96 168 86 C160 76 142 92 132 116 Z" fill="${md}"/>
+       <circle cx="172" cy="83" r="5.5" fill="${beak}"/>`
+    : `<path d="M64 126 C52 122 48 136 60 142 C70 147 76 136 74 126 Z" fill="${md}"/>
+       <path d="M136 126 C148 122 152 136 140 142 C130 147 124 136 126 126 Z" fill="${md}"/>`;
+  /* The tail sat low and to the right, where it read as a single leg. It is
+     up and back now, and he has two actual feet. */
+  const tail = `<path d="M144 128 C166 122 186 124 190 132 L150 148 Z" fill="${dk}"/>`;
+  const feet = `<path d="M84 166 L84 174 M76 176 L84 174 L92 176" stroke="${beak}" stroke-width="4.5"
+      fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M116 166 L116 174 M108 176 L116 174 L124 176" stroke="${beak}" stroke-width="4.5"
+      fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+  const head = pose==="think" ? `rotate(-9 100 72)` : `rotate(0 100 72)`;
+  const eyes = pose==="think"
+    ? `<circle cx="86" cy="70" r="7.5" fill="#fff"/><circle cx="88" cy="71" r="4.2" fill="${D}"/>
+       <circle cx="112" cy="70" r="7.5" fill="#fff"/><circle cx="114" cy="71" r="4.2" fill="${D}"/>
+       <path d="M76 58 C81 53 91 53 96 57" stroke="${D}" stroke-width="3" fill="none" stroke-linecap="round"/>`
     : pose==="cheer"
-    ? `<path d="M134 116 C146 104 150 92 143 87 C136 82 129 94 126 108 Z" fill="${body2}"/>`
-    : `<path d="M132 124 C140 122 144 132 138 138 C132 144 124 138 124 130 Z" fill="${body2}"/>`;
-  const mouth = pose==="cheer"
-    ? `<path d="M91 104 C96 114 104 114 109 104 Z" fill="#8A4A3A"/>`
-    : `<path d="M93 103 C97 108 103 108 107 103" stroke="#6B4A22" stroke-width="3" fill="none" stroke-linecap="round"/>`;
-  const brow = pose==="think"
-    ? `<path d="M80 74 C84 70 92 70 96 73" stroke="${dark}" stroke-width="2.6" fill="none" stroke-linecap="round"/>`:"";
+    ? `<path d="M79 70 C83 63 92 63 96 70" stroke="${D}" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+       <path d="M104 70 C108 63 117 63 121 70" stroke="${D}" stroke-width="3.6" fill="none" stroke-linecap="round"/>`
+    : `<circle cx="87" cy="70" r="8" fill="#fff"/><circle cx="88" cy="71" r="4.4" fill="${D}"/>
+       <circle cx="113" cy="70" r="8" fill="#fff"/><circle cx="114" cy="71" r="4.4" fill="${D}"/>`;
+  const hat = B.hat==="cap"
+    ? `<g transform="rotate(-9 100 40)">
+        <path d="M70 42 C70 26 84 17 100 17 C116 17 130 26 130 42 Z" fill="${B.hue}"/>
+        <path d="M126 42 L154 45 L154 50 L126 48 Z" fill="${B.hue}"/>
+        <circle cx="100" cy="19" r="4.5" fill="${B.warm}"/></g>`
+    : `<g transform="rotate(-7 100 38)">
+        <path d="M62 40 L100 27 L138 40 L100 53 Z" fill="${B.hue}"/>
+        <path d="M83 45 L83 55 C83 59 117 59 117 55 L117 45 Z" fill="${B.hue}" opacity=".92"/>
+        <path d="M135 41 L135 60" stroke="${B.warm}" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="135" cy="62" r="4" fill="${B.warm}"/></g>`;
   return `<svg class="mascot" viewBox="0 0 200 175" width="${s}" height="${s*0.875}"
     xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-   <ellipse cx="100" cy="140" rx="38" ry="30" fill="${body}"/>
-   <ellipse cx="100" cy="147" rx="23" ry="21" fill="${belly}"/>
-   ${armL}${armR}
-   <ellipse cx="100" cy="86" rx="33" ry="29" fill="${body}"/>
-   ${hat}
-   ${earL}${earR}
-   <ellipse cx="100" cy="86" rx="33" ry="29" fill="${body}"/>
-   <ellipse cx="100" cy="95" rx="19" ry="14" fill="${belly}"/>
-   ${brow}
-   <circle cx="89" cy="84" r="5.6" fill="${dark}"/><circle cx="111" cy="84" r="5.6" fill="${dark}"/>
-   <circle cx="91" cy="82" r="1.9" fill="#fff"/><circle cx="113" cy="82" r="1.9" fill="#fff"/>
-   <ellipse cx="100" cy="94" rx="4.6" ry="3.4" fill="#8A5C2A"/>
-   ${mouth}
-   ${hat}
+   ${tail}
+   ${feet}
+   <path d="M100 94 C134 94 154 116 154 140 C154 159 128 169 100 169 C72 169 46 159 46 140 C46 116 66 94 100 94 Z" fill="${dk}"/>
+   <path d="M100 116 C116 116 126 130 126 144 C126 157 114 163 100 163 C86 163 74 157 74 144 C74 130 84 116 100 116 Z" fill="${lt}" opacity=".5"/>
+   ${wing}
+   <g transform="${head}">
+    <path d="M78 82 L34 95 L78 106 Z" fill="${beak}"/>
+    <path d="M78 95 L34 95 L78 106 Z" fill="#C98526"/>
+    <ellipse cx="100" cy="74" rx="36" ry="33" fill="${dk}"/>
+    <path d="M78 78 L78 110" stroke="${dk}" stroke-width="0" fill="none"/>
+    ${eyes}
+    ${hat}
+   </g>
   </svg>`;
 }
 
