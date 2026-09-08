@@ -1,0 +1,2494 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>[Working title] — KS2 maths</title><meta name="theme-color" content="#22303F">
+<style>
+/* ================= The Climb =================
+   Built on the 2025 and 2026 KS2 papers rather than on the programme of study:
+   every stop names the content-domain codes it serves and carries as many
+   questions as that code's weight in the test deserves.
+   Paper 1 is 36 constructed answers, so arithmetic is typed on a keypad, never
+   chosen from four options — offering options would train a skill the test
+   does not reward. */
+:root{
+ --ink:#1B2430;--ink2:#4A5A6B;--muted:#8494A4;--paper:#F7F9FA;--card:#fff;--line:#E1E7EC;
+ --band:#4E8C6A;--sun:#E0A32E;--sun-bg:#FDF3DE;--yes:#2F7D57;--yes-bg:#E8F4EC;
+ --no:#B0463C;--no-bg:#FBECEA;
+ --t1:9px;--t2:11px;--t3:13px;--t4:15px;--t5:18px;--t6:22px;--t7:28px;--t8:40px;--t9:52px;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow:hidden}
+body{font:var(--t4)/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+ color:var(--ink);background:var(--paper);padding-top:env(safe-area-inset-top)}
+.num{font-variant-numeric:tabular-nums}
+header{padding:10px 14px 8px;background:var(--paper);position:relative;z-index:5}
+.hrow{display:flex;align-items:center;gap:10px}
+.htitle{flex:1 1 auto;min-width:0}
+.htitle b{display:block;font-size:var(--t5);font-weight:650;line-height:1.2}
+.htitle span{display:block;font-size:var(--t3);color:var(--muted)}
+.lang{display:flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
+.lang button{border:0;background:transparent;font:inherit;font-size:var(--t3);font-weight:700;
+ color:var(--muted);padding:6px 11px;cursor:pointer}
+.lang button.on{background:var(--band);color:#fff}
+.track{height:6px;border-radius:999px;background:var(--line);margin-top:9px;overflow:hidden}
+.track i{display:block;height:100%;background:var(--band);width:0;transition:width .5s}
+main{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
+ padding:0 14px calc(30px + env(safe-area-inset-bottom))}
+.pad{height:104px}
+.wrap{max-width:520px;margin:0 auto}
+.mhead{text-align:center;margin:16px 0 14px}
+.mhead h1{margin:0;font-size:var(--t7);font-weight:650}
+.mhead p{margin:4px 0 0;font-size:var(--t4);color:var(--ink2)}
+.mhead .alt{font-size:var(--t3);color:var(--muted);margin-top:6px}
+.paperbtn{display:flex;align-items:center;gap:12px;width:100%;padding:15px;margin:6px 0 16px;
+ border-radius:18px;border:2px solid var(--sun);background:var(--sun-bg);cursor:pointer;
+ font:inherit;text-align:left}
+.paperbtn b{display:block;font-size:var(--t5);color:#6A4A05}
+.paperbtn span{display:block;font-size:var(--t3);color:#8A6A25}
+.camp{margin:0 0 6px}
+.chead{display:flex;align-items:center;gap:11px;padding:12px 4px 8px}
+.chead .em{font-size:var(--t6)}
+.chead b{flex:1 1 auto;font-size:var(--t5);font-weight:650}
+.chead small{font-size:var(--t3);color:var(--muted);display:block;font-weight:400}
+.chead .cnt{font-size:var(--t3);color:var(--band);font-weight:700}
+.slope{display:flex;flex-direction:column-reverse}
+.stop{position:relative;display:flex;align-items:center;gap:11px;padding:7px 0}
+.stop:before{content:"";position:absolute;left:23px;top:0;bottom:0;width:3px;background:var(--line)}
+.stop.done:before{background:var(--band)}
+.stop:first-child:before{top:50%}.stop:last-child:before{bottom:50%}
+.pin{position:relative;z-index:2;width:48px;height:48px;border-radius:50%;flex:0 0 auto;
+ display:flex;align-items:center;justify-content:center;font-size:var(--t4);font-weight:700;
+ background:#fff;border:2.5px solid var(--line);cursor:pointer;font-family:inherit;color:var(--muted)}
+.pin.done{border-color:var(--band);background:var(--band);color:#fff}
+.pin.now{border-color:var(--band);color:var(--band);box-shadow:0 0 0 5px rgba(78,140,106,.16)}
+.si{flex:1 1 auto;min-width:0;text-align:left}
+.si b{display:block;font-size:var(--t4);font-weight:600}
+.si span{display:block;font-size:var(--t2);color:var(--muted)}
+.sc{font-size:var(--t3);color:var(--band);font-weight:700}
+.card{background:var(--card);border-radius:18px;padding:20px 16px;
+ box-shadow:0 1px 2px rgba(27,36,48,.05),0 8px 24px rgba(27,36,48,.05);
+ display:flex;flex-direction:column;align-items:center;text-align:center}
+.step{font-size:var(--t3);color:var(--muted);text-align:center;margin:10px 0 12px}
+.qbig{font-size:var(--t9);font-weight:600;line-height:1.1;letter-spacing:.01em;margin:14px 0}
+.qmid{font-size:var(--t7);font-weight:600;margin:14px 0}
+.hint{font-size:var(--t3);color:var(--muted);margin:0 0 4px}
+.slot{min-height:56px;display:flex;align-items:center;justify-content:center;
+ font-size:var(--t8);font-weight:600;color:var(--band);margin:2px 0 6px}
+.slot.empty{color:var(--line)}
+.slot.wrong{color:var(--no)}
+.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;max-width:320px;margin-top:8px}
+.key{border:1.5px solid var(--line);border-radius:14px;background:#fff;font:inherit;
+ font-size:var(--t6);font-weight:600;padding:14px 0;cursor:pointer;font-variant-numeric:tabular-nums}
+.key:active{transform:translateY(1px)}
+.key.wide{grid-column:span 1}
+.key.go{background:var(--band);color:#fff;border-color:var(--band)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;margin-top:16px}
+.opt{border:1.5px solid var(--line);border-radius:14px;background:#fff;padding:14px 8px;font:inherit;
+ font-size:var(--t5);font-weight:600;cursor:pointer;font-variant-numeric:tabular-nums;color:var(--ink)}
+.opt.yes{border-color:var(--yes);background:var(--yes-bg);color:var(--yes)}
+.opt.no{border-color:var(--no);background:var(--no-bg);color:var(--no)}
+.teach{font-size:var(--t4);line-height:1.6;margin:16px 6px 0;max-width:36ch;color:var(--ink)}
+.code{font-size:var(--t2);color:var(--muted);letter-spacing:.04em;margin-top:14px}
+.go2{width:100%;max-width:340px;border:0;border-radius:14px;background:var(--band);color:#fff;
+ font:inherit;font-size:var(--t5);font-weight:700;padding:15px;margin-top:16px;cursor:pointer}
+.go2.quiet{background:#fff;color:var(--ink2);border:1.5px solid var(--line)}
+.back{position:fixed;left:12px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:6;
+ width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:#fff;
+ font-size:var(--t5);color:var(--ink2);cursor:pointer}
+.tally{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.tally i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+.tally i.on{background:var(--band)}.tally i.bad{background:var(--no)}
+.note{margin-top:14px;padding:11px 13px;border-radius:14px;background:var(--sun-bg);
+ font-size:var(--t3);line-height:1.55;color:#6A4A05;max-width:36ch}
+.timer{font-size:var(--t6);font-weight:700;color:var(--ink2);font-variant-numeric:tabular-nums}
+.timer.low{color:var(--no)}
+.pgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;width:100%;margin-top:12px}
+.pg{aspect-ratio:1;border-radius:9px;border:1.5px solid var(--line);background:#fff;
+ font:inherit;font-size:var(--t2);color:var(--muted);cursor:pointer;padding:0}
+.pg.ans{border-color:var(--band);color:var(--band);font-weight:700}
+.pg.now{background:var(--band);color:#fff;border-color:var(--band)}
+.res{text-align:center}.res .em{font-size:var(--t8)}
+.res h2{margin:6px 0 2px;font-size:var(--t6)}
+.res p{margin:0;color:var(--muted);font-size:var(--t4)}
+.bar2{height:10px;border-radius:999px;background:var(--line);overflow:hidden;margin:12px 0 4px;width:100%;max-width:340px}
+.bar2 i{display:block;height:100%;background:var(--band)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.phases{display:flex;gap:5px;justify-content:center;margin-bottom:12px;flex-wrap:wrap}
+.pz{font-size:var(--t2);color:var(--muted);padding:4px 10px;border-radius:999px;background:#fff;
+ border:1.5px solid var(--line)}
+.pz.on{background:var(--band);color:#fff;border-color:var(--band);font-weight:700}
+.pz.past{color:var(--band);border-color:var(--band)}
+.storyem{font-size:var(--t9);line-height:1;margin:8px 0 14px}
+.storyline{font-size:var(--t5);line-height:1.55;margin:0;max-width:32ch;color:var(--ink)}
+.steps{width:100%;display:flex;flex-direction:column;gap:9px;margin-top:14px;text-align:left}
+.stepline{border-left:3px solid var(--band);padding:8px 0 8px 12px}
+.stepline b{display:block;font-size:var(--t6);color:var(--ink)}
+.stepline span{display:block;font-size:var(--t4);color:var(--ink2);margin-top:3px;line-height:1.5}
+.stepline i{display:block;font-style:normal;font-size:var(--t3);color:var(--muted);margin-top:5px;line-height:1.5}
+.stepline.done{border-left-color:var(--line);opacity:.6}
+.stepline.done b{font-size:var(--t5);color:var(--band)}
+.guideq{font-size:var(--t5);line-height:1.5;margin:16px 4px 4px;max-width:32ch;color:var(--ink)}
+
+.cover{text-align:center;padding-top:14px}
+.covmark{font-size:56px;line-height:1}
+.covh{margin:10px 0 2px;font-size:var(--t7);font-weight:650;line-height:1.2}
+.covsub{margin:0 0 16px;font-size:var(--t4);color:var(--muted)}
+.covcard{align-items:flex-start;text-align:left;gap:0}
+.covwho{margin:0 0 12px;font-size:var(--t5);font-weight:600;line-height:1.45}
+.covp{margin:0 0 11px;font-size:var(--t4);line-height:1.6;color:var(--ink2)}
+.covsm{margin:4px 0 0;font-size:var(--t3);color:var(--muted)}
+.wcard{display:flex;align-items:center;gap:12px;width:100%;padding:13px 14px;margin-bottom:8px;
+ border-radius:16px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font:inherit;text-align:left}
+.wcard.next{border-color:var(--band);background:#F2F8F4}
+.wm{flex:0 0 auto;min-width:34px;height:34px;border-radius:10px;background:var(--sun-bg);color:#6A4A05;
+ display:flex;align-items:center;justify-content:center;font-weight:700;font-size:var(--t4)}
+.wcard.next .wm{background:var(--band);color:#fff}
+.wx{flex:1 1 auto;min-width:0}
+.wx b{display:block;font-size:var(--t4);font-weight:600}
+.wx small{display:block;font-size:var(--t2);color:var(--muted)}
+.wa{color:var(--muted)}
+.shelfh{margin:16px 0 4px;font-size:var(--t3);color:var(--muted)}
+.strong{margin:0 0 6px;font-size:var(--t3);color:var(--ink2);line-height:1.6}
+.sh{display:flex;align-items:center;gap:12px;width:100%;padding:14px;margin-top:8px;
+ border-radius:16px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font:inherit;text-align:left}
+.sh.open{border-color:var(--band);border-bottom-left-radius:0;border-bottom-right-radius:0}
+.sh .em{font-size:var(--t6)}
+.shx{flex:1 1 auto;min-width:0}
+.shx b{display:block;font-size:var(--t4);font-weight:650}
+.shx small{display:block;font-size:var(--t2);color:var(--muted)}
+.shc{font-size:var(--t3);color:var(--band);font-weight:700}
+.shbody{border:1.5px solid var(--band);border-top:0;border-radius:0 0 16px 16px;padding:4px;background:#fff}
+.row{display:flex;align-items:center;gap:10px;width:100%;padding:10px;border:0;background:transparent;
+ cursor:pointer;font:inherit;text-align:left;border-radius:11px}
+.row:active{background:#F2F8F4}
+.rm{flex:0 0 auto;width:22px;text-align:center;color:var(--muted)}
+.row.done .rm{color:var(--band)}
+.rx{flex:1 1 auto;min-width:0}
+.rx b{display:block;font-size:var(--t4);font-weight:500}
+.rx small{display:block;font-size:var(--t1);color:var(--muted);letter-spacing:.03em}
+.rs{font-size:var(--t3);color:var(--band);font-weight:700}
+
+.whybtn{margin-top:6px;border:1.5px solid var(--line);border-radius:999px;background:#fff;
+ font:inherit;font-size:var(--t2);color:var(--muted);padding:3px 11px;cursor:pointer}
+.covlead{margin:0 0 18px;font-size:var(--t5);line-height:1.5;color:var(--ink)}
+.covmore{margin-top:18px;border:0;background:transparent;font:inherit;font-size:var(--t3);
+ color:var(--muted);text-decoration:underline;cursor:pointer}
+.dgbar{display:flex;align-items:center;gap:10px;margin:2px 0 10px}
+.dgback{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:#fff;
+ font-size:var(--t5);color:var(--ink2);cursor:pointer;flex:0 0 auto}
+.dgback:disabled{opacity:.3}
+.dgdots{flex:1 1 auto;display:flex;gap:5px;justify-content:center}
+.dgdots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.dgdots i.on{background:var(--band)}
+.dgdots i.now{box-shadow:0 0 0 3px rgba(78,140,106,.22)}
+.dgn{font-size:var(--t3);color:var(--muted);flex:0 0 auto}
+.shw{color:var(--band);font-weight:700}
+
+.shdots{display:inline-flex;gap:3px;vertical-align:middle;margin-right:5px}
+.shdots i{width:6px;height:6px;border-radius:50%;background:var(--line)}
+.shdots i.on{background:var(--band)}
+.gotline{margin:8px 0 0;font-size:var(--t3);color:var(--muted)}
+.gotline b{font-size:var(--t5);color:var(--band)}
+.go2.small{font-size:var(--t4);padding:11px;max-width:280px}
+
+.artbox{width:100%;display:flex;justify-content:center;margin:4px 0 10px}
+.art{width:100%;max-width:280px;height:auto;display:block}
+.trap{display:flex;gap:8px;align-items:flex-start;margin:0 0 10px;padding:10px 13px;border-radius:14px;
+ background:var(--sun-bg);color:#6A4A05;font-size:var(--t3);line-height:1.5}
+.nice{margin:0 0 10px;padding:9px 14px;border-radius:999px;background:var(--yes-bg);color:var(--yes);
+ font-size:var(--t4);font-weight:700;text-align:center;animation:pop .22s ease}
+.nice.fix{background:var(--sun-bg);color:#6A4A05}
+@keyframes pop{from{opacity:0;transform:translateY(6px) scale(.96)}to{opacity:1;transform:none}}
+.shfill{position:relative;flex:0 0 auto;width:34px;height:40px;border-radius:9px;background:var(--line);
+ overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.shfill>span{position:absolute;left:0;right:0;bottom:0;background:var(--band);transition:height .4s ease}
+.shfill b{position:relative;font-size:var(--t1);color:var(--ink);width:100%;text-align:center;padding-bottom:3px}
+
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 14px}
+.tile{position:relative;aspect-ratio:1;border-radius:20px;border:1.5px solid var(--line);
+ background:#fff;cursor:pointer;font:inherit;text-align:left;padding:14px;
+ display:flex;flex-direction:column;align-items:flex-start;overflow:hidden}
+.tem{font-size:30px;line-height:1}
+.tname{margin-top:auto;font-size:var(--t4);font-weight:650;line-height:1.25;color:var(--ink)}
+.tsub{font-size:var(--t2);color:var(--muted);margin-top:2px}
+.tbar{width:100%;height:5px;border-radius:999px;background:var(--line);margin-top:9px;overflow:hidden}
+.tbar i{display:block;height:100%;background:var(--band);transition:width .4s ease}
+.tnum{position:absolute;top:14px;right:14px;font-size:var(--t2);color:var(--muted);font-weight:700}
+.sublist{display:flex;flex-direction:column;gap:7px;margin-bottom:10px}
+.subrow{display:flex;align-items:center;gap:11px;width:100%;padding:14px;border-radius:16px;
+ border:1.5px solid var(--line);background:#fff;cursor:pointer;font:inherit;text-align:left}
+.subrow.done{border-color:var(--band)}
+.srm{flex:0 0 auto;width:24px;text-align:center;color:var(--muted);font-size:var(--t3)}
+.subrow.done .srm{color:var(--band)}
+.srx{flex:1 1 auto;min-width:0}
+.srx b{display:block;font-size:var(--t4);font-weight:600}
+.srx small{display:block;font-size:var(--t2);color:var(--muted)}
+.srs{font-size:var(--t3);color:var(--band);font-weight:700}
+.vidbox{margin:2px 0 12px}
+.vidph{display:flex;align-items:center;gap:13px;padding:16px;border-radius:18px;
+ border:2px dashed var(--line);background:#fff}
+.vidplay{flex:0 0 auto;width:46px;height:46px;border-radius:50%;background:var(--sun-bg);
+ color:var(--sun);display:flex;align-items:center;justify-content:center;font-size:var(--t5)}
+.vidt b{display:block;font-size:var(--t4);font-weight:650}
+.vidt small{display:block;font-size:var(--t2);color:var(--muted);letter-spacing:.02em}
+.card.story{align-items:flex-start;text-align:left;flex-direction:row;gap:13px;padding:15px;margin-bottom:8px}
+.card.story .storyem{font-size:28px;margin:0;line-height:1.1}
+.card.story .storyline{font-size:var(--t4);line-height:1.55;max-width:none;margin:0}
+.lh{margin:16px 0 8px;font-size:var(--t5);font-weight:650}
+.card.artcard{padding:14px;margin-bottom:8px}
+.card.lesson{align-items:stretch;text-align:left}
+.card.lesson .qmid{text-align:center;margin:0 0 4px}
+.go2.warm{background:var(--sun);color:#3B2A05}
+
+.lh.first{margin-top:6px}
+.vid{width:100%;border-radius:18px;display:block;background:#000;aspect-ratio:16/9}
+.jumph{margin:14px 0 7px;font-size:var(--t3);color:var(--muted)}
+.jumps{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.jump{display:flex;align-items:center;gap:11px;width:100%;padding:10px 13px;border-radius:13px;
+ border:1.5px solid var(--line);background:#fff;cursor:pointer;font:inherit;text-align:left}
+.jump:active{background:#F2F8F4}
+.jt{flex:0 0 auto;font-size:var(--t2);color:var(--band);font-weight:700;min-width:32px}
+.jx{flex:1 1 auto;font-size:var(--t3);color:var(--ink2);line-height:1.4}
+.fallback{margin:0 0 10px;font-size:var(--t3);color:var(--muted);font-style:italic}
+
+.lhsub{margin:-4px 0 8px;font-size:var(--t3);color:var(--muted);line-height:1.5}
+.card.recall{align-items:stretch;text-align:left;padding:16px}
+.card.recall .qmid{text-align:center;margin:0 0 10px;font-size:var(--t6)}
+.rsteps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:7px}
+.rsteps li{font-size:var(--t5);font-weight:600;color:var(--ink);line-height:1.35}
+.rsteps li::marker{color:var(--muted);font-size:var(--t3);font-weight:400}
+</style></head><body>
+<header><div class="hrow">
+ <div class="htitle"><b id="hT">The Climb</b><span id="hS">KS2 maths</span></div>
+ <div class="lang"><button id="lEN" class="on" onclick="setLang('en')">EN</button>
+ <button id="lFR" onclick="setLang('fr')">FR</button></div></div>
+ <div class="track"><i id="bar"></i></div></header>
+<main id="main"><div id="app"></div><div class="pad"></div></main>
+<button class="back" id="back" onclick="goMap()" hidden>&lsaquo;</button>
+<script>
+/* ================= question generators =================
+   The arithmetic paper is 36 constructed answers, not multiple choice, so most
+   of this course asks a child to WRITE a number. That also means questions can
+   be generated rather than listed: fluency needs volume, and a stop a child
+   returns to should not be the same twenty sums. Every generator takes a seed,
+   so a question is stable while it is on screen and different on the next
+   visit. */
+const R = s => { let x = (s*1103515245 + 12345) & 0x7fffffff; return () => (x = (x*1103515245 + 12345) & 0x7fffffff) / 0x7fffffff; };
+const pick = (r,a) => a[Math.floor(r()*a.length)];
+const between = (r,a,b) => a + Math.floor(r()*(b-a+1));
+const sp = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "\u2009");
+const gcd = (a,b) => b ? gcd(b,a%b) : a;
+const fr = (n,d) => { const g=gcd(n,d)||1; return [n/g,d/g]; };
+
+const GEN = {
+  /* ---- place value ---- */
+  pvDigit(r,lvl){
+    const len = lvl>=2 ? 7 : 6;
+    let d=[]; for(let i=0;i<len;i++) d.push(between(r, i===0?1:0, 9));
+    const n = d.join(""), at = between(r,0,len-1);
+    const worth = +d[at] * Math.pow(10, len-1-at);
+    return {ask:"pvDigit", show:sp(n), hi:at, a:sp(worth)};
+  },
+  pvRound(r,lvl){
+    const n = between(r, lvl>=2?100000:1000, lvl>=2?9999999:99999);
+    const p = pick(r, lvl>=2?[100,1000,10000,100000]:[10,100,1000]);
+    const a = Math.round(n/p)*p;
+    return {ask:"round", show:sp(n), p:sp(p), a:sp(a)};
+  },
+  pvNeg(r,lvl){
+    const a0 = -between(r,1,lvl>=2?20:9), b0 = between(r,1,lvl>=2?20:9);
+    return {ask:"negGap", show:a0+"  \u2192  "+b0, a:String(b0-a0)};
+  },
+  /* ---- calculation ---- */
+  tables(r){ const a=between(r,2,12), b=between(r,2,12); return {ask:"calc", show:a+" \u00d7 "+b, a:String(a*b)}; },
+  mentalPV(r,lvl){                       /* 4C6b — the most-asked code in the test */
+    const t = between(r,0,3);
+    if(t===0){ const a=between(r,2,9)*10, b=between(r,2,9); return {ask:"calc", show:a+" \u00d7 "+b, a:String(a*b)}; }
+    if(t===1){ const a=between(r,2,9)*100, b=between(r,2,9); return {ask:"calc", show:a+" \u00d7 "+b, a:sp(a*b)}; }
+    if(t===2){ const b=between(r,2,9), q=between(r,2,9)*10; return {ask:"calc", show:sp(b*q)+" \u00f7 "+b, a:String(q)}; }
+    const a=between(r,2,9), b=between(r,2,9), c=between(r,2,5);
+    return {ask:"calc", show:a+" \u00d7 "+b+" \u00d7 "+c, a:String(a*b*c)};
+  },
+  colAdd(r,lvl){
+    const dig = lvl>=2?5:4, lo=Math.pow(10,dig-1), hi=Math.pow(10,dig)-1;
+    const a=between(r,lo,hi), b=between(r,lo,hi);
+    return {ask:"calc", show:sp(a)+" + "+sp(b), a:sp(a+b)};
+  },
+  colSub(r,lvl){
+    const dig = lvl>=2?5:4, lo=Math.pow(10,dig-1), hi=Math.pow(10,dig)-1;
+    let a=between(r,lo,hi), b=between(r,lo,hi); if(b>a){const t=a;a=b;b=t;}
+    return {ask:"calc", show:sp(a)+" \u2212 "+sp(b), a:sp(a-b)};
+  },
+  shortMul(r){ const a=between(r,112,987), b=between(r,3,9); return {ask:"calc", show:a+" \u00d7 "+b, a:sp(a*b)}; },
+  longMul(r,lvl){
+    const a = lvl>=2 ? between(r,1203,9876) : between(r,112,987);
+    const b = between(r,12,89);
+    return {ask:"long", show:a+" \u00d7 "+b, a:sp(a*b), kind:"mul"};
+  },
+  shortDiv(r){
+    const b=between(r,3,9), q=between(r,112,987);
+    return {ask:"calc", show:sp(b*q)+" \u00f7 "+b, a:String(q)};
+  },
+  longDiv(r,lvl){
+    const b = between(r,12,49), q = lvl>=2 ? between(r,102,499) : between(r,12,99);
+    return {ask:"long", show:sp(b*q)+" \u00f7 "+b, a:String(q), kind:"div"};
+  },
+  divRem(r){
+    const b=between(r,3,9), q=between(r,23,199), rem=between(r,1,b-1);
+    return {ask:"rem", show:sp(b*q+rem)+" \u00f7 "+b, a:q+" r "+rem};
+  },
+  factors(r){
+    const n = pick(r,[24,30,36,40,42,48,54,56,60,72,84,90,96]);
+    const f=[]; for(let i=1;i<=n;i++) if(n%i===0) f.push(i);
+    return {ask:"pickAll", show:String(n), opts:[...new Set(f.concat([n+1,n-1,7,11,13].filter(x=>x>1&&x<=n)))].sort((a,b)=>a-b).slice(0,8),
+            ok:x=>n%x===0, lab:"factors"};
+  },
+  primes(r){
+    /* v4: eight numbers picked at random from 2 to 50 can contain no primes at
+       all, and then there is nothing to tap and the child is stuck on the
+       screen with no way forward. Three primes are placed first, then the rest
+       are filled in around them. */
+    const P=[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47];
+    const opts=[];
+    while(opts.length<3){ const x=P[Math.floor(r()*P.length)]; if(!opts.includes(x)) opts.push(x); }
+    let guard=0;
+    while(opts.length<8 && guard++<200){ const x=between(r,2,50); if(!opts.includes(x)) opts.push(x); }
+    return {ask:"pickAll", show:"", opts:opts.sort((a,b)=>a-b), ok:x=>P.includes(x), lab:"primes"};
+  },
+  sqcube(r){
+    const t=between(r,0,1);
+    if(t===0){ const a=between(r,2,12); return {ask:"calc", show:a+"\u00b2", a:String(a*a)}; }
+    const a=between(r,2,6); return {ask:"calc", show:a+"\u00b3", a:String(a*a*a)};
+  },
+  pow10(r){
+    const t=between(r,0,1), p=pick(r,[10,100,1000]);
+    if(t===0){ const a=between(r,12,987); return {ask:"calc", show:a+" \u00d7 "+p, a:sp(a*p)}; }
+    const a=between(r,2,99)*p; return {ask:"calc", show:sp(a)+" \u00f7 "+p, a:String(a/p)};
+  },
+  ooo(r){
+    const a=between(r,2,9), b=between(r,2,9), c=between(r,2,9);
+    return {ask:"calc", show:a+" + "+b+" \u00d7 "+c, a:String(a+b*c)};
+  },
+  /* ---- fractions, decimals, percentages ---- */
+  frAddSame(r){
+    const d=pick(r,[4,5,6,8,10,12]), a=between(r,1,d-2), b=between(r,1,d-a-1);
+    const [n2,d2]=fr(a+b,d);
+    return {ask:"frac", show:`${a}/${d} + ${b}/${d}`, a:`${n2}/${d2}`};
+  },
+  frAddDiff(r,lvl){
+    /* both fractions must already be in their simplest form: a question that
+       prints 2/4 is asking a child to read something the course has just told
+       them not to write. */
+    let d1,a,d2,b,m,guard=0;
+    do{ d1=pick(r,[2,3,4,5,6]); a=between(r,1,d1-1); guard++; }while(gcd(a,d1)!==1 && guard<40);
+    guard=0;
+    do{ m=between(r,2,4); d2=d1*m; b=between(r,1,d2-1); guard++; }while(gcd(b,d2)!==1 && guard<40);
+    const [n3,d3]=fr(a*m+b, d2);
+    return {ask:"frac", show:`${a}/${d1} + ${b}/${d2}`, a:`${n3}/${d3}`};
+  },
+  frMul(r){
+    /* 6F5a is pairs of PROPER fractions in their simplest form \u2014 so no 3/3,
+       and no 2/4 either. */
+    const proper=()=>{ let n,d,g=0; do{ d=between(r,2,8); n=between(r,1,d-1); g++; }
+      while(gcd(n,d)!==1 && g<40); return [n,d]; };
+    const [a,b]=proper(), [c,d]=proper();
+    const [n,dd]=fr(a*c, b*d);
+    return {ask:"frac", show:`${a}/${b} \u00d7 ${c}/${d}`, a:`${n}/${dd}`};
+  },
+  frDivWhole(r){
+    const a=1, b=between(r,2,7), c=between(r,2,6);
+    const [n,d]=fr(a, b*c);
+    return {ask:"frac", show:`${a}/${b} \u00f7 ${c}`, a:`${n}/${d}`};
+  },
+  frOfAmount(r){
+    const d=pick(r,[3,4,5,6,8,10]), n=between(r,1,d-1), tot=d*between(r,4,25);
+    return {ask:"calc", show:`${n}/${d} of ${sp(tot)}`, a:String(tot/d*n)};
+  },
+  decMul(r){
+    const a=(between(r,11,99)/10), b=between(r,3,9);
+    return {ask:"calc", show:a.toFixed(1)+" \u00d7 "+b, a:(+(a*b).toFixed(2)).toString()};
+  },
+  decAdd(r){
+    const a=between(r,100,9999)/100, b=between(r,100,9999)/100;
+    return {ask:"calc", show:a.toFixed(2)+" + "+b.toFixed(2), a:(+(a+b).toFixed(2)).toString()};
+  },
+  pcOf(r,lvl){
+    const p = lvl>=2 ? pick(r,[5,15,35,45,60,75,85]) : pick(r,[10,20,25,50,75]);
+    const n = pick(r,[40,60,80,120,160,200,240,300,400]);
+    return {ask:"calc", show:p+"% of "+sp(n), a:String(n*p/100)};
+  },
+  fdp(r){
+    const S=[["1/2","0.5","50%"],["1/4","0.25","25%"],["3/4","0.75","75%"],["1/5","0.2","20%"],
+             ["2/5","0.4","40%"],["3/5","0.6","60%"],["1/10","0.1","10%"],["7/10","0.7","70%"],
+             ["1/100","0.01","1%"],["3/20","0.15","15%"]];
+    const row=pick(r,S), from=between(r,0,2); let to=between(r,0,2); if(to===from) to=(to+1)%3;
+    return {ask:"calc", show:row[from], a:row[to], hint:["as a fraction","as a decimal","as a percentage"][to]};
+  },
+  /* ---- ratio ---- */
+  ratioRel(r){
+    const k=between(r,3,9), a=between(r,2,7), b=a*k;
+    return {ask:"calc", show:`${a} \u2192 ${b},  ${a*between(r,2,4)} \u2192 ?`, a:"", skip:true};
+  },
+  ratioShare(r){
+    const a=between(r,1,4), b=between(r,1,5), part=between(r,3,14), tot=(a+b)*part;
+    return {ask:"share", show:sp(tot), r1:a, r2:b, a:String(a*part)};
+  },
+  /* ---- measure, shape, data ---- */
+  metric(r){
+    const S=[["km","m",1000],["m","cm",100],["cm","mm",10],["kg","g",1000],["l","ml",1000]];
+    const u=pick(r,S), v=between(r,11,995)/10;
+    return {ask:"calc", show:v+u[0]+"  =  ?  "+u[1], a:sp(+(v*u[2]).toFixed(0))};
+  },
+  areaRect(r){ const a=between(r,3,19), b=between(r,3,19); return {ask:"calc", show:a+"cm \u00d7 "+b+"cm", a:String(a*b), hint:"area"}; },
+  areaTri(r){ const a=between(r,2,12)*2, b=between(r,3,15); return {ask:"calc", show:"base "+a+"cm, height "+b+"cm", a:String(a*b/2), hint:"area of the triangle"}; },
+  volume(r){ const a=between(r,2,9), b=between(r,2,9), c=between(r,2,9); return {ask:"calc", show:a+" \u00d7 "+b+" \u00d7 "+c+" cm", a:String(a*b*c), hint:"volume"}; },
+  angles(r){
+    const t=between(r,0,1);
+    if(t===0){ const a=between(r,20,150); return {ask:"calc", show:a+"\u00b0 + ? = 180\u00b0", a:String(180-a), hint:"angles on a straight line"}; }
+    const a=between(r,30,120), b=between(r,20,180-a-10);
+    return {ask:"calc", show:a+"\u00b0, "+b+"\u00b0, ?", a:String(180-a-b), hint:"angles in a triangle"};
+  },
+  mean(r){
+    const n=between(r,3,5), v=[]; let s=0;
+    for(let i=0;i<n;i++){ const x=between(r,2,20); v.push(x); s+=x; }
+    const extra=(n*Math.round(s/n))-s; v[0]+=extra;
+    return {ask:"calc", show:v.join(", "), a:String(v.reduce((a,b)=>a+b,0)/n), hint:"the mean"};
+  },
+  formula(r){
+    const m=between(r,2,9), c=between(r,1,20), x=between(r,2,12);
+    return {ask:"calc", show:`y = ${m}x + ${c},   x = ${x}`, a:String(m*x+c), hint:"find y"};
+  },
+  twoUnknowns(r){
+    const a=between(r,2,9), b=between(r,2,9);
+    return {ask:"calc", show:`a + b = ${a+b},   a \u00d7 b = ${a*b}`, a:String(Math.min(a,b)), hint:"the smaller of the two"};
+  },
+};
+
+
+/* ================= the fifty stops =================
+   Weighted by what the 2025 and 2026 papers actually asked, not by the
+   programme of study. Each stop names the content-domain codes it serves, so
+   the weighting can be checked rather than trusted. n is how many questions:
+   a long-division stop needs twenty and a co-ordinates stop needs six, and
+   holding every stop to the same shape was the first version's mistake. */
+const CAMPS = [
+ {id:"c1", em:"\u{1f33f}", en:"Number sense", fr:"Le sens du nombre",
+  sub_en:"place value, rounding, negatives", sub_fr:"valeur de position, arrondir, n\u00e9gatifs", stops:[
+  {g:"pvDigit", lvl:1, n:8,  code:"5N3a", en:"What a digit is worth", fr:"Ce que vaut un chiffre",
+   t_en:"Every digit has a place, and the place tells you what it is worth. The 5 in 352 741 is not five \u2014 it sits in the ten thousands, so it is worth 50 000.",
+   t_fr:"Chaque chiffre a une place, et la place dit ce qu'il vaut. Le 5 de 352 741 n'est pas cinq \u2014 il est aux dizaines de mille, donc il vaut 50 000."},
+  {g:"pvDigit", lvl:2, n:8,  code:"6N3", en:"Up to ten million", fr:"Jusqu'\u00e0 dix millions",
+   t_en:"Past a million the places keep going: millions, then ten millions. The spaces every three digits are only there to help you read it.",
+   t_fr:"Apr\u00e8s le million, les places continuent : millions, puis dizaines de millions. Les espaces tous les trois chiffres ne servent qu'\u00e0 la lecture."},
+  {g:"pvRound", lvl:1, n:10, code:"4N4b / 5N4", en:"Rounding", fr:"Arrondir",
+   t_en:"Look at the digit one place to the right of where you are rounding. 5 or more, round up. Less than 5, stay.",
+   t_fr:"Regarde le chiffre juste \u00e0 droite de la place o\u00f9 tu arrondis. 5 ou plus, on monte. Moins de 5, on reste."},
+  {g:"pvRound", lvl:2, n:10, code:"5N4 / 6N4", en:"Rounding big numbers", fr:"Arrondir les grands nombres",
+   t_en:"The same rule at every size. To the nearest 100 000, look at the ten thousands digit \u2014 nothing else matters.",
+   t_fr:"La m\u00eame r\u00e8gle \u00e0 toutes les tailles. \u00c0 la centaine de mille pr\u00e8s, regarde les dizaines de mille \u2014 rien d'autre ne compte."},
+  {g:"pvNeg",   lvl:1, n:8,  code:"4N5 / 5N5", en:"Below zero", fr:"Sous z\u00e9ro",
+   t_en:"Numbers carry on below zero. To find the gap from \u22123 to 4, count up to zero, then on: 3 then 4, which is 7.",
+   t_fr:"Les nombres continuent sous z\u00e9ro. Pour l'\u00e9cart de \u22123 \u00e0 4, compte jusqu'\u00e0 z\u00e9ro puis continue : 3 puis 4, donc 7."},
+  {g:"pvNeg",   lvl:2, n:10, code:"6N5", en:"Across zero", fr:"De part et d'autre",
+   t_en:"Temperatures, floors of a building, money owed. The gap is always what you count going up.",
+   t_fr:"Temp\u00e9ratures, \u00e9tages, dettes. L'\u00e9cart est toujours ce que tu comptes en montant."},
+ ]},
+ {id:"c2", em:"\u{1f9ee}", en:"The four operations", fr:"Les quatre op\u00e9rations",
+  sub_en:"the facts and the written methods", sub_fr:"les faits et les m\u00e9thodes \u00e9crites", stops:[
+  {g:"tables",  lvl:1, n:20, code:"4C6a", en:"Tables to twelve", fr:"Tables jusqu'\u00e0 douze",
+   t_en:"Everything above this rests on these. Not a lesson \u2014 a drill. Speed matters more than working it out.",
+   t_fr:"Tout ce qui suit repose l\u00e0-dessus. Pas une le\u00e7on \u2014 un entra\u00eenement. La vitesse compte plus que le calcul."},
+  {g:"mentalPV", lvl:1, n:16, code:"4C6b", en:"Using what you know", fr:"Se servir de ce qu'on sait",
+   t_en:"30 \u00d7 7 is 3 \u00d7 7 with a zero after it. This is the single most-asked thing in the whole test.",
+   t_fr:"30 \u00d7 7, c'est 3 \u00d7 7 avec un z\u00e9ro apr\u00e8s. C'est ce qu'on demande le plus dans tout le test."},
+  {g:"mentalPV", lvl:2, n:16, code:"4C6b / 6C6", en:"Bigger, in your head", fr:"Plus grand, de t\u00eate",
+   t_en:"400 \u00d7 6, 3 \u00d7 4 \u00d7 5, 240 \u00f7 8. Same trick, larger numbers.",
+   t_fr:"400 \u00d7 6, 3 \u00d7 4 \u00d7 5, 240 \u00f7 8. M\u00eame astuce, plus grands nombres."},
+  {g:"colAdd",  lvl:1, n:10, code:"3C2 / 4C2", en:"Adding in columns", fr:"Additionner en colonnes",
+   t_en:"Line up the places, start from the right, carry into the next column.",
+   t_fr:"Aligne les places, commence \u00e0 droite, retiens dans la colonne suivante."},
+  {g:"colSub",  lvl:1, n:10, code:"4C2 / 5C2", en:"Taking away in columns", fr:"Soustraire en colonnes",
+   t_en:"When the top digit is too small, take ten from the column to its left.",
+   t_fr:"Quand le chiffre du haut est trop petit, prends dix \u00e0 la colonne de gauche."},
+  {g:"colAdd",  lvl:2, n:8,  code:"5C2", en:"More than four digits", fr:"Plus de quatre chiffres",
+   t_en:"Nothing new \u2014 just more columns. Keep them straight and it works the same.",
+   t_fr:"Rien de nouveau \u2014 juste plus de colonnes. Garde-les align\u00e9es et \u00e7a marche pareil."},
+  {g:"shortMul", lvl:1, n:12, code:"4C7", en:"Short multiplication", fr:"Multiplication courte",
+   t_en:"Three digits by one. Multiply each column, carry what will not fit.",
+   t_fr:"Trois chiffres par un. Multiplie chaque colonne, retiens ce qui ne tient pas."},
+  {g:"shortDiv", lvl:1, n:12, code:"5C7b", en:"Short division", fr:"Division courte",
+   t_en:"How many times does it go in? Write it above, carry the rest across.",
+   t_fr:"Combien de fois \u00e7a rentre ? \u00c9cris-le au-dessus, reporte le reste."},
+  {g:"divRem",  lvl:1, n:10, code:"5C7b", en:"What is left over", fr:"Ce qui reste",
+   t_en:"The remainder must be smaller than what you divided by. If it is not, it goes in again.",
+   t_fr:"Le reste doit \u00eatre plus petit que le diviseur. Sinon, \u00e7a rentre encore une fois."},
+  {g:"pow10",   lvl:1, n:12, code:"5C6b / 6F9a", en:"Ten, a hundred, a thousand", fr:"Dix, cent, mille",
+   t_en:"The digits move; the number does not gain a zero. \u00d7 10 moves them one place left, \u00f7 100 two places right.",
+   t_fr:"Les chiffres bougent ; le nombre ne gagne pas un z\u00e9ro. \u00d7 10 d\u00e9place d'une place \u00e0 gauche, \u00f7 100 de deux \u00e0 droite."},
+  {g:"factors", lvl:1, n:6,  code:"5C5a / 6C5", en:"Factors", fr:"Diviseurs",
+   t_en:"A factor divides into the number leaving nothing behind. Tap every one.",
+   t_fr:"Un diviseur entre dans le nombre sans rien laisser. Touche-les tous."},
+ ]},
+ {id:"c3", em:"\u{1fa93}", en:"Long multiplication and division", fr:"Multiplication et division pos\u00e9es",
+  sub_en:"the two big written methods", sub_fr:"les deux grandes m\u00e9thodes \u00e9crites", stops:[
+  {g:"longMul", lvl:1, n:10, code:"5C7a / 6C7a", en:"Long multiplication", fr:"Multiplication pos\u00e9e",
+   t_en:"Multiply by the ones, then by the tens \u2014 and the tens row starts with a zero, because you are multiplying by tens. Then add the two rows.",
+   t_fr:"Multiplie par les unit\u00e9s, puis par les dizaines \u2014 et la ligne des dizaines commence par un z\u00e9ro, parce que tu multiplies par des dizaines. Puis additionne."},
+  {g:"longMul", lvl:2, n:10, code:"6C7a", en:"Four digits by two", fr:"Quatre chiffres par deux",
+   t_en:"The same method, just longer. Get the layout right and a slip on one sum does not spoil everything.",
+   t_fr:"La m\u00eame m\u00e9thode, juste plus longue. Si la disposition est bonne, une erreur ne g\u00e2che pas tout."},
+  {g:"longDiv", lvl:1, n:10, code:"6C7b", en:"Long division", fr:"Division pos\u00e9e",
+   t_en:"How many times into the first part? Write it above, take it away, bring the next digit down. Again.",
+   t_fr:"Combien de fois dans la premi\u00e8re partie ? \u00c9cris au-dessus, soustrais, abaisse le chiffre suivant. Recommence."},
+  {g:"longDiv", lvl:2, n:10, code:"6C7b", en:"Dividing by two digits", fr:"Diviser par deux chiffres",
+   t_en:"Dividing by 28 is the same as dividing by 2 \u2014 it just takes longer to see how many times it goes.",
+   t_fr:"Diviser par 28, c'est comme diviser par 2 \u2014 il faut juste plus de temps pour voir combien de fois \u00e7a rentre."},
+  {g:"sqcube", lvl:1, n:10, code:"5C5d", en:"Squares and cubes", fr:"Carr\u00e9s et cubes",
+   t_en:"7\u00b2 is 7 \u00d7 7. 4\u00b3 is 4 \u00d7 4 \u00d7 4. The little number says how many times, not what to multiply by.",
+   t_fr:"7\u00b2, c'est 7 \u00d7 7. 4\u00b3, c'est 4 \u00d7 4 \u00d7 4. Le petit chiffre dit combien de fois, pas par combien."},
+  {g:"primes",  lvl:1, n:6,  code:"5C5c / 6C5", en:"Prime numbers", fr:"Nombres premiers",
+   t_en:"A prime has exactly two factors: itself and one. That rules out 1 \u2014 it only has one factor.",
+   t_fr:"Un nombre premier a exactement deux diviseurs : lui-m\u00eame et un. Cela exclut 1 \u2014 il n'en a qu'un."},
+  {g:"ooo",     lvl:1, n:10, code:"6C9", en:"Which comes first", fr:"Qui passe en premier",
+   t_en:"Multiply and divide before you add and subtract. 4 + 3 \u00d7 5 is 19, not 35.",
+   t_fr:"Multiplie et divise avant d'additionner et soustraire. 4 + 3 \u00d7 5 fait 19, pas 35."},
+  {g:"colSub",  lvl:2, n:8,  code:"5C4 / 6C8", en:"Bigger take-aways", fr:"Grandes soustractions",
+   t_en:"Five digits and more. The borrowing can run along several columns at once.",
+   t_fr:"Cinq chiffres et plus. L'emprunt peut courir sur plusieurs colonnes."},
+ ]},
+ {id:"c4", em:"\u{1f9ca}", en:"Fractions, decimals, percentages", fr:"Fractions, d\u00e9cimaux, pourcentages",
+  sub_en:"a quarter of the whole test", sub_fr:"un quart de tout le test", stops:[
+  {g:"frAddSame", lvl:1, n:10, code:"4F4 / 5F4", en:"Same bottom number", fr:"M\u00eame d\u00e9nominateur",
+   t_en:"When the bottoms match, add the tops and leave the bottom alone.",
+   t_fr:"Quand les d\u00e9nominateurs sont \u00e9gaux, additionne les num\u00e9rateurs et laisse le d\u00e9nominateur."},
+  {g:"frAddDiff", lvl:1, n:12, code:"5F4 / 6F4", en:"Different bottoms", fr:"D\u00e9nominateurs diff\u00e9rents",
+   t_en:"Make the bottoms the same first. 1/2 is 4/8, so 1/2 + 1/8 is 5/8.",
+   t_fr:"Rends d'abord les d\u00e9nominateurs \u00e9gaux. 1/2 vaut 4/8, donc 1/2 + 1/8 fait 5/8."},
+  {g:"frAddDiff", lvl:2, n:12, code:"6F4", en:"Harder still", fr:"Plus difficile encore",
+   t_en:"Find a bottom number both will go into. The smallest one is easiest, but any will work.",
+   t_fr:"Trouve un d\u00e9nominateur commun. Le plus petit est le plus simple, mais n'importe lequel marche."},
+  {g:"frMul",   lvl:1, n:10, code:"6F5a", en:"Multiplying fractions", fr:"Multiplier des fractions",
+   t_en:"Tops together, bottoms together. Then simplify. It is the easiest of the four \u2014 and it looks the hardest.",
+   t_fr:"Num\u00e9rateurs ensemble, d\u00e9nominateurs ensemble. Puis simplifie. C'est la plus facile des quatre \u2014 et elle a l'air difficile."},
+  {g:"frDivWhole", lvl:1, n:8, code:"6F5b", en:"Dividing by a whole number", fr:"Diviser par un entier",
+   t_en:"1/3 \u00f7 2 makes each piece half as big, so the bottom doubles: 1/6.",
+   t_fr:"1/3 \u00f7 2 fait des parts deux fois plus petites, donc le d\u00e9nominateur double : 1/6."},
+  {g:"frOfAmount", lvl:1, n:12, code:"5F5 / F1", en:"A fraction of an amount", fr:"Une fraction d'une quantit\u00e9",
+   t_en:"Divide by the bottom, multiply by the top. 3/4 of 60: 60 \u00f7 4 = 15, 15 \u00d7 3 = 45.",
+   t_fr:"Divise par le d\u00e9nominateur, multiplie par le num\u00e9rateur. 3/4 de 60 : 60 \u00f7 4 = 15, 15 \u00d7 3 = 45."},
+  {g:"decAdd",  lvl:1, n:10, code:"5F10", en:"Adding decimals", fr:"Additionner des d\u00e9cimaux",
+   t_en:"Line up the points, not the ends. Fill the gaps with zeros if it helps.",
+   t_fr:"Aligne les virgules, pas les extr\u00e9mit\u00e9s. Compl\u00e8te avec des z\u00e9ros si besoin."},
+  {g:"decMul",  lvl:1, n:10, code:"6F9b", en:"Multiplying decimals", fr:"Multiplier des d\u00e9cimaux",
+   t_en:"Ignore the point, multiply, then put it back \u2014 as many places as you started with.",
+   t_fr:"Ignore la virgule, multiplie, puis remets-la \u2014 autant de d\u00e9cimales qu'au d\u00e9part."},
+  {g:"fdp",     lvl:1, n:14, code:"6F11 / 5F12", en:"The same thing three ways", fr:"La m\u00eame chose de trois fa\u00e7ons",
+   t_en:"1/2, 0.5 and 50% are one number wearing three coats. Learn the common ones by heart.",
+   t_fr:"1/2, 0,5 et 50 % sont un seul nombre sous trois habits. Apprends les courants par c\u0153ur."},
+  {g:"pcOf",    lvl:1, n:12, code:"6R2", en:"Percentages of amounts", fr:"Pourcentages d'une quantit\u00e9",
+   t_en:"10% is a tenth. Find that first and build the rest from it: 30% is three lots of 10%.",
+   t_fr:"10 %, c'est un dixi\u00e8me. Trouve-le d'abord et construis le reste : 30 %, c'est trois fois 10 %."},
+  {g:"pcOf",    lvl:2, n:12, code:"6R2", en:"Awkward percentages", fr:"Pourcentages moins ronds",
+   t_en:"15% is 10% and half of it again. 45% is four tens and a five. Build them.",
+   t_fr:"15 %, c'est 10 % plus sa moiti\u00e9. 45 %, c'est quatre dizaines et un cinq. Construis-les."},
+  {g:"decMul",  lvl:2, n:8,  code:"6F9c / 5F10", en:"Problems to three places", fr:"Probl\u00e8mes \u00e0 trois d\u00e9cimales",
+   t_en:"Money and measure hide decimals everywhere. The method never changes.",
+   t_fr:"L'argent et les mesures cachent des d\u00e9cimaux partout. La m\u00e9thode ne change jamais."},
+ ]},
+ {id:"c5", em:"\u{1f3d4}\ufe0f", en:"Shapes, measuring and sharing", fr:"Formes, mesures et partages",
+  sub_en:"ratio, measure, shape, data, algebra", sub_fr:"proportion, mesure, formes, donn\u00e9es, alg\u00e8bre", stops:[
+  {g:"ratioShare", lvl:1, n:12, code:"6R4", en:"Sharing unequally", fr:"Partager in\u00e9galement",
+   t_en:"Count the shares first. 3 : 2 means five shares \u2014 divide by five, then take three.",
+   t_fr:"Compte d'abord les parts. 3 : 2 fait cinq parts \u2014 divise par cinq, puis prends-en trois."},
+  {g:"ratioShare", lvl:2, n:10, code:"6R1 / 6R4", en:"Bigger shares", fr:"Plus grandes parts",
+   t_en:"Sharing like this turns up everywhere — recipes, money, teams. Worth the practice.",
+   t_fr:"Ce genre de partage est partout — recettes, argent, équipes. Ça vaut l'entraînement."},
+  {g:"metric",  lvl:1, n:12, code:"5M5 / 6M5", en:"Changing units", fr:"Changer d'unit\u00e9",
+   t_en:"Going to a smaller unit, the number gets bigger. km to m, kg to g, l to ml \u2014 all \u00d7 1000.",
+   t_fr:"Vers une unit\u00e9 plus petite, le nombre grandit. km en m, kg en g, l en ml \u2014 tous \u00d7 1000."},
+  {g:"areaRect", lvl:1, n:8,  code:"5M7b", en:"Area of rectangles", fr:"Aire des rectangles",
+   t_en:"Length times width. The answer is in square units, always.",
+   t_fr:"Longueur fois largeur. Le r\u00e9sultat est toujours en unit\u00e9s carr\u00e9es."},
+  {g:"areaTri", lvl:1, n:8,  code:"6M7b", en:"Triangles and parallelograms", fr:"Triangles et parall\u00e9logrammes",
+   t_en:"A triangle is half a rectangle: base \u00d7 height \u00f7 2.",
+   t_fr:"Un triangle, c'est la moiti\u00e9 d'un rectangle : base \u00d7 hauteur \u00f7 2."},
+  {g:"volume",  lvl:1, n:8,  code:"6M8a", en:"Volume", fr:"Volume",
+   t_en:"Three measurements multiplied. Cubic units, because it fills space.",
+   t_fr:"Trois mesures multipli\u00e9es. Unit\u00e9s cubes, parce que \u00e7a remplit l'espace."},
+  {g:"angles",  lvl:1, n:12, code:"6G4a / 6G4b", en:"Missing angles", fr:"Angles manquants",
+   t_en:"A straight line is 180\u00b0. A point is 360\u00b0. A triangle is 180\u00b0. Almost every angle question is one of these three.",
+   t_fr:"Une ligne droite fait 180\u00b0. Un point fait 360\u00b0. Un triangle fait 180\u00b0. Presque toutes les questions d'angle sont l'une des trois."},
+  {g:"mean",    lvl:1, n:8,  code:"6S3", en:"The mean", fr:"La moyenne",
+   t_en:"Add them all up, divide by how many there were.",
+   t_fr:"Additionne tout, divise par le nombre de valeurs."},
+  {g:"formula", lvl:1, n:10, code:"6A2", en:"Simple formulae", fr:"Formules simples",
+   t_en:"Put the number in where the letter is, then work it out as usual.",
+   t_fr:"Mets le nombre \u00e0 la place de la lettre, puis calcule normalement."},
+  {g:"twoUnknowns", lvl:1, n:8, code:"6A4", en:"Two unknowns", fr:"Deux inconnues",
+   t_en:"Two facts about two numbers is enough to find them. Try the factor pairs of the product.",
+   t_fr:"Deux faits sur deux nombres suffisent pour les trouver. Essaie les paires de diviseurs du produit."},
+ ]},
+];
+
+
+/* ================= the teaching, as data =================
+   Four phases per stop. The story creates the need; the worked example shows
+   the method one step at a time with a reason attached to each step; the
+   guided example asks the child for one step while the rest stays visible;
+   only then does the drill start, and the drill is bare because Paper 1 is
+   bare.
+
+   Every step has a `why`. A step that only says WHAT to do is a recipe, and a
+   child who follows a recipe cannot repair it when it goes wrong \u2014 which is
+   what a long division with one slip actually needs. */
+const TEACH = {
+
+"longDiv": {
+ story:[
+  {em:"\u{1f96d}", en:"Fatou has 486 mangoes to take to the market. She packs them into boxes, 18 to a box.",
+   fr:"Fatou a 486 mangues \u00e0 porter au march\u00e9. Elle les met en cartons, 18 par carton."},
+  {em:"\u{1f4e6}", en:"She needs to know how many boxes to bring \u2014 too few and the mangoes spoil, too many and she is carrying air.",
+   fr:"Elle doit savoir combien de cartons apporter \u2014 trop peu et les mangues s'ab\u00eement, trop et elle porte du vide."},
+  {em:"\u{1f914}", en:"486 shared into groups of 18. She cannot count it out one box at a time. She needs a way to take big bites.",
+   fr:"486 partag\u00e9 en groupes de 18. Elle ne peut pas compter carton par carton. Il lui faut une fa\u00e7on de prendre de grosses bouch\u00e9es."}],
+ show:"486 \u00f7 18",
+ steps:[
+  {line:"18 ) 486", en:"Write it the long way. The 486 goes inside, the 18 outside.",
+   fr:"\u00c9cris-la en division pos\u00e9e. 486 dedans, 18 dehors.",
+   why_en:"The layout is doing the remembering for you \u2014 it keeps track of what is left.",
+   why_fr:"La disposition se souvient \u00e0 ta place \u2014 elle garde la trace de ce qui reste."},
+  {line:"18 into 4?  no", en:"Can 18 go into 4? No. So look at 48 instead.",
+   fr:"18 entre-t-il dans 4 ? Non. Regarde donc 48.",
+   why_en:"You always start with the smallest part of the number that is big enough.",
+   why_fr:"On commence toujours par la plus petite partie du nombre qui soit assez grande."},
+  {line:"18 into 48 = 2,  2\u00d718 = 36", en:"18 twos are 36. 18 threes are 54 \u2014 too big. So 2.",
+   fr:"Deux fois 18 font 36. Trois fois 18 font 54 \u2014 trop. Donc 2.",
+   why_en:"You are asking how many whole 18s fit, never more.",
+   why_fr:"Tu cherches combien de 18 entiers tiennent, jamais plus."},
+  {line:"48 \u2212 36 = 12", en:"Take the 36 away. 12 is left over from the 48.",
+   fr:"Enl\u00e8ve 36. Il reste 12 sur 48.",
+   why_en:"That 12 has not been shared yet, so it must come down into the next step.",
+   why_fr:"Ces 12 ne sont pas encore partag\u00e9s, ils descendent donc \u00e0 l'\u00e9tape suivante."},
+  {line:"bring down the 6 \u2192 126", en:"Bring the 6 down beside the 12. Now you have 126.",
+   fr:"Abaisse le 6 \u00e0 c\u00f4t\u00e9 du 12. Tu as maintenant 126.",
+   why_en:"The 12 was really 120. Adding the 6 makes 126, which is what is genuinely left.",
+   why_fr:"Ce 12 valait en fait 120. Avec le 6, cela fait 126, ce qui reste vraiment."},
+  {line:"18 into 126 = 7,  7\u00d718 = 126", en:"18 sevens are exactly 126. Nothing left.",
+   fr:"Sept fois 18 font exactement 126. Il ne reste rien.",
+   why_en:"When it lands exactly, there is no remainder \u2014 every mango is in a box.",
+   why_fr:"Quand \u00e7a tombe juste, il n'y a pas de reste \u2014 chaque mangue est en carton."},
+  {line:"486 \u00f7 18 = 27", en:"Fatou needs 27 boxes.",
+   fr:"Fatou a besoin de 27 cartons.",
+   why_en:"Check it the other way: 27 \u00d7 18 should give 486 back.",
+   why_fr:"V\u00e9rifie \u00e0 l'envers : 27 \u00d7 18 doit redonner 486."}],
+ guided:{show:"595 \u00f7 17", steps:[
+   {ask_en:"18 went into 48 twice. How many 17s go into 59?", ask_fr:"18 entrait deux fois dans 48. Combien de 17 dans 59 ?", a:"3"},
+   {ask_en:"3 \u00d7 17 = 51. What is 59 \u2212 51?", ask_fr:"3 \u00d7 17 = 51. Combien fait 59 \u2212 51 ?", a:"8"},
+   {ask_en:"Bring down the 5 to make 85. How many 17s in 85?", ask_fr:"Abaisse le 5 : 85. Combien de 17 dans 85 ?", a:"5"},
+   {ask_en:"So what is 595 \u00f7 17?", ask_fr:"Alors, combien fait 595 \u00f7 17 ?", a:"35"}]}
+},
+
+"longMul": {
+ story:[
+  {em:"\u{1f9f1}", en:"A builder is laying a wall. Each row takes 46 bricks, and the wall is 27 rows high.",
+   fr:"Un ma\u00e7on monte un mur. Chaque rang\u00e9e prend 46 briques, et le mur fait 27 rang\u00e9es."},
+  {em:"\u{1f69a}", en:"He has to order the bricks before he starts. Order too few and the lorry comes back next week.",
+   fr:"Il doit commander les briques avant de commencer. Trop peu, et le camion revient la semaine prochaine."},
+  {em:"\u{1f4a1}", en:"27 rows is 20 rows and 7 rows. Work those out separately, then put them together.",
+   fr:"27 rang\u00e9es, c'est 20 rang\u00e9es et 7 rang\u00e9es. Calcule-les s\u00e9par\u00e9ment, puis rassemble."}],
+ show:"46 \u00d7 27",
+ steps:[
+  {line:"46 \u00d7 7 = 322", en:"First the 7 rows. 46 sevens are 322.",
+   fr:"D'abord les 7 rang\u00e9es. Sept fois 46 font 322.",
+   why_en:"Splitting 27 into 7 and 20 is the whole trick \u2014 both parts are easy on their own.",
+   why_fr:"Couper 27 en 7 et 20 est toute l'astuce \u2014 chaque partie est facile seule."},
+  {line:"46 \u00d7 20 = 920", en:"Now the 20 rows. 46 \u00d7 2 = 92, so 46 \u00d7 20 = 920.",
+   fr:"Puis les 20 rang\u00e9es. 46 \u00d7 2 = 92, donc 46 \u00d7 20 = 920.",
+   why_en:"THIS is why the second row starts with a zero. You are multiplying by twenty, not by two.",
+   why_fr:"VOIL\u00c0 pourquoi la deuxi\u00e8me ligne commence par un z\u00e9ro. Tu multiplies par vingt, pas par deux."},
+  {line:"322 + 920 = 1242", en:"Add the two rows together.",
+   fr:"Additionne les deux lignes.",
+   why_en:"7 rows plus 20 rows is 27 rows. The addition is the reassembling.",
+   why_fr:"7 rang\u00e9es plus 20 rang\u00e9es font 27 rang\u00e9es. L'addition remet tout ensemble."},
+  {line:"46 \u00d7 27 = 1 242", en:"He orders 1 242 bricks.",
+   fr:"Il commande 1 242 briques.",
+   why_en:"The forgotten zero is the commonest mistake in this method, and it costs the whole mark.",
+   why_fr:"Le z\u00e9ro oubli\u00e9 est l'erreur la plus courante, et elle co\u00fbte tout le point."}],
+ guided:{show:"38 \u00d7 24", steps:[
+   {ask_en:"First the 4: what is 38 \u00d7 4?", ask_fr:"D'abord le 4 : combien fait 38 \u00d7 4 ?", a:"152"},
+   {ask_en:"Now the 20. 38 \u00d7 2 = 76, so 38 \u00d7 20 = ?", ask_fr:"Puis le 20. 38 \u00d7 2 = 76, donc 38 \u00d7 20 = ?", a:"760"},
+   {ask_en:"Add your two rows: 152 + 760", ask_fr:"Additionne tes deux lignes : 152 + 760", a:"912"}]}
+},
+
+"frAddDiff": {
+ story:[
+  {em:"\u{1f35e}", en:"Two loaves of bread, the same size. Amina cuts hers into 2 and takes 1 piece. Musa cuts his into 8 and takes 1.",
+   fr:"Deux pains de m\u00eame taille. Amina coupe le sien en 2 et prend 1 part. Musa coupe le sien en 8 et en prend 1."},
+  {em:"\u2696\ufe0f", en:"Amina has 1/2 and Musa has 1/8. Put them together and you cannot say \u201c2 pieces\u201d \u2014 the pieces are different sizes.",
+   fr:"Amina a 1/2 et Musa a 1/8. Ensemble, on ne peut pas dire \u00ab 2 parts \u00bb \u2014 les parts n'ont pas la m\u00eame taille."},
+  {em:"\u2702\ufe0f", en:"So cut Amina's half into eighths too. Her 1/2 is 4 pieces of 1/8. Now everything is the same size.",
+   fr:"Alors coupe aussi la moiti\u00e9 d'Amina en huiti\u00e8mes. Son 1/2 fait 4 parts de 1/8. Tout a la m\u00eame taille."}],
+ show:"1/2 + 1/8",
+ steps:[
+  {line:"2 \u00d7 4 = 8", en:"8 is a number 2 goes into. So make both bottoms 8.",
+   fr:"8 est un nombre o\u00f9 2 entre. Rends donc les deux d\u00e9nominateurs \u00e9gaux \u00e0 8.",
+   why_en:"You are not changing the amount, only the size of the pieces you are counting in.",
+   why_fr:"Tu ne changes pas la quantit\u00e9, seulement la taille des parts que tu comptes."},
+  {line:"1/2 = 4/8", en:"Multiply top and bottom by 4. Half a loaf is four eighths.",
+   fr:"Multiplie le haut et le bas par 4. Un demi-pain fait quatre huiti\u00e8mes.",
+   why_en:"Top and bottom by the SAME number, or you have changed how much bread there is.",
+   why_fr:"Haut et bas par le M\u00caME nombre, sinon tu as chang\u00e9 la quantit\u00e9 de pain."},
+  {line:"4/8 + 1/8 = 5/8", en:"Now add the tops. Five eighths.",
+   fr:"Additionne les num\u00e9rateurs. Cinq huiti\u00e8mes.",
+   why_en:"The bottom stays 8 \u2014 you are counting eighths, and adding does not change what you are counting in.",
+   why_fr:"Le d\u00e9nominateur reste 8 \u2014 tu comptes des huiti\u00e8mes, et additionner ne change pas l'unit\u00e9."}],
+ guided:{show:"1/3 + 1/6", steps:[
+   {ask_en:"What number do both 3 and 6 go into?", ask_fr:"Dans quel nombre entrent \u00e0 la fois 3 et 6 ?", a:"6"},
+   {ask_en:"1/3 is how many sixths? (top and bottom \u00d7 2)", ask_fr:"1/3 fait combien de sixi\u00e8mes ? (haut et bas \u00d7 2)", a:"2/6"},
+   {ask_en:"Now add: 2/6 + 1/6", ask_fr:"Additionne : 2/6 + 1/6", a:"3/6"},
+   {ask_en:"Simplify 3/6", ask_fr:"Simplifie 3/6", a:"1/2"}]}
+},
+
+"pcOf": {
+ story:[
+  {em:"\u{1f45f}", en:"A pair of trainers costs \u00a360. The shop takes 15% off in the sale.",
+   fr:"Une paire de baskets co\u00fbte 60 \u00a3. Le magasin fait 15 % de r\u00e9duction."},
+  {em:"\u{1f4af}", en:"Per cent means \u201cout of a hundred\u201d. 15% means 15 for every 100.",
+   fr:"Pour cent veut dire \u00ab sur cent \u00bb. 15 %, c'est 15 pour chaque 100."},
+  {em:"\u{1f9e9}", en:"Nobody works out 15% directly. You build it: find 10%, halve it for 5%, add them.",
+   fr:"Personne ne calcule 15 % directement. On le construit : trouve 10 %, prends la moiti\u00e9 pour 5 %, additionne."}],
+ show:"15% of \u00a360",
+ steps:[
+  {line:"10% of 60 = 6", en:"10% is one tenth. Divide by 10.",
+   fr:"10 %, c'est un dixi\u00e8me. Divise par 10.",
+   why_en:"10% is the one you should never have to think about. Everything else is built from it.",
+   why_fr:"10 % est celui qu'on ne doit jamais avoir \u00e0 chercher. Tout le reste se construit dessus."},
+  {line:"5% of 60 = 3", en:"5% is half of 10%. Half of 6 is 3.",
+   fr:"5 %, c'est la moiti\u00e9 de 10 %. La moiti\u00e9 de 6 fait 3.",
+   why_en:"Halving is easier than dividing by 20, and it is the same thing.",
+   why_fr:"Prendre la moiti\u00e9 est plus simple que diviser par 20, et c'est pareil."},
+  {line:"6 + 3 = 9", en:"15% is 10% and 5% together. \u00a39 off.",
+   fr:"15 %, c'est 10 % et 5 % ensemble. 9 \u00a3 de r\u00e9duction.",
+   why_en:"Any percentage can be built from 10%, 5% and 1%. You never need a formula.",
+   why_fr:"Tout pourcentage se construit \u00e0 partir de 10 %, 5 % et 1 %. Aucune formule n'est n\u00e9cessaire."}],
+ guided:{show:"35% of 80", steps:[
+   {ask_en:"What is 10% of 80?", ask_fr:"Combien fait 10 % de 80 ?", a:"8"},
+   {ask_en:"So what is 30%?", ask_fr:"Alors combien fait 30 % ?", a:"24"},
+   {ask_en:"And 5% (half of 10%)?", ask_fr:"Et 5 % (la moiti\u00e9 de 10 %) ?", a:"4"},
+   {ask_en:"Put them together: 35% of 80", ask_fr:"Rassemble : 35 % de 80", a:"28"}]}
+},
+
+"pvDigit": {
+ story:[
+  {em:"\u{1f3df}\ufe0f", en:"A stadium says 352 741 people came this season. Someone asks: is that a lot of 5s?",
+   fr:"Un stade annonce 352 741 spectateurs cette saison. Quelqu'un demande : \u00e7a fait beaucoup de 5 ?"},
+  {em:"\u{1f9d0}", en:"There is one 5 in that number. But it is not worth five. It is worth fifty thousand.",
+   fr:"Il y a un seul 5 dans ce nombre. Mais il ne vaut pas cinq. Il vaut cinquante mille."},
+  {em:"\u{1f3e0}", en:"A digit is like a person: what they are worth depends on where they are standing.",
+   fr:"Un chiffre est comme une personne : ce qu'il vaut d\u00e9pend de l'endroit o\u00f9 il se tient."}],
+ show:"352 741",
+ steps:[
+  {line:"3 5 2   7 4 1", en:"Count the places from the right: ones, tens, hundreds, thousands, ten thousands, hundred thousands.",
+   fr:"Compte les places depuis la droite : unit\u00e9s, dizaines, centaines, milliers, dizaines de mille, centaines de mille.",
+   why_en:"Always from the right. The right-hand end is where counting starts.",
+   why_fr:"Toujours depuis la droite. C'est l\u00e0 que le comptage commence."},
+  {line:"5 is in the ten thousands", en:"The 5 is the fifth place along, which is ten thousands.",
+   fr:"Le 5 est \u00e0 la cinqui\u00e8me place, celle des dizaines de mille.",
+   why_en:"Each step left multiplies by ten. That is the whole idea of place value.",
+   why_fr:"Chaque pas vers la gauche multiplie par dix. C'est toute l'id\u00e9e de la valeur de position."},
+  {line:"5 \u00d7 10 000 = 50 000", en:"So the 5 is worth 50 000.",
+   fr:"Donc le 5 vaut 50 000.",
+   why_en:"Same digit, different place, different worth. Move it and the number changes completely.",
+   why_fr:"M\u00eame chiffre, autre place, autre valeur. D\u00e9place-le et le nombre change compl\u00e8tement."}],
+ guided:{show:"806 342", steps:[
+   {ask_en:"Which place is the 8 in \u2014 what is it worth?", ask_fr:"\u00c0 quelle place est le 8 \u2014 que vaut-il ?", a:"800000"},
+   {ask_en:"What is the 3 worth?", ask_fr:"Que vaut le 3 ?", a:"300"},
+   {ask_en:"What is the 4 worth?", ask_fr:"Que vaut le 4 ?", a:"40"}]}
+},
+
+"pvRound": {
+ story:[
+  {em:"🚌", en:"A school trip needs coaches. 187 children are going, and each coach holds 50.",
+   fr:"Une sortie scolaire a besoin de cars. 187 enfants partent, et chaque car prend 50."},
+  {em:"🤏", en:"Nobody says “about 187”. They say “about 200”. Rounding is saying a number the way people actually say it.",
+   fr:"Personne ne dit « environ 187 ». On dit « environ 200 ». Arrondir, c'est dire un nombre comme les gens le disent vraiment."}],
+ show:"3 472 → nearest 1000",
+ steps:[
+  {line:"look at the hundreds: 4", en:"To round to the nearest thousand, look at the digit one place to the right.",
+   fr:"Pour arrondir au millier, regarde le chiffre juste à droite.",
+   why_en:"That digit is the whole decision. Nothing to the right of it matters at all.",
+   why_fr:"Ce chiffre décide de tout. Rien à sa droite ne compte."},
+  {line:"4 is less than 5 → stay", en:"4 is less than 5, so the thousands stay as they are.",
+   fr:"4 est plus petit que 5, donc le millier ne bouge pas.",
+   why_en:"It is nearer 3000 than 4000, and that is all rounding means: which is it closer to.",
+   why_fr:"Il est plus proche de 3000 que de 4000, et c'est tout ce que veut dire arrondir."},
+  {line:"3 472 → 3 000", en:"Everything after the thousands becomes zero.",
+   fr:"Tout ce qui suit le millier devient zéro.",
+   why_en:"You are not deleting the digits, you are saying the number to the nearest thousand.",
+   why_fr:"Tu n'effaces pas les chiffres, tu dis le nombre au millier le plus proche."},
+ ],
+ guided:{show:"8 641 → nearest 100", steps:[
+   {ask_en:"Which digit decides it? (the tens)", ask_fr:"Quel chiffre décide ? (les dizaines)", a:"4"},
+   {ask_en:"4 is less than 5 — so what is the answer?", ask_fr:"4 est plus petit que 5 — alors, la réponse ?", a:"8600"},
+   {ask_en:"Now 8 651 to the nearest 100", ask_fr:"Maintenant 8 651 à la centaine près", a:"8700"},
+ ]}
+},
+
+"pvNeg": {
+ story:[
+  {em:"🌡️", en:"It was 3 degrees at breakfast. By night it had dropped to 5 below zero.",
+   fr:"Il faisait 3 degrés au petit déjeuner. La nuit, il faisait 5 sous zéro."},
+  {em:"🪜", en:"How far did it fall? Not 2. It fell 3 to reach zero, then 5 more. Eight.",
+   fr:"De combien est-il descendu ? Pas 2. Il est descendu de 3 pour atteindre zéro, puis 5 de plus. Huit."}],
+ show:"−5 → 3",
+ steps:[
+  {line:"count up to zero: 5", en:"From −5 up to 0 is five steps.",
+   fr:"De −5 à 0, il y a cinq pas.",
+   why_en:"Zero is the meeting point. Always go there first and the sign stops confusing you.",
+   why_fr:"Zéro est le point de rencontre. Va toujours là d'abord et les signes cessent d'embrouiller."},
+  {line:"then on to 3: 3", en:"From 0 up to 3 is three more.",
+   fr:"De 0 à 3, trois pas de plus.",
+   why_en:"The second half is ordinary counting. The minus sign was only ever in the first half.",
+   why_fr:"La seconde moitié est un comptage ordinaire. Le signe moins n'était que dans la première."},
+  {line:"5 + 3 = 8", en:"Add the two halves: the gap is 8.",
+   fr:"Additionne les deux moitiés : l'écart est 8.",
+   why_en:"Never subtract the two numbers. −5 and 3 are 8 apart, not 2.",
+   why_fr:"Ne soustrais jamais les deux nombres. −5 et 3 sont à 8 d'écart, pas 2."},
+ ],
+ guided:{show:"−6 → 4", steps:[
+   {ask_en:"How far from −6 up to zero?", ask_fr:"De −6 jusqu'à zéro ?", a:"6"},
+   {ask_en:"And from zero up to 4?", ask_fr:"Et de zéro à 4 ?", a:"4"},
+   {ask_en:"So the whole gap?", ask_fr:"Donc l'écart complet ?", a:"10"},
+ ]}
+},
+
+"mentalPV": {
+ story:[
+  {em:"🥚", en:"Binta has 30 boxes of eggs. Seven eggs in every box.",
+   fr:"Binta a 30 boîtes d'œufs. Sept œufs dans chaque boîte."},
+  {em:"💡", en:"She already knows 3 sevens are 21. Thirty boxes is ten times three boxes.",
+   fr:"Elle sait déjà que 3 fois 7 font 21. Trente boîtes, c'est dix fois trois boîtes."}],
+ show:"30 × 7",
+ steps:[
+  {line:"3 × 7 = 21", en:"Do the easy one first. Three sevens are 21.",
+   fr:"Fais d'abord le facile. Trois fois sept font 21.",
+   why_en:"You are not learning a new fact. You are using one you have.",
+   why_fr:"Tu n'apprends pas un fait nouveau. Tu te sers d'un fait que tu as déjà."},
+  {line:"30 is 10 lots of 3", en:"Thirty boxes is ten times as many as three boxes.",
+   fr:"Trente boîtes, c'est dix fois plus que trois boîtes.",
+   why_en:"Ten times bigger going in means ten times bigger coming out.",
+   why_fr:"Dix fois plus grand à l'entrée, dix fois plus grand à la sortie."},
+  {line:"21 × 10 = 210", en:"So 30 × 7 is 210.",
+   fr:"Donc 30 × 7 font 210.",
+   why_en:"This is the most-asked thing in the whole test. It is worth doing until it is automatic.",
+   why_fr:"C'est ce qu'on demande le plus dans tout le test. Ça vaut la peine jusqu'à l'automatisme."},
+ ],
+ guided:{show:"400 × 6", steps:[
+   {ask_en:"Start easy: 4 × 6", ask_fr:"Commence facile : 4 × 6", a:"24"},
+   {ask_en:"400 is 100 lots of 4, so × 100", ask_fr:"400, c'est 100 fois 4, donc × 100", a:"2400"},
+   {ask_en:"Now try 240 ÷ 8", ask_fr:"Essaie 240 ÷ 8", a:"30"},
+ ]}
+},
+
+"colAdd": {
+ story:[
+  {em:"💰", en:"Two market stalls counted their takings: 2 456 and 1 837.",
+   fr:"Deux étals ont compté leur recette : 2 456 et 1 837."},
+  {em:"📐", en:"Too big to do in your head. Line them up so ones sit under ones.",
+   fr:"Trop grand pour la tête. Aligne-les pour que les unités soient sous les unités."}],
+ show:"2 456 + 1 837",
+ steps:[
+  {line:"6 + 7 = 13, write 3 carry 1", en:"Start at the right. 13 is too big for one column.",
+   fr:"Commence à droite. 13 est trop grand pour une colonne.",
+   why_en:"Only one digit fits in each column. The ten goes next door, where tens live.",
+   why_fr:"Un seul chiffre tient par colonne. La dizaine va à côté, où vivent les dizaines."},
+  {line:"5 + 3 + 1 = 9", en:"Now the tens, and do not forget the one you carried.",
+   fr:"Puis les dizaines, sans oublier la retenue.",
+   why_en:"The carried digit is a real ten. Leaving it out loses ten from the answer.",
+   why_fr:"La retenue est une vraie dizaine. L'oublier fait perdre dix."},
+  {line:"4+8=12, 2+1=3 → 4 293", en:"Carry on left. The answer is 4 293.",
+   fr:"Continue vers la gauche. La réponse est 4 293.",
+   why_en:"Check it roughly: 2500 and 1800 is about 4300. It is.",
+   why_fr:"Vérifie à peu près : 2500 et 1800 font environ 4300. C'est le cas."},
+ ],
+ guided:{show:"3 274 + 1 918", steps:[
+   {ask_en:"Ones: 4 + 8", ask_fr:"Unités : 4 + 8", a:"12"},
+   {ask_en:"Tens: 7 + 1 plus the carry", ask_fr:"Dizaines : 7 + 1 plus la retenue", a:"9"},
+   {ask_en:"The whole thing: 3 274 + 1 918", ask_fr:"Le tout : 3 274 + 1 918", a:"5192"},
+ ]}
+},
+
+"colSub": {
+ story:[
+  {em:"📚", en:"A library had 5 042 books. 1 968 were borrowed.",
+   fr:"Une bibliothèque avait 5 042 livres. 1 968 ont été empruntés."},
+  {em:"🔁", en:"2 take away 8 does not work. You have to fetch ten from next door.",
+   fr:"2 moins 8 ne marche pas. Il faut aller chercher dix à côté."}],
+ show:"5 042 − 1 968",
+ steps:[
+  {line:"2 − 8? borrow → 12 − 8 = 4", en:"The ones column is too small, so take ten from the tens.",
+   fr:"La colonne des unités est trop petite, prends dix aux dizaines.",
+   why_en:"Borrowing does not change the number, it changes how it is written.",
+   why_fr:"Emprunter ne change pas le nombre, seulement la façon de l'écrire."},
+  {line:"tens were 4, now 3: 3 − 6? borrow again", en:"The tens are short too, so borrow from the hundreds — which are zero, so keep going left.",
+   fr:"Les dizaines manquent aussi : emprunte aux centaines — qui valent zéro, donc continue à gauche.",
+   why_en:"A zero cannot lend. You have to reach past it to the first column that can.",
+   why_fr:"Un zéro ne peut rien prêter. Il faut aller au-delà, jusqu'à la première colonne qui peut."},
+  {line:"5 042 − 1 968 = 3 074", en:"Finish the columns. 3 074 books left.",
+   fr:"Termine les colonnes. Il reste 3 074 livres.",
+   why_en:"Check by adding back: 3 074 + 1 968 should be 5 042.",
+   why_fr:"Vérifie en additionnant : 3 074 + 1 968 doit faire 5 042."},
+ ],
+ guided:{show:"6 305 − 2 847", steps:[
+   {ask_en:"Ones: borrow, then 15 − 7", ask_fr:"Unités : emprunte, puis 15 − 7", a:"8"},
+   {ask_en:"Tens: after borrowing, 9 − 4", ask_fr:"Dizaines : après l'emprunt, 9 − 4", a:"5"},
+   {ask_en:"The whole thing", ask_fr:"Le tout", a:"3458"},
+ ]}
+},
+
+"shortMul": {
+ story:[
+  {em:"🧃", en:"A shop sells juice in crates of 6. There are 248 crates.",
+   fr:"Un magasin vend du jus par caisses de 6. Il y a 248 caisses."},
+  {em:"➗", en:"Break 248 into its columns and multiply each one, right to left.",
+   fr:"Découpe 248 en colonnes et multiplie chacune, de droite à gauche."}],
+ show:"248 × 6",
+ steps:[
+  {line:"8 × 6 = 48, write 8 carry 4", en:"Ones first. 48 is four tens and eight.",
+   fr:"Les unités d'abord. 48, c'est quatre dizaines et huit.",
+   why_en:"Same rule as adding: one digit per column, the rest moves left.",
+   why_fr:"Même règle que l'addition : un chiffre par colonne, le reste part à gauche."},
+  {line:"4 × 6 = 24, +4 = 28", en:"Tens next. Multiply, then add what you carried.",
+   fr:"Puis les dizaines. Multiplie, puis ajoute la retenue.",
+   why_en:"Multiply first, add the carry after. Doing it the other way gives the wrong answer.",
+   why_fr:"Multiplie d'abord, ajoute la retenue après. L'inverse donne un mauvais résultat."},
+  {line:"2 × 6 = 12, +2 = 14 → 1 488", en:"1 488 bottles.",
+   fr:"1 488 bouteilles.",
+   why_en:"Roughly 250 × 6 = 1500, so 1 488 is believable.",
+   why_fr:"Environ 250 × 6 = 1500, donc 1 488 est crédible."},
+ ],
+ guided:{show:"376 × 4", steps:[
+   {ask_en:"6 × 4, what do you write down?", ask_fr:"6 × 4, qu'écris-tu ?", a:"4"},
+   {ask_en:"7 × 4 = 28, plus the carry of 2", ask_fr:"7 × 4 = 28, plus la retenue de 2", a:"30"},
+   {ask_en:"The whole answer", ask_fr:"La réponse complète", a:"1504"},
+ ]}
+},
+
+"shortDiv": {
+ story:[
+  {em:"🍬", en:"852 sweets shared fairly between 4 children.",
+   fr:"852 bonbons partagés équitablement entre 4 enfants."},
+  {em:"👉", en:"Work left to right this time — the opposite of adding. Share the biggest pieces first.",
+   fr:"Ici on va de gauche à droite — l'inverse de l'addition. Partage d'abord les plus gros morceaux."}],
+ show:"852 ÷ 4",
+ steps:[
+  {line:"8 ÷ 4 = 2", en:"Start at the left. 8 hundreds shared by 4 is 2 hundreds each.",
+   fr:"Commence à gauche. 8 centaines partagées par 4, cela fait 2 centaines chacun.",
+   why_en:"Division starts at the big end because that is how you actually share things out.",
+   why_fr:"La division commence par le grand bout, parce que c'est ainsi qu'on partage vraiment."},
+  {line:"5 ÷ 4 = 1 r 1, carry the 1", en:"4 goes into 5 once, and 1 is left over. Carry it to the next digit.",
+   fr:"4 entre une fois dans 5, il reste 1. Reporte-le sur le chiffre suivant.",
+   why_en:"The leftover 1 is really 10, which is why it joins the next column.",
+   why_fr:"Ce reste de 1 vaut en fait 10, d'où son passage à la colonne suivante."},
+  {line:"12 ÷ 4 = 3 → 213", en:"The carried 1 makes 12. 12 ÷ 4 is 3. Each child gets 213.",
+   fr:"La retenue fait 12. 12 ÷ 4 = 3. Chaque enfant a 213.",
+   why_en:"Check: 213 × 4 should give 852 back.",
+   why_fr:"Vérifie : 213 × 4 doit redonner 852."},
+ ],
+ guided:{show:"639 ÷ 3", steps:[
+   {ask_en:"6 ÷ 3", ask_fr:"6 ÷ 3", a:"2"},
+   {ask_en:"3 ÷ 3", ask_fr:"3 ÷ 3", a:"1"},
+   {ask_en:"The whole answer", ask_fr:"La réponse complète", a:"213"},
+ ]}
+},
+
+"divRem": {
+ story:[
+  {em:"🚗", en:"29 children need taxis. Each taxi takes 4.",
+   fr:"29 enfants ont besoin de taxis. Chaque taxi prend 4."},
+  {em:"🙋", en:"7 taxis carry 28. One child is still standing on the pavement.",
+   fr:"7 taxis emmènent 28. Un enfant reste sur le trottoir."}],
+ show:"29 ÷ 4",
+ steps:[
+  {line:"4 × 7 = 28", en:"How many whole 4s fit into 29? Seven.",
+   fr:"Combien de 4 entiers dans 29 ? Sept.",
+   why_en:"Whole ones only. You cannot send seven and a bit of a taxi.",
+   why_fr:"Des entiers seulement. On n'envoie pas sept taxis et un morceau."},
+  {line:"29 − 28 = 1", en:"One is left over.",
+   fr:"Il en reste un.",
+   why_en:"The remainder must be smaller than 4. If it were 4, another taxi would go.",
+   why_fr:"Le reste doit être plus petit que 4. S'il valait 4, un autre taxi partirait."},
+  {line:"29 ÷ 4 = 7 r 1", en:"Seven remainder one — but in real life you order 8 taxis.",
+   fr:"Sept reste un — mais en vrai, on commande 8 taxis.",
+   why_en:"The maths and the answer are not always the same thing. Read the question.",
+   why_fr:"Le calcul et la réponse ne sont pas toujours la même chose. Lis la question."},
+ ],
+ guided:{show:"45 ÷ 6", steps:[
+   {ask_en:"How many whole 6s fit in 45?", ask_fr:"Combien de 6 entiers dans 45 ?", a:"7"},
+   {ask_en:"7 × 6 = 42. What is left?", ask_fr:"7 × 6 = 42. Que reste-t-il ?", a:"3"},
+   {ask_en:"Write it as 7 r 3 — type the remainder", ask_fr:"Écris 7 r 3 — tape le reste", a:"3"},
+ ]}
+},
+
+"pow10": {
+ story:[
+  {em:"🎈", en:"One balloon costs 24p. How much for ten? For a hundred?",
+   fr:"Un ballon coûte 24 p. Combien pour dix ? Pour cent ?"},
+  {em:"👣", en:"The digits take a step to the left each time. They do not gain a zero — they move.",
+   fr:"Les chiffres font un pas à gauche à chaque fois. Ils ne gagnent pas un zéro — ils bougent."}],
+ show:"24 × 10",
+ steps:[
+  {line:"2 4 → 2 4 0", en:"Every digit shifts one place left. The 4 was ones, now it is tens.",
+   fr:"Chaque chiffre se décale d'une place à gauche. Le 4 était unité, il est dizaine.",
+   why_en:"The zero appears because the ones column is now empty, not because you added it.",
+   why_fr:"Le zéro apparaît parce que la colonne des unités est vide, pas parce qu'on l'a ajouté."},
+  {line:"× 100 = two places", en:"A hundred is ten tens, so two steps left.",
+   fr:"Cent, c'est dix dizaines, donc deux pas à gauche.",
+   why_en:"One zero in the 10, two in the 100, three in the 1000 — that is how many steps.",
+   why_fr:"Un zéro dans 10, deux dans 100, trois dans 1000 — voilà le nombre de pas."},
+  {line:"÷ 10 = one place right", en:"Dividing sends them back the other way.",
+   fr:"Diviser les renvoie dans l'autre sens.",
+   why_en:"This is why 3.5 × 10 is 35 and not 3.50. Adding a zero is a trick that breaks on decimals.",
+   why_fr:"C'est pourquoi 3,5 × 10 fait 35 et non 3,50. Ajouter un zéro est une astuce qui casse sur les décimaux."},
+ ],
+ guided:{show:"6.3 × 100", steps:[
+   {ask_en:"How many steps left for × 100?", ask_fr:"Combien de pas à gauche pour × 100 ?", a:"2"},
+   {ask_en:"So 6.3 × 100 =", ask_fr:"Donc 6,3 × 100 =", a:"630"},
+   {ask_en:"And 4 500 ÷ 1000 =", ask_fr:"Et 4 500 ÷ 1000 =", a:"4.5"},
+ ]}
+},
+
+"factors": {
+ story:[
+  {em:"🧱", en:"24 tiles. Can you lay them in a perfect rectangle?",
+   fr:"24 carreaux. Peux-tu les poser en rectangle parfait ?"},
+  {em:"🔢", en:"1×24, 2×12, 3×8, 4×6. Every rectangle you can make gives you two factors.",
+   fr:"1×24, 2×12, 3×8, 4×6. Chaque rectangle possible donne deux diviseurs."}],
+ show:"factors of 24",
+ steps:[
+  {line:"1 × 24", en:"Start at 1. Every number has 1 and itself.",
+   fr:"Commence à 1. Tout nombre a 1 et lui-même.",
+   why_en:"Working in pairs means you never miss one and never repeat one.",
+   why_fr:"Travailler par paires évite d'en oublier ou d'en répéter."},
+  {line:"2 × 12,  3 × 8,  4 × 6", en:"Try 2, then 3, then 4. Each that works gives a pair.",
+   fr:"Essaie 2, puis 3, puis 4. Chaque réussite donne une paire.",
+   why_en:"Stop when the pair crosses over. After 4×6 comes 6×4, which you already have.",
+   why_fr:"Arrête quand la paire se croise. Après 4×6 vient 6×4, que tu as déjà."},
+  {line:"1 2 3 4 6 8 12 24", en:"Eight factors.",
+   fr:"Huit diviseurs.",
+   why_en:"5 is missing because 24 tiles will not make a rectangle five wide.",
+   why_fr:"5 manque parce que 24 carreaux ne font pas un rectangle de cinq de large."},
+ ],
+ guided:{show:"factors of 18", steps:[
+   {ask_en:"1 × ?", ask_fr:"1 × ?", a:"18"},
+   {ask_en:"2 × ?", ask_fr:"2 × ?", a:"9"},
+   {ask_en:"3 × ?", ask_fr:"3 × ?", a:"6"},
+ ]}
+},
+
+"sqcube": {
+ story:[
+  {em:"⬜", en:"A square patio, 7 slabs along each side. How many slabs?",
+   fr:"Une terrasse carrée, 7 dalles de côté. Combien de dalles ?"},
+  {em:"🧊", en:"7 rows of 7 is 49. That is what “seven squared” means — a square.",
+   fr:"7 rangées de 7 font 49. Voilà ce que veut dire « sept au carré » — un carré."}],
+ show:"7²  and  4³",
+ steps:[
+  {line:"7² = 7 × 7 = 49", en:"The little 2 says how many sevens to multiply together.",
+   fr:"Le petit 2 dit combien de sept multiplier entre eux.",
+   why_en:"It never means × 2. 7² is 49, not 14 — that is the commonest mistake here.",
+   why_fr:"Ça ne veut jamais dire × 2. 7² fait 49, pas 14 — l'erreur la plus courante."},
+  {line:"4³ = 4 × 4 × 4", en:"Cubed means three of them, like a cube with sides of 4.",
+   fr:"Au cube, c'est trois fois, comme un cube de côté 4.",
+   why_en:"Squared is a flat square, cubed is a solid box. The words describe shapes.",
+   why_fr:"Au carré, c'est un carré plat ; au cube, une boîte. Les mots décrivent des formes."},
+  {line:"= 64", en:"16 × 4 = 64.",
+   fr:"16 × 4 = 64.",
+   why_en:"Do it in steps. 4×4 first, then ×4 again — not all at once.",
+   why_fr:"Fais-le par étapes. 4×4 d'abord, puis ×4 encore — pas tout à la fois."},
+ ],
+ guided:{show:"9²  then  3³", steps:[
+   {ask_en:"9²", ask_fr:"9²", a:"81"},
+   {ask_en:"3³ — start with 3 × 3", ask_fr:"3³ — commence par 3 × 3", a:"27"},
+   {ask_en:"12²", ask_fr:"12²", a:"144"},
+ ]}
+},
+
+"primes": {
+ story:[
+  {em:"🍪", en:"13 biscuits. Can you share them fairly between any group?",
+   fr:"13 biscuits. Peux-tu les partager équitablement dans un groupe ?"},
+  {em:"🚫", en:"Not between 2, 3, 4, 5, 6… only between 1 person or 13. That makes 13 prime.",
+   fr:"Ni par 2, 3, 4, 5, 6… seulement 1 personne ou 13. 13 est donc premier."}],
+ show:"is 13 prime?",
+ steps:[
+  {line:"2? no.  3? no.  4? no.", en:"Try dividing by each small number.",
+   fr:"Essaie de diviser par chaque petit nombre.",
+   why_en:"You only need to try up to the point where the pairs would cross over.",
+   why_fr:"Inutile d'aller au-delà du point où les paires se croisent."},
+  {line:"only 1 and 13 work", en:"Exactly two factors: itself and one.",
+   fr:"Exactement deux diviseurs : lui-même et un.",
+   why_en:"Exactly two. Not one, not three. That is the definition.",
+   why_fr:"Exactement deux. Ni un, ni trois. C'est la définition."},
+  {line:"1 is NOT prime", en:"1 has only one factor, so it fails the test.",
+   fr:"1 n'a qu'un seul diviseur, il échoue au test.",
+   why_en:"This catches people every year. 1 is not prime and 2 is — the only even one.",
+   why_fr:"Ça piège tout le monde. 1 n'est pas premier et 2 l'est — le seul pair."},
+ ],
+ guided:{show:"which are prime?", steps:[
+   {ask_en:"Is 9 prime? Type 1 for yes, 0 for no", ask_fr:"9 est-il premier ? 1 pour oui, 0 pour non", a:"0"},
+   {ask_en:"Is 11 prime?", ask_fr:"11 est-il premier ?", a:"1"},
+   {ask_en:"Is 2 prime?", ask_fr:"2 est-il premier ?", a:"1"},
+ ]}
+},
+
+"ooo": {
+ story:[
+  {em:"🎟️", en:"Tickets cost £4. You buy 3 and you already had £5.",
+   fr:"Les billets coûtent 4 £. Tu en achètes 3 et tu avais déjà 5 £."},
+  {em:"⚠️", en:"5 + 3 × 4. Left to right gives 32. That is wrong — and it is wrong by a lot.",
+   fr:"5 + 3 × 4. De gauche à droite, ça fait 32. C'est faux — et très faux."}],
+ show:"5 + 3 × 4",
+ steps:[
+  {line:"3 × 4 = 12", en:"Multiplication happens first, wherever it sits.",
+   fr:"La multiplication passe d'abord, où qu'elle soit.",
+   why_en:"× and ÷ bind more tightly than + and −. They grab their numbers first.",
+   why_fr:"× et ÷ sont plus « collants » que + et −. Ils prennent leurs nombres d'abord."},
+  {line:"5 + 12 = 17", en:"Then the addition.",
+   fr:"Ensuite l'addition.",
+   why_en:"17, not 32. Reading left to right is the single most expensive habit in arithmetic.",
+   why_fr:"17, pas 32. Lire de gauche à droite est l'habitude la plus coûteuse en calcul."},
+  {line:"brackets beat everything", en:"(5 + 3) × 4 = 32. Brackets say “do me first”.",
+   fr:"(5 + 3) × 4 = 32. Les parenthèses disent « moi d'abord ».",
+   why_en:"If you want the adding first, you have to say so with brackets.",
+   why_fr:"Si tu veux additionner d'abord, il faut le dire avec des parenthèses."},
+ ],
+ guided:{show:"8 + 2 × 6", steps:[
+   {ask_en:"Which part first?", ask_fr:"Quelle partie d'abord ?", a:"12"},
+   {ask_en:"Now finish it", ask_fr:"Termine", a:"20"},
+   {ask_en:"And (8 + 2) × 6?", ask_fr:"Et (8 + 2) × 6 ?", a:"60"},
+ ]}
+},
+
+"frAddSame": {
+ story:[
+  {em:"🍕", en:"A pizza cut into 8. You eat 3 slices, your brother eats 2.",
+   fr:"Une pizza coupée en 8. Tu manges 3 parts, ton frère 2."},
+  {em:"🔢", en:"3 slices and 2 slices is 5 slices. The slices did not change size.",
+   fr:"3 parts et 2 parts font 5 parts. Les parts n'ont pas changé de taille."}],
+ show:"3/8 + 2/8",
+ steps:[
+  {line:"3 + 2 = 5", en:"Add the top numbers.",
+   fr:"Additionne les numérateurs.",
+   why_en:"The top counts how many slices. That is the only thing changing.",
+   why_fr:"Le haut compte les parts. C'est la seule chose qui change."},
+  {line:"bottom stays 8", en:"The bottom says what size the slices are. It does not change.",
+   fr:"Le bas dit la taille des parts. Il ne change pas.",
+   why_en:"8 + 8 = 16 would mean the slices got smaller, and nobody cut anything.",
+   why_fr:"8 + 8 = 16 voudrait dire des parts plus petites, or personne n'a recoupé."},
+  {line:"= 5/8", en:"Five eighths of the pizza is gone.",
+   fr:"Cinq huitièmes de la pizza sont partis.",
+   why_en:"Adding bottoms is the commonest fraction mistake there is. Never do it.",
+   why_fr:"Additionner les dénominateurs est l'erreur de fraction la plus courante. Jamais."},
+ ],
+ guided:{show:"4/9 + 2/9", steps:[
+   {ask_en:"Add the tops", ask_fr:"Additionne les numérateurs", a:"6"},
+   {ask_en:"What is the bottom?", ask_fr:"Quel est le dénominateur ?", a:"9"},
+   {ask_en:"Write the answer", ask_fr:"Écris la réponse", a:"6/9"},
+ ]}
+},
+
+"frMul": {
+ story:[
+  {em:"🍫", en:"Half a chocolate bar. You give a third of that half away.",
+   fr:"La moitié d'une tablette. Tu en donnes le tiers."},
+  {em:"🤏", en:"A third of a half is a sixth. “Of” means multiply, and the answer gets smaller.",
+   fr:"Un tiers d'une moitié fait un sixième. « De » veut dire multiplier, et le résultat rétrécit."}],
+ show:"1/3 × 1/2",
+ steps:[
+  {line:"tops: 1 × 1 = 1", en:"Multiply the top numbers together.",
+   fr:"Multiplie les numérateurs.",
+   why_en:"No common bottom needed. This is the easiest of the four and it looks the hardest.",
+   why_fr:"Pas besoin de dénominateur commun. La plus facile des quatre, et elle a l'air difficile."},
+  {line:"bottoms: 3 × 2 = 6", en:"Multiply the bottom numbers together.",
+   fr:"Multiplie les dénominateurs.",
+   why_en:"The pieces get smaller, so the bottom number gets bigger. That is the sense of it.",
+   why_fr:"Les parts rétrécissent, donc le dénominateur grandit. C'est logique."},
+  {line:"= 1/6", en:"One sixth of the bar.",
+   fr:"Un sixième de la tablette.",
+   why_en:"Multiplying two fractions always makes something smaller than both. That is your check.",
+   why_fr:"Multiplier deux fractions donne toujours plus petit que les deux. C'est ta vérification."},
+ ],
+ guided:{show:"2/3 × 3/4", steps:[
+   {ask_en:"Multiply the tops", ask_fr:"Multiplie les numérateurs", a:"6"},
+   {ask_en:"Multiply the bottoms", ask_fr:"Multiplie les dénominateurs", a:"12"},
+   {ask_en:"Simplify 6/12", ask_fr:"Simplifie 6/12", a:"1/2"},
+ ]}
+},
+
+"frDivWhole": {
+ story:[
+  {em:"🥧", en:"A third of a pie, shared between two people.",
+   fr:"Un tiers de tarte, partagé entre deux personnes."},
+  {em:"✂️", en:"Each gets half of a third. Cut every third in two and you have sixths.",
+   fr:"Chacun a la moitié d'un tiers. Coupe chaque tiers en deux : des sixièmes."}],
+ show:"1/3 ÷ 2",
+ steps:[
+  {line:"each piece halves", en:"Sharing between 2 makes every piece half the size.",
+   fr:"Partager en 2 rend chaque part deux fois plus petite.",
+   why_en:"You are not making fewer pieces, you are making smaller ones.",
+   why_fr:"Tu ne fais pas moins de parts, tu en fais de plus petites."},
+  {line:"3 × 2 = 6", en:"Twice as many pieces in the whole pie, so the bottom doubles.",
+   fr:"Deux fois plus de parts dans la tarte, donc le dénominateur double.",
+   why_en:"Dividing by 2 makes the bottom bigger. That feels backwards until you see the pie.",
+   why_fr:"Diviser par 2 agrandit le dénominateur. C'est déroutant jusqu'à ce qu'on voie la tarte."},
+  {line:"= 1/6", en:"One sixth each.",
+   fr:"Un sixième chacun.",
+   why_en:"Check: two sixths make a third. It works.",
+   why_fr:"Vérifie : deux sixièmes font un tiers. Ça marche."},
+ ],
+ guided:{show:"1/4 ÷ 3", steps:[
+   {ask_en:"The bottom is 4. Multiply it by 3", ask_fr:"Le dénominateur est 4. Multiplie par 3", a:"12"},
+   {ask_en:"So the answer is", ask_fr:"Donc la réponse est", a:"1/12"},
+   {ask_en:"And 1/5 ÷ 2?", ask_fr:"Et 1/5 ÷ 2 ?", a:"1/10"},
+ ]}
+},
+
+"frOfAmount": {
+ story:[
+  {em:"👟", en:"£60 in your pocket. You spend three quarters of it.",
+   fr:"60 £ en poche. Tu en dépenses les trois quarts."},
+  {em:"4️⃣", en:"Split the 60 into 4 equal parts first. Then take three of them.",
+   fr:"Découpe d'abord 60 en 4 parts égales. Puis prends-en trois."}],
+ show:"3/4 of 60",
+ steps:[
+  {line:"60 ÷ 4 = 15", en:"Divide by the bottom number. That is one quarter.",
+   fr:"Divise par le dénominateur. C'est un quart.",
+   why_en:"The bottom tells you how many pieces to cut the amount into.",
+   why_fr:"Le dénominateur dit en combien de parts découper."},
+  {line:"15 × 3 = 45", en:"Multiply by the top number. You want three of those quarters.",
+   fr:"Multiplie par le numérateur. Tu veux trois de ces quarts.",
+   why_en:"Bottom first, then top. Doing it the other way round still works but the numbers get ugly.",
+   why_fr:"Le bas d'abord, puis le haut. L'inverse marche aussi mais les nombres deviennent moches."},
+  {line:"= £45", en:"Forty-five pounds spent.",
+   fr:"Quarante-cinq livres dépensées.",
+   why_en:"Three quarters should be most of it but not all. 45 out of 60 looks right.",
+   why_fr:"Trois quarts, c'est presque tout mais pas tout. 45 sur 60 semble juste."},
+ ],
+ guided:{show:"2/5 of 80", steps:[
+   {ask_en:"80 ÷ 5", ask_fr:"80 ÷ 5", a:"16"},
+   {ask_en:"Now × 2", ask_fr:"Maintenant × 2", a:"32"},
+   {ask_en:"Try 3/8 of 64", ask_fr:"Essaie 3/8 de 64", a:"24"},
+ ]}
+},
+
+"decAdd": {
+ story:[
+  {em:"🧾", en:"A drink at £1.45 and a sandwich at £2.30.",
+   fr:"Une boisson à 1,45 £ et un sandwich à 2,30 £."},
+  {em:"📍", en:"Line up the points, not the ends. That is the whole rule.",
+   fr:"Aligne les virgules, pas les extrémités. C'est toute la règle."}],
+ show:"1.45 + 2.30",
+ steps:[
+  {line:"point under point", en:"Write them with the decimal points in a vertical line.",
+   fr:"Écris-les avec les virgules l'une sous l'autre.",
+   why_en:"The point is where the whole numbers stop. Line that up and every column is right.",
+   why_fr:"La virgule marque la fin des entiers. Aligne-la et toutes les colonnes sont bonnes."},
+  {line:"fill gaps with zeros", en:"If one has fewer digits, put zeros in the empty places.",
+   fr:"Si l'un a moins de chiffres, mets des zéros dans les places vides.",
+   why_en:"3.5 is 3.50. The zero changes nothing except making the columns match.",
+   why_fr:"3,5 vaut 3,50. Le zéro ne change rien, sauf que les colonnes correspondent."},
+  {line:"= 3.75", en:"Add as normal, and keep the point in line.",
+   fr:"Additionne normalement, et garde la virgule alignée.",
+   why_en:"The point in the answer sits directly under the others. Never move it.",
+   why_fr:"La virgule du résultat est juste sous les autres. Ne la déplace jamais."},
+ ],
+ guided:{show:"6.20 + 3.45", steps:[
+   {ask_en:"Add the hundredths: 0 + 5", ask_fr:"Additionne les centièmes : 0 + 5", a:"5"},
+   {ask_en:"Add the tenths: 2 + 4", ask_fr:"Additionne les dixièmes : 2 + 4", a:"6"},
+   {ask_en:"The whole answer", ask_fr:"La réponse complète", a:"9.65"},
+ ]}
+},
+
+"decMul": {
+ story:[
+  {em:"⛽", en:"Petrol is £1.40 a litre. You buy 6 litres.",
+   fr:"L'essence coûte 1,40 £ le litre. Tu en prends 6 litres."},
+  {em:"🙈", en:"Cover the point. Do 14 × 6. Then put the point back where it belongs.",
+   fr:"Cache la virgule. Fais 14 × 6. Puis remets la virgule à sa place."}],
+ show:"1.4 × 6",
+ steps:[
+  {line:"ignore the point: 14 × 6 = 84", en:"Pretend it is a whole number for a moment.",
+   fr:"Fais comme si c'était un entier un instant.",
+   why_en:"Whole-number multiplication is something you can already do. Use it.",
+   why_fr:"La multiplication d'entiers, tu sais déjà faire. Sers-t'en."},
+  {line:"one decimal place in, one out", en:"1.4 had one digit after the point, so the answer has one.",
+   fr:"1,4 avait un chiffre après la virgule, donc la réponse aussi.",
+   why_en:"Count the places you started with. That is exactly how many you end with.",
+   why_fr:"Compte les décimales de départ. C'est exactement le nombre d'arrivée."},
+  {line:"= 8.4", en:"£8.40 of petrol.",
+   fr:"8,40 £ d'essence.",
+   why_en:"Check roughly: 1.4 is nearly 1.5, and 1.5 × 6 = 9. Close enough to trust.",
+   why_fr:"Vérifie : 1,4 est presque 1,5, et 1,5 × 6 = 9. Assez proche pour y croire."},
+ ],
+ guided:{show:"2.3 × 7", steps:[
+   {ask_en:"Ignore the point: 23 × 7", ask_fr:"Ignore la virgule : 23 × 7", a:"161"},
+   {ask_en:"How many decimal places?", ask_fr:"Combien de décimales ?", a:"1"},
+   {ask_en:"So the answer is", ask_fr:"Donc la réponse est", a:"16.1"},
+ ]}
+},
+
+"fdp": {
+ story:[
+  {em:"🎽", en:"A shirt is half price. Another is 50% off. Another is 0.5 of the price.",
+   fr:"Un maillot est à moitié prix. Un autre à −50 %. Un autre à 0,5 du prix."},
+  {em:"🎭", en:"All three shops are saying exactly the same thing in three different costumes.",
+   fr:"Les trois magasins disent exactement la même chose sous trois costumes."}],
+ show:"1/2  =  0.5  =  50%",
+ steps:[
+  {line:"1/2 → 0.5", en:"Divide the top by the bottom: 1 ÷ 2 = 0.5.",
+   fr:"Divise le haut par le bas : 1 ÷ 2 = 0,5.",
+   why_en:"A fraction is a division waiting to happen. That is all the line means.",
+   why_fr:"Une fraction est une division qui attend. La barre ne veut dire que ça."},
+  {line:"0.5 → 50%", en:"Multiply by 100. Per cent means out of a hundred.",
+   fr:"Multiplie par 100. Pour cent veut dire sur cent.",
+   why_en:"Decimal to percentage is always × 100. Two steps left, then a % sign.",
+   why_fr:"Décimal vers pourcentage, c'est toujours × 100. Deux pas à gauche, puis %."},
+  {line:"learn the common ones", en:"1/4, 1/5, 3/4, 1/10 — know these without thinking.",
+   fr:"1/4, 1/5, 3/4, 1/10 — à connaître sans réfléchir.",
+   why_en:"There are about eight worth memorising. They come up in every paper.",
+   why_fr:"Il y en a environ huit à mémoriser. Elles reviennent à chaque test."},
+ ],
+ guided:{show:"1/4", steps:[
+   {ask_en:"As a decimal", ask_fr:"En décimal", a:"0.25"},
+   {ask_en:"As a percentage", ask_fr:"En pourcentage", a:"25%"},
+   {ask_en:"And what is 1/5 as a decimal?", ask_fr:"Et 1/5 en décimal ?", a:"0.2"},
+ ]}
+},
+
+"ratioShare": {
+ story:[
+  {em:"🍬", en:"30 sweets shared between two brothers, 3 for one and 2 for the other each time.",
+   fr:"30 bonbons pour deux frères, 3 pour l'un et 2 pour l'autre à chaque fois."},
+  {em:"🧮", en:"Count the shares first. 3 and 2 makes 5 shares, not 2.",
+   fr:"Compte d'abord les parts. 3 et 2 font 5 parts, pas 2."}],
+ show:"30 in the ratio 3 : 2",
+ steps:[
+  {line:"3 + 2 = 5 shares", en:"Add the numbers in the ratio to find how many shares there are.",
+   fr:"Additionne les nombres du rapport pour trouver le nombre de parts.",
+   why_en:"This step is the one everybody skips, and skipping it makes every answer wrong.",
+   why_fr:"C'est l'étape que tout le monde saute, et la sauter rend tout faux."},
+  {line:"30 ÷ 5 = 6", en:"Divide the total by the number of shares. One share is 6.",
+   fr:"Divise le total par le nombre de parts. Une part vaut 6.",
+   why_en:"Now you know what a single share is worth, and the rest is multiplying.",
+   why_fr:"Tu sais ce que vaut une part, le reste n'est que multiplication."},
+  {line:"3 × 6 = 18  and  2 × 6 = 12", en:"18 and 12. They add back to 30.",
+   fr:"18 et 12. Ensemble, ils refont 30.",
+   why_en:"Always add your two answers back. If they do not make the total, something is wrong.",
+   why_fr:"Additionne toujours tes deux réponses. Si ça ne fait pas le total, il y a une erreur."},
+ ],
+ guided:{show:"40 in the ratio 3 : 5", steps:[
+   {ask_en:"How many shares altogether?", ask_fr:"Combien de parts en tout ?", a:"8"},
+   {ask_en:"What is one share worth?", ask_fr:"Combien vaut une part ?", a:"5"},
+   {ask_en:"So the bigger amount is", ask_fr:"Donc la plus grande part est", a:"25"},
+ ]}
+},
+
+"metric": {
+ story:[
+  {em:"🧃", en:"A bottle says 1.5 litres. The recipe asks for millilitres.",
+   fr:"Une bouteille indique 1,5 litre. La recette demande des millilitres."},
+  {em:"📏", en:"Milli means a thousandth. So one litre is a thousand of them.",
+   fr:"Milli veut dire millième. Un litre en contient donc mille."}],
+ show:"1.5 l → ml",
+ steps:[
+  {line:"1 l = 1000 ml", en:"Know the four that matter: km–m, m–cm, kg–g, l–ml.",
+   fr:"Retiens les quatre qui comptent : km–m, m–cm, kg–g, l–ml.",
+   why_en:"Three of those four are × 1000. Only m to cm is × 100.",
+   why_fr:"Trois de ces quatre sont × 1000. Seul m vers cm est × 100."},
+  {line:"smaller unit → bigger number", en:"Going to a smaller unit means more of them, so multiply.",
+   fr:"Vers une unité plus petite, il y en a plus : on multiplie.",
+   why_en:"Ask yourself: is the answer going to be bigger or smaller? Then you cannot pick the wrong way.",
+   why_fr:"Demande-toi : la réponse sera-t-elle plus grande ou plus petite ? Impossible de se tromper de sens."},
+  {line:"1.5 × 1000 = 1500 ml", en:"Fifteen hundred millilitres.",
+   fr:"Mille cinq cents millilitres.",
+   why_en:"1.5 litres could never be 0.0015 of anything. The size check catches the slip.",
+   why_fr:"1,5 litre ne peut pas valoir 0,0015. Le contrôle de taille rattrape l'erreur."},
+ ],
+ guided:{show:"2.4 kg → g", steps:[
+   {ask_en:"How many grams in a kilogram?", ask_fr:"Combien de grammes dans un kilogramme ?", a:"1000"},
+   {ask_en:"Bigger or smaller number? Multiply.", ask_fr:"Plus grand ou plus petit ? Multiplie.", a:"2400"},
+   {ask_en:"Now 350 cm → m", ask_fr:"Maintenant 350 cm → m", a:"3.5"},
+ ]}
+},
+
+"areaRect": {
+ story:[
+  {em:"🏡", en:"A garden 8 metres long and 5 metres wide. How much turf?",
+   fr:"Un jardin de 8 mètres sur 5 mètres. Combien de gazon ?"},
+  {em:"🟩", en:"Picture it as rows of one-metre squares: 5 rows of 8.",
+   fr:"Imagine des rangées de carrés d'un mètre : 5 rangées de 8."}],
+ show:"8 m × 5 m",
+ steps:[
+  {line:"5 rows of 8 squares", en:"Area is just counting squares, arranged in rows.",
+   fr:"L'aire, c'est compter des carrés rangés en rangées.",
+   why_en:"That is why it is length times width — it is a multiplication table drawn out.",
+   why_fr:"D'où longueur fois largeur — c'est une table de multiplication dessinée."},
+  {line:"8 × 5 = 40", en:"Forty squares.",
+   fr:"Quarante carrés.",
+   why_en:"Do not add. 8 + 5 = 13 is the perimeter's half, not the area.",
+   why_fr:"N'additionne pas. 8 + 5 = 13, c'est la moitié du périmètre, pas l'aire."},
+  {line:"40 m²", en:"Square metres, because you counted squares.",
+   fr:"Mètres carrés, parce que tu as compté des carrés.",
+   why_en:"The little 2 is not decoration. An answer in m instead of m² loses the mark.",
+   why_fr:"Le petit 2 n'est pas décoratif. Une réponse en m au lieu de m² perd le point."},
+ ],
+ guided:{show:"12 m × 7 m", steps:[
+   {ask_en:"Multiply them", ask_fr:"Multiplie-les", a:"84"},
+   {ask_en:"A square with sides of 9", ask_fr:"Un carré de côté 9", a:"81"},
+   {ask_en:"6 by 15", ask_fr:"6 sur 15", a:"90"},
+ ]}
+},
+
+"areaTri": {
+ story:[
+  {em:"🔺", en:"A triangular flag: base 10 cm, height 6 cm.",
+   fr:"Un drapeau triangulaire : base 10 cm, hauteur 6 cm."},
+  {em:"✂️", en:"Draw a rectangle round it. The triangle is exactly half.",
+   fr:"Trace un rectangle autour. Le triangle en est exactement la moitié."}],
+ show:"base 10, height 6",
+ steps:[
+  {line:"rectangle: 10 × 6 = 60", en:"First find the rectangle it fits inside.",
+   fr:"Trouve d'abord le rectangle qui l'entoure.",
+   why_en:"Every triangle is half of some rectangle. That is where the formula comes from.",
+   why_fr:"Tout triangle est la moitié d'un rectangle. Voilà d'où vient la formule."},
+  {line:"÷ 2 = 30", en:"Halve it.",
+   fr:"Prends-en la moitié.",
+   why_en:"Forgetting to halve is the whole of what goes wrong here.",
+   why_fr:"Oublier de diviser par deux, c'est toute l'erreur possible ici."},
+  {line:"30 cm²", en:"Thirty square centimetres.",
+   fr:"Trente centimètres carrés.",
+   why_en:"Height means straight up, not the slanted side. That is the other trap.",
+   why_fr:"La hauteur est verticale, pas le côté incliné. C'est l'autre piège."},
+ ],
+ guided:{show:"base 8, height 5", steps:[
+   {ask_en:"The rectangle first", ask_fr:"Le rectangle d'abord", a:"40"},
+   {ask_en:"Now halve it", ask_fr:"Divise par deux", a:"20"},
+   {ask_en:"base 14, height 6", ask_fr:"base 14, hauteur 6", a:"42"},
+ ]}
+},
+
+"volume": {
+ story:[
+  {em:"📦", en:"A box 4 cm by 3 cm by 5 cm. How many centimetre cubes fit?",
+   fr:"Une boîte de 4 cm sur 3 cm sur 5 cm. Combien de cubes d'un centimètre ?"},
+  {em:"🧊", en:"Fill the bottom layer first, then count how many layers.",
+   fr:"Remplis d'abord la couche du bas, puis compte les couches."}],
+ show:"4 × 3 × 5",
+ steps:[
+  {line:"bottom layer: 4 × 3 = 12", en:"Twelve cubes cover the base.",
+   fr:"Douze cubes couvrent le fond.",
+   why_en:"The base is just an area. You already know how to do that bit.",
+   why_fr:"Le fond n'est qu'une aire. Tu sais déjà faire."},
+  {line:"5 layers", en:"The box is 5 cubes tall.",
+   fr:"La boîte fait 5 cubes de haut.",
+   why_en:"Volume is area with a third dimension stacked on top of it.",
+   why_fr:"Le volume, c'est l'aire avec une troisième dimension empilée dessus."},
+  {line:"12 × 5 = 60 cm³", en:"Sixty cubic centimetres.",
+   fr:"Soixante centimètres cubes.",
+   why_en:"Little 3 this time, because you counted cubes rather than squares.",
+   why_fr:"Petit 3 cette fois, parce que tu as compté des cubes, pas des carrés."},
+ ],
+ guided:{show:"2 × 6 × 4", steps:[
+   {ask_en:"Bottom layer: 2 × 6", ask_fr:"Couche du bas : 2 × 6", a:"12"},
+   {ask_en:"Times 4 layers", ask_fr:"Fois 4 couches", a:"48"},
+   {ask_en:"A cube with sides of 3", ask_fr:"Un cube de côté 3", a:"27"},
+ ]}
+},
+
+"angles": {
+ story:[
+  {em:"🚪", en:"A door swings open. How far did it turn?",
+   fr:"Une porte s'ouvre. De combien a-t-elle tourné ?"},
+  {em:"🔄", en:"Three facts cover almost every angle question: a line is 180°, a point is 360°, a triangle is 180°.",
+   fr:"Trois faits couvrent presque tout : une ligne fait 180°, un point 360°, un triangle 180°."}],
+ show:"130° + ? = 180°",
+ steps:[
+  {line:"a straight line is 180°", en:"Angles sitting on a straight line always add to 180.",
+   fr:"Les angles sur une ligne droite font toujours 180 ensemble.",
+   why_en:"Half a full turn. If you can picture the turn, you never have to remember the number.",
+   why_fr:"Un demi-tour complet. Si tu imagines le tour, tu n'as plus à retenir le nombre."},
+  {line:"180 − 130 = 50", en:"Subtract what you have from what it should be.",
+   fr:"Soustrais ce que tu as de ce que ça devrait faire.",
+   why_en:"Every missing-angle question is a subtraction once you know which total to use.",
+   why_fr:"Toute question d'angle manquant est une soustraction, une fois le total connu."},
+  {line:"50°", en:"And it should look like an acute angle. Check the picture agrees.",
+   fr:"Et ça doit ressembler à un angle aigu. Vérifie que le dessin est d'accord.",
+   why_en:"If your answer is 150° but the angle looks tiny, you have used the wrong total.",
+   why_fr:"Si tu trouves 150° mais que l'angle est minuscule, tu as pris le mauvais total."},
+ ],
+ guided:{show:"a triangle: 70°, 60°, ?", steps:[
+   {ask_en:"What do the three angles add to?", ask_fr:"Que font les trois angles ensemble ?", a:"180"},
+   {ask_en:"70 + 60 =", ask_fr:"70 + 60 =", a:"130"},
+   {ask_en:"So the missing one is", ask_fr:"Donc le manquant est", a:"50"},
+ ]}
+},
+
+"mean": {
+ story:[
+  {em:"🎣", en:"Three fish weighed 5 kg, 3 kg and 10 kg.",
+   fr:"Trois poissons pesaient 5 kg, 3 kg et 10 kg."},
+  {em:"⚖️", en:"The mean is what each would weigh if you shared the weight out evenly.",
+   fr:"La moyenne, c'est ce que pèserait chacun si le poids était partagé équitablement."}],
+ show:"5, 3, 10",
+ steps:[
+  {line:"5 + 3 + 10 = 18", en:"Add them all together.",
+   fr:"Additionne-les toutes.",
+   why_en:"You are pooling everything before sharing it back out.",
+   why_fr:"Tu mets tout en commun avant de repartager."},
+  {line:"18 ÷ 3 = 6", en:"Divide by how many there were.",
+   fr:"Divise par le nombre de valeurs.",
+   why_en:"Count how many, not how big. Three fish means divide by three.",
+   why_fr:"Compte combien, pas la taille. Trois poissons, donc divise par trois."},
+  {line:"mean = 6 kg", en:"Six kilograms each, if they were all the same.",
+   fr:"Six kilos chacun, s'ils étaient tous pareils.",
+   why_en:"The mean sits between the smallest and the biggest. If yours does not, check again.",
+   why_fr:"La moyenne est entre le plus petit et le plus grand. Sinon, recommence."},
+ ],
+ guided:{show:"4, 8, 6, 2", steps:[
+   {ask_en:"Add them", ask_fr:"Additionne", a:"20"},
+   {ask_en:"How many are there?", ask_fr:"Combien y en a-t-il ?", a:"4"},
+   {ask_en:"So the mean is", ask_fr:"Donc la moyenne est", a:"5"},
+ ]}
+},
+
+"formula": {
+ story:[
+  {em:"🍗", en:"A recipe: cook a chicken for 40 minutes per kilogram, plus 20 minutes.",
+   fr:"Une recette : 40 minutes par kilo, plus 20 minutes."},
+  {em:"🔤", en:"In maths that is written t = 40w + 20. The letter is just a box waiting for a number.",
+   fr:"En maths on écrit t = 40p + 20. La lettre est une case qui attend un nombre."}],
+ show:"y = 3x + 5,  x = 4",
+ steps:[
+  {line:"put 4 where x is", en:"Swap the letter for the number you were given.",
+   fr:"Remplace la lettre par le nombre donné.",
+   why_en:"3x means 3 times x. The multiplication sign is hidden, not missing.",
+   why_fr:"3x veut dire 3 fois x. Le signe est caché, pas absent."},
+  {line:"3 × 4 = 12", en:"Multiply first, because × comes before +.",
+   fr:"Multiplie d'abord, car × passe avant +.",
+   why_en:"The order of operations still applies. It always applies.",
+   why_fr:"L'ordre des opérations s'applique toujours."},
+  {line:"12 + 5 = 17", en:"So y is 17.",
+   fr:"Donc y vaut 17.",
+   why_en:"Algebra is arithmetic with a gap in it. Fill the gap and it is ordinary sums.",
+   why_fr:"L'algèbre, c'est du calcul avec un trou. Bouche le trou et ce sont des sommes ordinaires."},
+ ],
+ guided:{show:"y = 5x + 2,  x = 6", steps:[
+   {ask_en:"What is 5 × 6?", ask_fr:"Combien fait 5 × 6 ?", a:"30"},
+   {ask_en:"Now add 2", ask_fr:"Ajoute 2", a:"32"},
+   {ask_en:"If x = 10, what is y?", ask_fr:"Si x = 10, que vaut y ?", a:"52"},
+ ]}
+},
+
+"twoUnknowns": {
+ story:[
+  {em:"🎂", en:"Two numbers. They add to 7. They multiply to 12.",
+   fr:"Deux nombres. Leur somme fait 7. Leur produit fait 12."},
+  {em:"🔍", en:"Do not guess wildly. List the pairs that multiply to 12 and check which adds to 7.",
+   fr:"Ne devine pas au hasard. Liste les paires qui font 12 et vois laquelle fait 7."}],
+ show:"a + b = 7,  a × b = 12",
+ steps:[
+  {line:"pairs making 12: 1×12, 2×6, 3×4", en:"Start with the multiplying, because there are fewer options.",
+   fr:"Commence par la multiplication : il y a moins de possibilités.",
+   why_en:"Multiplication narrows things down fast. Addition has far too many pairs.",
+   why_fr:"La multiplication réduit vite le champ. L'addition a bien trop de paires."},
+  {line:"which adds to 7? 3 + 4", en:"Check each pair against the second fact.",
+   fr:"Vérifie chaque paire avec le second fait.",
+   why_en:"Two facts about two numbers is always enough. You just have to use both.",
+   why_fr:"Deux faits sur deux nombres suffisent toujours. Il faut se servir des deux."},
+  {line:"3 and 4", en:"The numbers are 3 and 4.",
+   fr:"Les nombres sont 3 et 4.",
+   why_en:"Test them both ways before you write anything down.",
+   why_fr:"Teste-les dans les deux sens avant d'écrire."},
+ ],
+ guided:{show:"a + b = 9,  a × b = 20", steps:[
+   {ask_en:"Pairs that multiply to 20: 4 × ?", ask_fr:"Paires qui font 20 : 4 × ?", a:"5"},
+   {ask_en:"Do 4 and 5 add to 9?  1 yes, 0 no", ask_fr:"4 et 5 font-ils 9 ? 1 oui, 0 non", a:"1"},
+   {ask_en:"The smaller number is", ask_fr:"Le plus petit nombre est", a:"4"},
+ ]}
+},
+
+"tables": {
+ story:[
+  {em:"\u{1f95a}", en:"Every morning Binta collects eggs. Six nests, seven eggs in each.",
+   fr:"Chaque matin Binta ramasse les \u0153ufs. Six nids, sept \u0153ufs dans chacun."},
+  {em:"\u23f1\ufe0f", en:"She could count them one by one, every morning, for the rest of her life. Or she could know that 6 sevens are 42.",
+   fr:"Elle pourrait les compter un par un, chaque matin, toute sa vie. Ou elle pourrait savoir que 6 fois 7 font 42."},
+  {em:"\u{1f9e0}", en:"Tables are not maths. They are the thing that frees your head up to do the maths.",
+   fr:"Les tables ne sont pas des maths. Elles lib\u00e8rent la t\u00eate pour faire des maths."}],
+ show:"6 \u00d7 7",
+ steps:[
+  {line:"6 \u00d7 7 = 42", en:"Six sevens are forty-two.",
+   fr:"Six fois sept font quarante-deux.",
+   why_en:"This one is worth knowing cold \u2014 it turns up inside long division constantly.",
+   why_fr:"Celle-ci vaut la peine d'\u00eatre sue par c\u0153ur \u2014 elle revient sans cesse dans la division pos\u00e9e."},
+  {line:"7 \u00d7 6 = 42", en:"And the other way round is the same. You only ever learn half a table.",
+   fr:"Et dans l'autre sens, c'est pareil. On n'apprend jamais qu'une demi-table.",
+   why_en:"6 rows of 7 and 7 rows of 6 are the same eggs, counted differently.",
+   why_fr:"6 rang\u00e9es de 7 et 7 rang\u00e9es de 6, ce sont les m\u00eames \u0153ufs, compt\u00e9s autrement."}],
+ guided:{show:"", steps:[
+   {ask_en:"8 \u00d7 7", ask_fr:"8 \u00d7 7", a:"56"},
+   {ask_en:"And so 7 \u00d7 8?", ask_fr:"Et donc 7 \u00d7 8 ?", a:"56"},
+   {ask_en:"9 \u00d7 6", ask_fr:"9 \u00d7 6", a:"54"}]}
+},
+};
+
+
+const T={
+ title:{en:"[Working title]",fr:"[Titre provisoire]"},sub:{en:"KS2 maths",fr:"Maths KS2"},
+ head:{en:"What shall we work on?",fr:"Sur quoi travaille-t-on ?"},
+ headsub:{en:"Pick something, or let us find out what you already know.",
+          fr:"Choisis quelque chose, ou d\u00e9couvrons ce que tu sais d\u00e9j\u00e0."},
+ done:{en:"stops climbed",fr:"\u00e9tapes gravies"},of:{en:"of",fr:"sur"},
+ paper:{en:"The big test",fr:"Le grand test"},
+ papersub:{en:"36 questions \u00b7 30 minutes \u00b7 the real format",fr:"36 questions \u00b7 30 minutes \u00b7 le vrai format"},
+ next:{en:"Next",fr:"Suivant"},back:{en:"Back to the mountain",fr:"Retour \u00e0 la montagne"},
+ again:{en:"Try again",fr:"R\u00e9essayer"},camp:{en:"Finished",fr:"Termin\u00e9"},
+ finish:{en:"Finish",fr:"Terminer"},score:{en:"marks",fr:"points"},
+ pickall:{en:"Tap every one",fr:"Touche-les tous"},
+ factors:{en:"factors of",fr:"diviseurs de"},primes:{en:"the prime numbers",fr:"les nombres premiers"},
+ ph1:{en:"The story",fr:"L'histoire"},ph2:{en:"Watch me",fr:"Regarde-moi"},
+ ph3:{en:"Together",fr:"Ensemble"},ph4:{en:"On your own",fr:"\u00c0 toi"},
+ why:{en:"why",fr:"pourquoi"},
+ showstep:{en:"Show me the next step",fr:"Montre l'\u00e9tape suivante"},
+ gotit:{en:"I follow \u2014 let me try",fr:"J'ai compris \u2014 je veux essayer"},
+ yourturn:{en:"Now just the numbers, on your own.",
+           fr:"Maintenant juste les nombres, tout seul."},
+ nostory:{en:"No story for this one yet \u2014 straight to practice.",
+          fr:"Pas encore d'histoire pour celle-ci \u2014 directement \u00e0 l'entra\u00eenement."},
+ look:{en:"Look again",fr:"Regarde encore"},
+ cov1:{en:"Maths, before the big test",fr:"Maths, avant le grand test"},
+ cov2:{en:"Years 5 and 6 \u00b7 ages 9 to 11",fr:"Ann\u00e9es 5 et 6 \u00b7 9 \u00e0 11 ans"},
+ covwho:{en:"For a child sitting the SATs, and the grown-up sitting next to them.",
+         fr:"Pour l'enfant qui passe les tests, et l'adulte assis \u00e0 c\u00f4t\u00e9."},
+ covwhat:{en:"Every topic here was counted out of the 2025 and 2026 papers \u2014 all 177 questions, tagged by the exam board with what they test. The topics that carry the most marks get the most time. Nothing is here because a syllabus lists it.",
+           fr:"Chaque sujet ici a \u00e9t\u00e9 compt\u00e9 dans les tests 2025 et 2026 \u2014 les 177 questions, \u00e9tiquet\u00e9es par l'organisme d'examen. Les sujets qui rapportent le plus de points ont le plus de temps. Rien n'est l\u00e0 parce qu'un programme le mentionne."},
+ covhow:{en:"Each topic is taught before it is practised: a story, a worked example with a reason for every step, one you do together, then practice.",
+          fr:"Chaque sujet est enseign\u00e9 avant d'\u00eatre travaill\u00e9 : une histoire, un exemple d\u00e9taill\u00e9 avec une raison \u00e0 chaque \u00e9tape, un exercice ensemble, puis l'entra\u00eenement."},
+ covfr:{en:"In English or French \u2014 change it any time at the top.",
+        fr:"En anglais ou en fran\u00e7ais \u2014 changez-en \u00e0 tout moment en haut."},
+ covgo:{en:"Find what to work on",fr:"Trouver quoi travailler"},
+ covbrowse:{en:"Or look through the topics",fr:"Ou parcourir les sujets"},
+ dgtitle:{en:"Ten questions",fr:"Dix questions"},
+ dgsub:{en:"One from each of the biggest topics. Guessing helps nobody \u2014 skip what you do not know.",
+        fr:"Une par grand sujet. Deviner n'aide personne \u2014 passe ce que tu ne sais pas."},
+ dgskip:{en:"I don't know this one",fr:"Je ne sais pas"},
+ dgdone:{en:"Here is what to work on",fr:"Voici quoi travailler"},
+ dgsub2:{en:"Start at the top. The first one comes up the most.",
+         fr:"Commence par le premier. C'est celui qui revient le plus."},
+ dggo:{en:"Check what I can do",fr:"V\u00e9rifier ce que je sais"},
+ topics:{en:"What shall we work on?",fr:"Sur quoi travaille-t-on ?"},
+ home:{en:"Home",fr:"Accueil"},
+ marks:{en:"comes up a lot",fr:"revient souvent"},
+ strong:{en:"You had these",fr:"Tu avais celles-ci"},
+ about:{en:"About this course",fr:"\u00c0 propos du cours"},
+ vidsoon:{en:"Video coming soon",fr:"Vid\u00e9o bient\u00f4t disponible"},
+ vidmain:{en:"Watch this first",fr:"Regarde \u00e7a d\u2019abord"},
+ vidjump:{en:"Jump to a step",fr:"Aller \u00e0 une \u00e9tape"},
+ vidfall:{en:"Until the video is ready, here is the method written out.",
+          fr:"En attendant la vid\u00e9o, voici la m\u00e9thode \u00e9crite."},
+ vidlen:{en:"about a minute and a half",fr:"une minute et demie environ"},
+ vidwatch:{en:"Watch the explainer",fr:"Voir l\u2019explication"},
+ vidagain:{en:"Stuck? Watch the explainer again",fr:"Bloqu\u00e9 ? Revois l\u2019explication"},
+ method:{en:"Quick reminder",fr:"Pense-b\u00eate"},
+ methodsub:{en:"The steps on their own \u2014 for checking mid-question, not for learning from.",
+            fr:"Les \u00e9tapes seules \u2014 pour v\u00e9rifier en cours d\u2019exercice, pas pour apprendre."},
+ nofilm:{en:"No video for this one yet, so the full explanation is written out below.",
+         fr:"Pas encore de vid\u00e9o ici, donc l\u2019explication compl\u00e8te est \u00e9crite ci-dessous."},
+ practise:{en:"Practise this",fr:"S\u2019entra\u00eener"},
+ subtopics:{en:"subtopics",fr:"sous-sujets"},
+ carry:{en:"Carry on where you stopped",fr:"Reprendre o\u00f9 tu t'es arr\u00eat\u00e9"},
+ iknow:{en:"I know this \u2014 let me practise",fr:"Je sais faire \u2014 laisse-moi m\u2019entra\u00eener"},
+ showme:{en:"Show me how again",fr:"Remontre-moi comment"},
+ got:{en:"answers right so far",fr:"bonnes r\u00e9ponses jusqu\u2019ici"},
+ lots:{en:"comes up a lot",fr:"revient beaucoup"},
+ some:{en:"comes up often",fr:"revient souvent"},
+ few:{en:"comes up sometimes",fr:"revient parfois"},
+ covlead:{en:"Let's find out what you can already do.",fr:"Voyons ce que tu sais d\u00e9j\u00e0 faire."},
+ covmore:{en:"How this course was built",fr:"Comment ce cours a \u00e9t\u00e9 construit"},
+};
+let L=localStorage.getItem("cl3.lang")||"en";
+const t=k=>(T[k]||{})[L]||(T[k]||{}).en||k;
+const w=(o,k)=>o[k+"_"+L]!==undefined?o[k+"_"+L]:o[k+"_en"];
+const KEY="cl3.v1"; let S=(()=>{try{return JSON.parse(localStorage.getItem(KEY))||{d:{},b:{},p:[]}}catch(e){return{d:{},b:{},p:[]}}})();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const ALL=[]; CAMPS.forEach((c,ci)=>c.stops.forEach((s,si)=>ALL.push(Object.assign({},s,{id:c.id+"."+si,camp:ci}))));
+const BANDS=["#4E8C6A","#5A8079","#6E7F92","#6A7A96","#8FB4CE"];
+/* v2: a helper that returned undefined printed the word "undefined" on every
+   story screen, and the flow test passed because the phases still advanced.
+   esc now refuses to render nothing. */
+const esc=s=>(s===undefined||s===null?"":String(s)).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const norm=x=>String(x).replace(/[\s\u2009,\u00a3%]/g,"").replace(",",".");
+let V={s:"cover"};
+function setLang(x){L=x;localStorage.setItem("cl3.lang",x);render()}
+function render(){
+ const done=Object.keys(S.d).length;
+ document.documentElement.style.setProperty("--band",BANDS[Math.min(4,Math.floor(done/10))]);
+ lEN.className=L==="en"?"on":""; lFR.className=L==="fr"?"on":"";
+ hT.textContent=t("title"); hS.textContent=t("sub");
+ bar.style.width=Math.round(done/ALL.length*100)+"%";
+ back.hidden=(V.s==="cover"||V.s==="shelf");
+ back.onclick=(V.s==="stop"&&V.topicFrom!==undefined)?function(){openTopic(V.topicFrom)}:goMap;
+ app.innerHTML = V.s==="cover"?coverHTML():V.s==="diag"?diagHTML()
+  :V.s==="shelf"?homeHTML():V.s==="topic"?topicHTML()
+  :V.s==="stop"?stopHTML():paperHTML();
+ if(V.s!=="paper") main.scrollTop=0;
+}
+function mapHTML(){
+ const done=Object.keys(S.d).length;
+ let h=`<div class="wrap"><div class="mhead"><h1>${esc(t("head"))}</h1>
+  <p>${esc(t("headsub"))}</p>
+  <p class="alt num">${done} ${esc(t("of"))} ${ALL.length} ${esc(t("done"))}</p></div>
+  <button class="paperbtn" onclick="openPaper()"><span style="font-size:26px">\u23f1\ufe0f</span>
+   <span><b>${esc(t("paper"))}</b><span>${esc(t("papersub"))}</span></span></button>`;
+ for(let ci=CAMPS.length-1;ci>=0;ci--){
+  const c=CAMPS[ci], mine=ALL.filter(s=>s.camp===ci), dn=mine.filter(s=>S.d[s.id]).length;
+  h+=`<div class="camp"><div class="chead"><span class="em">${c.em}</span>
+    <b>${esc(c[L]||c.en)}<small>${esc(c["sub_"+L]||c.sub_en)}</small></b>
+    <span class="cnt num">${dn}/${mine.length}</span></div><div class="slope">`;
+  mine.forEach((s,i)=>{
+   const d=!!S.d[s.id], nx=!d&&mine.slice(0,i).every(x=>S.d[x.id]);
+   h+=`<div class="stop${d?" done":""}">
+     <button class="pin${d?" done":nx?" now":""}" onclick="openStop('${s.id}')">${d?"\u2713":(TEACH[s.g]?"\u{1f4d6}":s.n)}</button>
+     <span class="si"><b>${esc(s[L]||s.en)}</b><span>${esc(s.code)}</span></span>
+     ${d?`<span class="sc num">${S.b[s.id]||0}/${s.n}</span>`:""}</div>`;
+  });
+  h+=`</div></div>`;
+ }
+ return h+`</div>`;
+}
+
+/* ================= the front door =================
+   The mountain was the wrong shape for this product. A climb says "start at
+   the bottom and go up in order", and it opened on the LAST camp because the
+   slope had to be drawn upside down \u2014 so the first thing a child saw was the
+   least important content, thirty-seven stops from where they should begin.
+
+   But direction was the smaller problem. This is revision for a test. A child
+   opening it in March is not asking "where do I begin", they are asking "what
+   am I bad at, and what is worth fixing first" \u2014 and that is the one question
+   we can answer properly, because we counted the marks.
+
+   So: ten questions, then the app names the topics that would gain the most
+   marks, heaviest first. The topic shelf is still there to browse. The climb
+   is gone; it was decoration pretending to be navigation. */
+/* The share of marks each camp carries, counted from the 2025 and 2026 papers.
+   Camps 2 and 3 both teach calculation, so its 33% is split between them in
+   proportion to their stops rather than printed twice. */
+const SHARE=[11,19,14,23,33];
+/* ================= the pictures =================
+   Every story in this course promised an image and delivered a sentence. One
+   of them literally said "picture it", because the app would not draw it. At
+   nine to eleven maths is still concrete \u2014 fractions get cut, arrays get
+   arranged, digits get moved \u2014 so these are the nine places where the picture
+   IS the explanation, and they follow the worked example step by step: the
+   child watches the thing happen rather than reading that it happened.
+   Plain SVG, the app's own colours, no library. */
+const SVG=(vb,inner)=>`<svg class="art" viewBox="${vb}" xmlns="http://www.w3.org/2000/svg" role="img">${inner}</svg>`;
+const C={on:"var(--band)",off:"var(--line)",ink:"var(--ink)",mut:"var(--muted)",warm:"var(--sun)",paper:"#fff"};
+
+const ART={
+ /* 3/8 + 2/8 \u2014 a pizza that actually gets eaten */
+ frAddSame(step){
+  const slice=(i,fill)=>{
+   const a0=(i*45-90)*Math.PI/180, a1=((i+1)*45-90)*Math.PI/180, r=52, cx=70, cy=70;
+   return `<path d="M${cx} ${cy} L${cx+r*Math.cos(a0)} ${cy+r*Math.sin(a0)} A${r} ${r} 0 0 1 ${cx+r*Math.cos(a1)} ${cy+r*Math.sin(a1)} Z"
+     fill="${fill}" stroke="#fff" stroke-width="2"/>`;
+  };
+  let eaten = step===0?3 : step>=1?5 : 0;
+  let s=""; for(let i=0;i<8;i++) s+=slice(i, i<eaten?C.on:C.off);
+  return SVG("0 0 140 150", s+
+   `<text x="70" y="140" text-anchor="middle" font-size="15" fill="${C.mut}">${eaten}/8</text>`);
+ },
+ /* 1/2 + 1/8 \u2014 the half is re-cut in front of you */
+ frAddDiff(step){
+  const bar=(y,parts,filled,lab)=>{
+   let s=""; const w=200/parts;
+   for(let i=0;i<parts;i++) s+=`<rect x="${10+i*w}" y="${y}" width="${w-2}" height="30" rx="3"
+     fill="${i<filled?C.on:C.off}"/>`;
+   return s+`<text x="218" y="${y+21}" font-size="13" fill="${C.mut}">${lab}</text>`;
+  };
+  if(step<=0) return SVG("0 0 250 100", bar(10,2,1,"1/2")+bar(55,8,1,"1/8"));
+  if(step===1) return SVG("0 0 250 100", bar(10,8,4,"4/8")+bar(55,8,1,"1/8"));
+  return SVG("0 0 250 100", bar(10,8,5,"5/8")+
+   `<text x="10" y="90" font-size="13" fill="${C.mut}">4 eighths and 1 eighth</text>`);
+ },
+ /* what a digit is worth \u2014 the columns are labelled and one lights up */
+ pvDigit(step){
+  const d="352741".split(""), lab=["100 000","10 000","1 000","100","10","1"];
+  let s="";
+  d.forEach((ch,i)=>{
+   const hi = step>=1 && i===1;
+   s+=`<rect x="${8+i*42}" y="10" width="38" height="46" rx="6"
+        fill="${hi?C.on:"#fff"}" stroke="${hi?C.on:C.off}" stroke-width="2"/>
+       <text x="${27+i*42}" y="42" text-anchor="middle" font-size="24" font-weight="600"
+        fill="${hi?"#fff":C.ink}">${ch}</text>
+       <text x="${27+i*42}" y="72" text-anchor="middle" font-size="9" fill="${C.mut}">${lab[i]}</text>`;
+  });
+  if(step>=2) s+=`<text x="130" y="96" text-anchor="middle" font-size="16" fill="${C.on}"
+    font-weight="600">5 \u00d7 10 000 = 50 000</text>`;
+  return SVG("0 0 262 106", s);
+ },
+ /* below zero \u2014 the jump is drawn across the line */
+ pvNeg(step){
+  let s=`<line x1="10" y1="45" x2="250" y2="45" stroke="${C.off}" stroke-width="2"/>`;
+  for(let n=-6;n<=6;n++){
+   const x=130+n*18.5;
+   s+=`<line x1="${x}" y1="40" x2="${x}" y2="50" stroke="${n===0?C.ink:C.off}" stroke-width="${n===0?2:1}"/>`;
+   if(n%2===0) s+=`<text x="${x}" y="66" text-anchor="middle" font-size="9" fill="${C.mut}">${n}</text>`;
+  }
+  const X=n=>130+n*18.5;
+  if(step>=0) s+=`<path d="M${X(-5)} 38 Q${X(-2.5)} 12 ${X(0)} 38" fill="none" stroke="${C.warm}" stroke-width="2.5"/>
+   <text x="${X(-2.5)}" y="14" text-anchor="middle" font-size="11" fill="${C.warm}" font-weight="600">5</text>`;
+  if(step>=1) s+=`<path d="M${X(0)} 38 Q${X(1.5)} 18 ${X(3)} 38" fill="none" stroke="${C.on}" stroke-width="2.5"/>
+   <text x="${X(1.5)}" y="20" text-anchor="middle" font-size="11" fill="${C.on}" font-weight="600">3</text>`;
+  if(step>=2) s+=`<text x="130" y="86" text-anchor="middle" font-size="15" fill="${C.on}" font-weight="600">5 + 3 = 8</text>`;
+  return SVG("0 0 260 94", s);
+ },
+ /* area \u2014 the squares you are actually counting */
+ areaRect(step){
+  let s="";
+  for(let r=0;r<5;r++) for(let c=0;c<8;c++)
+   s+=`<rect x="${10+c*26}" y="${10+r*22}" width="24" height="20" rx="2"
+     fill="${step>=1?C.on:"#fff"}" opacity="${step>=1?(0.35+0.09*r):1}" stroke="${C.off}"/>`;
+  s+=`<text x="114" y="140" text-anchor="middle" font-size="11" fill="${C.mut}">8 m</text>
+      <text x="6" y="70" font-size="11" fill="${C.mut}" transform="rotate(-90 6 70)">5 m</text>`;
+  if(step>=2) s+=`<text x="114" y="158" text-anchor="middle" font-size="16" font-weight="600" fill="${C.on}">40 m\u00b2</text>`;
+  return SVG("0 0 228 166", s);
+ },
+ /* factors \u2014 24 tiles snapping into rectangles that work */
+ factors(step){
+  const arr=[[1,24],[2,12],[3,8],[4,6]][Math.min(step,3)];
+  const [rows,cols]=arr, w=Math.min(9,220/cols), h=Math.min(18,w*2);
+  let s="";
+  for(let r=0;r<rows;r++) for(let c=0;c<cols;c++)
+   s+=`<rect x="${10+c*(w+2)}" y="${16+r*(h+2)}" width="${w}" height="${h}" rx="2" fill="${C.on}"/>`;
+  s+=`<text x="10" y="12" font-size="12" fill="${C.mut}">${rows} \u00d7 ${cols} = 24</text>`;
+  return SVG("0 0 240 100", s);
+ },
+ /* volume \u2014 layers stack up one at a time */
+ volume(step){
+  const layers=Math.min(5,step+2);
+  let s="";
+  for(let L=layers-1;L>=0;L--){
+   const off=L*9;
+   for(let r=0;r<3;r++) for(let c=0;c<4;c++)
+    s+=`<rect x="${30+c*22+r*9}" y="${72-off+r*7}" width="20" height="16" rx="2"
+      fill="${C.on}" opacity="${0.35+0.13*L}" stroke="#fff"/>`;
+  }
+  s+=`<text x="10" y="14" font-size="11" fill="${C.mut}">4 \u00d7 3 \u00d7 ${layers}</text>`;
+  if(step>=2) s+=`<text x="150" y="14" font-size="14" font-weight="600" fill="${C.on}">= ${12*layers} cm\u00b3</text>`;
+  return SVG("0 0 240 110", s);
+ },
+ /* angles \u2014 a straight line with the missing piece marked */
+ angles(step){
+  let s=`<line x1="14" y1="80" x2="230" y2="80" stroke="${C.ink}" stroke-width="2.5"/>
+   <line x1="122" y1="80" x2="52" y2="14" stroke="${C.ink}" stroke-width="2.5"/>`;
+  s+=`<path d="M92 80 A30 30 0 0 1 106 56" fill="none" stroke="${C.off}" stroke-width="8"/>`;
+  if(step>=0) s+=`<text x="74" y="72" font-size="13" fill="${C.mut}">130\u00b0</text>`;
+  if(step>=1) s+=`<path d="M140 62 A38 38 0 0 1 160 80" fill="none" stroke="${C.warm}" stroke-width="8"/>
+    <text x="150" y="74" font-size="13" fill="${C.warm}" font-weight="600">?</text>`;
+  if(step>=2) s+=`<text x="150" y="74" font-size="13" fill="${C.on}" font-weight="600">50\u00b0</text>
+    <text x="14" y="102" font-size="12" fill="${C.mut}">a straight line is 180\u00b0</text>`;
+  return SVG("0 0 240 110", s);
+ },
+ /* ratio \u2014 five shares, three of them one colour */
+ ratioShare(step){
+  let s="";
+  const n=5, w=44;
+  for(let i=0;i<n;i++){
+   const fill = step<1 ? C.off : (i<3?C.on:C.warm);
+   s+=`<rect x="${8+i*(w+3)}" y="18" width="${w}" height="34" rx="4" fill="${fill}"/>`;
+   if(step>=1) s+=`<text x="${8+i*(w+3)+w/2}" y="41" text-anchor="middle" font-size="13"
+     fill="#fff" font-weight="600">6</text>`;
+  }
+  s+=`<text x="8" y="12" font-size="11" fill="${C.mut}">30 shared into ${n} equal parts</text>`;
+  if(step>=2) s+=`<text x="8" y="70" font-size="14" font-weight="600" fill="${C.on}">18</text>
+    <text x="34" y="70" font-size="12" fill="${C.mut}">and</text>
+    <text x="70" y="70" font-size="14" font-weight="600" fill="${C.warm}">12</text>`;
+  return SVG("0 0 248 80", s);
+ },
+ /* ten times bigger \u2014 the digits actually move */
+ pow10(step){
+  const lab=["1000","100","10","1"];
+  let s="";
+  lab.forEach((l,i)=>{ s+=`<rect x="${20+i*52}" y="14" width="48" height="44" rx="6" fill="#fff" stroke="${C.off}" stroke-width="2"/>
+    <text x="${44+i*52}" y="74" text-anchor="middle" font-size="9" fill="${C.mut}">${l}</text>`; });
+  const put=(d,col,c)=>`<text x="${44+col*52}" y="45" text-anchor="middle" font-size="24"
+    font-weight="600" fill="${c}">${d}</text>`;
+  if(step<=0) s+=put(2,2,C.ink)+put(4,3,C.ink);
+  else { s+=put(2,1,C.on)+put(4,2,C.on)+put(0,3,C.mut);
+   s+=`<path d="M96 6 L58 6" stroke="${C.on}" stroke-width="2" marker-end="url(#a)"/>
+     <defs><marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+     <path d="M0 0 L6 3 L0 6 Z" fill="${C.on}"/></marker></defs>`; }
+  return SVG("0 0 250 84", s);
+ },
+};
+
+
+/* ================= saying something =================
+   224 strings and not one of them was a kind word. These are short on purpose
+   and there are ten so they do not become wallpaper; the eleventh is kept for
+   a question the child got wrong earlier and has now got right, which is the
+   only moment in a stop actually worth marking. */
+const NICE={
+ en:["Yes.","That's it.","Good.","Nice one.","Got it.","Exactly.","Right again.","Clean.","Yep.","That's the one."],
+ fr:["Oui.","C'est \u00e7a.","Bien.","Bravo.","Trouv\u00e9.","Exactement.","Encore juste.","Net.","Ouais.","C'est bien \u00e7a."]};
+const FIXED={en:"You had that one wrong before.",fr:"Tu t'\u00e9tais tromp\u00e9 sur celle-l\u00e0."};
+/* What children actually get wrong, taken from the mark schemes rather than
+   guessed. Shown once, before the first question, not after the mistake. */
+const TRAP={
+ frAddSame:{en:"Careful: the bottom number never changes.",fr:"Attention : le d\u00e9nominateur ne change jamais."},
+ frAddDiff:{en:"Careful: never add the bottom numbers.",fr:"Attention : n'additionne jamais les d\u00e9nominateurs."},
+ longMul:{en:"Careful: the second row starts with a zero.",fr:"Attention : la deuxi\u00e8me ligne commence par un z\u00e9ro."},
+ sqcube:{en:"Careful: 7\u00b2 is 49, not 14.",fr:"Attention : 7\u00b2 fait 49, pas 14."},
+ areaTri:{en:"Careful: don't forget to halve it.",fr:"Attention : n'oublie pas de diviser par deux."},
+ ooo:{en:"Careful: not left to right.",fr:"Attention : pas de gauche \u00e0 droite."},
+ primes:{en:"Careful: 1 is not prime.",fr:"Attention : 1 n'est pas premier."},
+ ratioShare:{en:"Careful: count the shares first.",fr:"Attention : compte d'abord les parts."},
+ pcOf:{en:"Careful: find 10% first, then build it.",fr:"Attention : trouve 10 % d'abord, puis construis."},
+ divRem:{en:"Careful: the remainder must be smaller than what you divided by.",
+         fr:"Attention : le reste doit \u00eatre plus petit que le diviseur."},
+ pvNeg:{en:"Careful: count up to zero, then on.",fr:"Attention : compte jusqu'\u00e0 z\u00e9ro, puis continue."},
+ metric:{en:"Careful: smaller unit means a bigger number.",fr:"Attention : unit\u00e9 plus petite, nombre plus grand."},
+};
+const DIAG=[
+ {g:"mentalPV", en:"Multiplying in your head", fr:"Multiplier de t\u00eate", marks:9, find:"mentalPV"},
+ {g:"longMul",  en:"Long multiplication", fr:"Multiplication pos\u00e9e", marks:5, find:"longMul"},
+ {g:"longDiv",  en:"Long division", fr:"Division pos\u00e9e", marks:4, find:"longDiv"},
+ {g:"frAddDiff",en:"Fractions with different bottoms", fr:"Fractions, d\u00e9nominateurs diff\u00e9rents", marks:8, find:"frAddDiff"},
+ {g:"frMul",    en:"Multiplying fractions", fr:"Multiplier des fractions", marks:5, find:"frMul"},
+ {g:"pcOf",     en:"Percentages of amounts", fr:"Pourcentages d'une quantit\u00e9", marks:6, find:"pcOf"},
+ {g:"ratioShare",en:"Sharing in a ratio", fr:"Partager selon un rapport", marks:6, find:"ratioShare"},
+ {g:"colSub",   en:"Column subtraction", fr:"Soustraction en colonnes", marks:5, find:"colSub"},
+ {g:"pvRound",  en:"Rounding", fr:"Arrondir", marks:4, find:"pvRound"},
+ {g:"decMul",   en:"Multiplying decimals", fr:"Multiplier des d\u00e9cimaux", marks:3, find:"decMul"}];
+
+function coverHTML(){
+ /* v3: this opened with a hundred and twenty words, two paragraphs of which
+    were addressed to the adult — mark schemes, exam boards, syllabuses. A
+    nine-year-old had to scroll past all of it to reach the button. The child
+    gets one line and the door; the grown-up gets the rest, one tap away. */
+ return `<div class="wrap cover">
+  <div class="covmark">\u{1f9ee}</div>
+  <h1 class="covh">${esc(t("cov1"))}</h1>
+  <p class="covsub">${esc(t("cov2"))}</p>
+  <p class="covlead">${esc(t("covlead"))}</p>
+  <button class="go2" onclick="startDiag()">${esc(t("covgo"))}</button>
+  <button class="go2 quiet" onclick="goShelf()">${esc(t("covbrowse"))}</button>
+  ${V.more?`<div class="card covcard">
+    <p class="covwho">${esc(t("covwho"))}</p>
+    <p class="covp">${esc(t("covwhat"))}</p>
+    <p class="covp">${esc(t("covhow"))}</p>
+    <p class="covsm">${esc(t("covfr"))}</p></div>`
+   :`<button class="covmore" onclick="showMore()">${esc(t("covmore"))}</button>`}
+  </div>`;
+}
+function showMore(){V.more=1;render()}
+function goCover(){V={s:"cover"};render()}
+function goShelf(){S.seen=1;save();V={s:"shelf",open:null};render()}
+function startDiag(){
+ S.seen=1;save();
+ const seed=Date.now()%99991;
+ V={s:"diag",i:0,typed:"",res:[],qs:DIAG.map((d,k)=>GEN[d.g](R(seed+k*7919),1))};
+ render();
+}
+function diagHTML(){
+ if(V.i>=DIAG.length) return diagResult();
+ const q=V.qs[V.i];
+ /* v3: ten questions with no way back is an assessment, and a child who is
+    already nervous about being tested should not meet one on the second
+    screen. Nothing here is graded, so nothing needs defending: they can go
+    back and change an answer. */
+ return `<div class="wrap">
+  <div class="mhead"><h1>${esc(t("dgtitle"))}</h1><p>${esc(t("dgsub"))}</p></div>
+  <div class="dgbar">
+   <button class="dgback" onclick="diagBack()" ${V.i===0?"disabled":""}>\u2039</button>
+   <div class="dgdots">${DIAG.map((_,k)=>`<i class="${V.res[k]===undefined?"":"on"}${k===V.i?" now":""}"></i>`).join("")}</div>
+   <span class="dgn num">${V.i+1}/${DIAG.length}</span></div>
+  <div class="card">
+   ${q.hint?`<p class="hint">${esc(q.hint)}</p>`:(q.ask==="round"?`<p class="hint">${L==="fr"?"au":"to the nearest"} ${esc(q.p)}</p>`:"")}
+   ${q.ask==="share"?`<p class="hint">${q.r1} : ${q.r2}</p>`:""}
+   <div class="${String(q.show).length>13?"qmid":"qbig"} num">${esc(q.show)}</div>
+   <div class="slot ${V.typed===""?"empty":""} num">${V.typed===""?"\u2013":esc(V.typed)}</div>
+   <div class="keys">${[1,2,3,4,5,6,7,8,9].map(n=>`<button class="key" onclick="tap('${n}')">${n}</button>`).join("")}
+    <button class="key" onclick="tap('.')">.</button><button class="key" onclick="tap('0')">0</button>
+    <button class="key" onclick="tap('/')">/</button>
+    <button class="key" onclick="tap('-')">\u2212</button>
+    <button class="key" onclick="del()">\u232b</button>
+    <button class="key go" onclick="diagCheck()">\u2713</button></div>
+  </div>
+  <button class="go2 quiet" onclick="diagSkip()">${esc(t("dgskip"))}</button></div>`;
+}
+function diagCheck(){
+ if(V.typed==="") return;
+ V.res[V.i]=norm(V.typed)===norm(V.qs[V.i].a); V.typed=""; V.i++; render();
+}
+function diagSkip(){ V.res[V.i]=false; V.typed=""; V.i++; render(); }
+function diagBack(){ if(V.i>0){ V.i--; V.typed=""; } render(); }
+function diagResult(){
+ const weak=DIAG.map((d,k)=>({d:d,ok:V.res[k]===true})).filter(x=>!x.ok)
+   .sort((a,b)=>b.d.marks-a.d.marks);
+ const strong=DIAG.filter((d,k)=>V.res[k]===true);
+ S.weak=weak.map(x=>x.d.find); save();
+ return `<div class="wrap">
+  <div class="mhead"><h1>${esc(t("dgdone"))}</h1><p>${esc(t("dgsub2"))}</p></div>
+  ${weak.map(x=>{
+    const st=ALL.filter(s=>s.g===x.d.find)[0];
+    return `<button class="wcard" onclick="openStop('${st?st.id:ALL[0].id}')">
+      <span class="wm num">${x.d.marks}</span>
+      <span class="wx"><b>${esc(x.d[L]||x.d.en)}</b>
+      <small>${esc(t("marks"))}${TEACH[x.d.find]?"  \u00b7  \u{1f4d6}":""}</small></span>
+      <span class="wa">\u203a</span></button>`}).join("")}
+  ${strong.length?`<p class="shelfh">${esc(t("strong"))}</p>
+    <p class="strong">${strong.map(d=>esc(d[L]||d.en)).join(" \u00b7 ")}</p>`:""}
+  <button class="go2 quiet" onclick="goShelf()">${esc(t("covbrowse"))}</button></div>`;
+}
+/* ================= home =================
+   The mountain is gone. It read bottom-up, it implied an order this subject
+   does not have, and it put the least important content first. Five square
+   tiles, two per row: the whole course visible at once, which is what a
+   revision app is actually for. */
+let lastTopic;
+function homeHTML(){
+ const done=Object.keys(S.d).length;
+ const got=Object.keys(S.b||{}).reduce((a,k)=>a+(S.b[k]||0),0);
+ let h=`<div class="wrap"><div class="mhead"><h1>${esc(t("topics"))}</h1>
+   ${got?`<p class="gotline num"><b>${got}</b> ${esc(t("got"))}</p>`:""}</div>`;
+ if(S.at && !S.d[S.at.id]){
+  const st=byId(S.at.id);
+  if(st) h+=`<button class="wcard next" onclick="resume()"><span class="wm">\u21ba</span>
+    <span class="wx"><b>${esc(st[L]||st.en)}</b><small>${esc(t("carry"))}</small></span>
+    <span class="wa">\u203a</span></button>`;
+ }
+ h+=`<div class="tiles">`;
+ CAMPS.forEach((c,ci)=>{
+  const mine=ALL.filter(s=>s.camp===ci), dn=mine.filter(s=>S.d[s.id]).length;
+  h+=`<button class="tile" onclick="openTopic(${ci})">
+    <span class="tem">${c.em}</span>
+    <span class="tname">${esc(c[L]||c.en)}</span>
+    <span class="tsub">${mine.length} ${esc(t("subtopics"))}</span>
+    <span class="tbar"><i style="width:${Math.round(dn/mine.length*100)}%"></i></span>
+    <span class="tnum num">${dn}/${mine.length}</span></button>`;
+ });
+ h+=`</div>
+  <button class="paperbtn" onclick="openPaper()"><span style="font-size:26px">\u23f1\ufe0f</span>
+   <span><b>${esc(t("paper"))}</b><span>${esc(t("papersub"))}</span></span></button>
+  <button class="go2 quiet" onclick="goCover()">${esc(t("about"))}</button></div>`;
+ return h;
+}
+function openTopic(ci){ lastTopic=ci; V={s:"topic",ci:ci}; render(); }
+function topicHTML(){
+ const c=CAMPS[V.ci], mine=ALL.filter(s=>s.camp===V.ci);
+ let h=`<div class="wrap"><div class="mhead"><h1>${c.em} ${esc(c[L]||c.en)}</h1>
+   <p>${esc(c["sub_"+L]||c.sub_en)}</p></div><div class="sublist">`;
+ mine.forEach(s=>{
+  h+=`<button class="subrow${S.d[s.id]?" done":""}" onclick="openStop('${s.id}')">
+    <span class="srm">${S.d[s.id]?"\u2713":"\u25b6"}</span>
+    <span class="srx"><b>${esc(s[L]||s.en)}</b><small>${esc(s["sub_"+L]||"")}</small></span>
+    ${S.d[s.id]?`<span class="srs num">${S.b[s.id]||0}/${s.n}</span>`:""}</button>`;
+ });
+ return h+`</div></div>`;
+}
+function shelfHTML(){
+ const done=Object.keys(S.d).length;
+ /* v5: finishing the eleventh stop felt exactly like finishing the first.
+    Right answers now add up across the whole course and the total sits where
+    a child looks when they open the app. */
+ const got=Object.keys(S.b||{}).reduce((a,k)=>a+(S.b[k]||0),0);
+ let h=`<div class="wrap"><div class="mhead"><h1>${esc(t("topics"))}</h1>
+   <p class="alt num">${done} ${esc(t("of"))} ${ALL.length} \u00b7 ${esc(t("done"))}</p>
+   ${got?`<p class="gotline num"><b>${got}</b> ${esc(t("got"))}</p>`:""}</div>
+   <button class="paperbtn" onclick="openPaper()"><span style="font-size:26px">\u23f1\ufe0f</span>
+    <span><b>${esc(t("paper"))}</b><span>${esc(t("papersub"))}</span></span></button>`;
+ if(S.weak&&S.weak.length){
+  const st=ALL.filter(s=>s.g===S.weak[0])[0];
+  if(st) h+=`<button class="wcard next" onclick="openStop('${st.id}')">
+    <span class="wm">\u2192</span><span class="wx"><b>${esc(st[L]||st.en)}</b>
+    <small>${esc(t("dggo"))}</small></span><span class="wa">\u203a</span></button>`;
+ }
+ if(S.at && !S.d[S.at.id]){
+  const st=byId(S.at.id);
+  if(st) h=h.replace('<button class="paperbtn"',
+   `<button class="wcard next" onclick="resume()"><span class="wm">\u21ba</span>
+     <span class="wx"><b>${esc(st[L]||st.en)}</b><small>${esc(t("carry"))}</small></span>
+     <span class="wa">\u203a</span></button><button class="paperbtn"`);
+ }
+ CAMPS.forEach((c,ci)=>{
+  const mine=ALL.filter(s=>s.camp===ci), dn=mine.filter(s=>S.d[s.id]).length;
+  const open=V.open===ci;
+  /* v3: every row looked the same weight. Camp 4 is a quarter of the paper
+     and Camp 1 is a ninth, and a child choosing where to spend an evening was
+     choosing blind. The share comes from the same count of the 2025 and 2026
+     papers that built the course. */
+  h+=`<button class="sh${open?" open":""}" onclick="shelfTap(${ci})">
+    <span class="em">${c.em}</span>
+    <span class="shx"><b>${esc(c[L]||c.en)}</b>
+     <small><span class="shdots" aria-label="${SHARE[ci]>=19?3:SHARE[ci]>=13?2:1}">${
+       [0,1,2].map(n=>`<i class="${n<(SHARE[ci]>=19?3:SHARE[ci]>=13?2:1)?"on":""}"></i>`).join("")
+      }</span> ${esc(c["sub_"+L]||c.sub_en)}</small></span>
+    ${""/* v6: a number going up is not a collection. Each camp now fills as
+        its stops are finished, so progress has a shape you can see rather
+        than a figure you have to read. */}
+    <span class="shfill" aria-label="${dn} of ${mine.length}">
+      <span style="height:${Math.round(dn/mine.length*100)}%"></span>
+      <b class="num">${dn}/${mine.length}</b></span></button>`;
+  if(open) h+=`<div class="shbody">${mine.map(s=>
+    `<button class="row${S.d[s.id]?" done":""}" onclick="openStop('${s.id}')">
+      <span class="rm">${S.d[s.id]?"\u2713":(TEACH[s.g]?"\u{1f4d6}":"\u00b7")}</span>
+      <span class="rx"><b>${esc(s[L]||s.en)}</b><small>${esc(s["sub_"+L]||"")}</small></span>
+      ${S.d[s.id]?`<span class="rs num">${S.b[s.id]||0}/${s.n}</span>`:""}</button>`).join("")}</div>`;
+ });
+ h+=`<button class="go2 quiet" onclick="goCover()">${esc(t("about"))}</button>`;
+ return h+`</div>`;
+}
+function shelfTap(ci){V.open=V.open===ci?null:ci;render()}
+
+const byId=id=>ALL.filter(s=>s.id===id)[0];
+function openStop(id){
+ const s=byId(id), has=!!TEACH[s.g];
+ V={s:"stop",id:id,ph:has?"story":"drill",i:0,step:0,g:0,typed:"",bad:0,miss:0,pick:null,q:null,
+    why:{},topicFrom:lastTopic};
+ if(!has) newQ();
+ S.at={id:id,ph:V.ph,i:0}; save();
+ render();
+}
+function goMap(){V={s:"shelf",open:null};render()}
+function newQ(){
+ /* v4: the first question of every stop is the easy version. A child who
+    arrived believing they are bad at maths met the same difficulty on question
+    one as on question twenty — so the first thing that ever happened to them
+    was another chance to be wrong. */
+ const s=byId(V.id), lvl=(V.i===0?1:s.lvl);
+ V.q=GEN[s.g](R(Date.now()%99991+V.i*7919),lvl);V.typed="";V.miss=0;V.pick=null;}
+function phaseBar(now){
+ const ks=["ph1","ph2","ph3","ph4"];
+ return `<div class="phases">${ks.map((k,i)=>
+  `<span class="pz${i===now?" on":""}${i<now?" past":""}">${esc(t(k))}</span>`).join("")}</div>`;
+}
+/* ---------- the four phases ---------- */
+function stopHTML(){
+ const s=byId(V.id), T2=TEACH[s.g];
+ if(V.ph==="story"||V.ph==="watch") return lessonHTML(s,T2);
+ if(V.ph==="guided") return guidedHTML(s,T2);
+ if(V.ph==="done")   return doneHTML(s);
+ return drillHTML(s);
+}
+/* ================= the lesson, on one page =================
+   Was: story screens then worked-example screens, one press at a time. A child
+   revising who needed step four had to walk through one to three to reach it.
+   Now the subtopic is one page you scroll — the video, the situation, the
+   drawing and every step with its reason. Practice stays one question at a
+   time underneath, because a scrollable list of questions invites reading
+   ahead to the answers. */
+/* ================= the video carries the teaching =================
+   The explanation lives in the film now, not on the page. The one thing a
+   film is bad at is being re-entered part way through, so every step of the
+   method carries a timestamp and the list under the player is a set of jump
+   links: a child stuck on "bring the next digit down" taps that line and the
+   video starts at forty-seven seconds instead of them dragging a scrubber.
+
+   VIDEO[generator] is filled in as each film is rendered. Until it is, the
+   written method still shows — otherwise a subtopic with no video yet teaches
+   nothing at all, and the app is unusable until all ninety-four exist
+   (forty-seven subtopics in two languages). */
+const VIDEO={};   /* e.g. longDiv:{en:"vid/longDiv-en.mp4",fr:"vid/longDiv-fr.mp4"} */
+const mmss=n=>Math.floor(n/60)+":"+String(n%60).padStart(2,"0");
+function lessonHTML(s,T2){
+ const story=T2.story.slice(0,2);
+ const src=(VIDEO[s.g]||{})[L];
+ const marks=T2.steps.map((st,i)=>st.at!==undefined?st.at:Math.round(8+i*11));
+ return `<div class="wrap">
+  <p class="step">${esc(s[L]||s.en)}</p>
+  <h2 class="lh first">${esc(t("vidmain"))}</h2>
+  <div class="vidbox">${src
+   ? `<video class="vid" id="theVid" controls playsinline preload="metadata" src="${esc(src)}"></video>`
+   : `<div class="vidph"><span class="vidplay">\u25b6</span>
+      <span class="vidt"><b>${esc(t("vidwatch"))}</b>
+      <small>${esc(t("vidsoon"))} \u00b7 ${esc(s.g)}-${L}.mp4 \u00b7 ${esc(t("vidlen"))}</small></span></div>`}
+  </div>
+  <p class="jumph">${esc(t("vidjump"))}</p>
+  <div class="jumps">${T2.steps.map((st,i)=>`<button class="jump" onclick="seekTo(${marks[i]})">
+    <span class="jt num">${mmss(marks[i])}</span>
+    <span class="jx">${esc(st[L]||st.en)}</span></button>`).join("")}</div>
+  ${ART[s.g]?`<div class="card artcard">${ART[s.g](T2.steps.length-1)}</div>`:""}
+
+  ${""/* ---- the quick reminder ----
+     This and the video were the same explanation printed twice, and which one
+     a child saw depended on whether a film happened to exist yet. They have
+     different jobs now. The video is where you LEARN it: the situation, the
+     reasoning, the why. This is where you CHECK it — the bare steps, no story,
+     no explanation, the thing you glance at halfway through question nine.
+     You watch an explanation once and you check a reference twenty times, so
+     it shows whether or not there is a video. */}
+  <h2 class="lh">${esc(t("method"))}</h2>
+  <p class="lhsub">${esc(t("methodsub"))}</p>
+  <div class="card recall"><div class="qmid num">${esc(T2.show)}</div>
+   <ol class="rsteps">${T2.steps.map(st=>`<li class="num">${esc(st.line)}</li>`).join("")}</ol>
+  </div>
+
+  ${""/* Only when no film exists yet does the page have to teach as well. */}
+  ${src?"":`<h2 class="lh">${esc(t("why"))}?</h2>
+   <p class="fallback">${esc(t("nofilm"))}</p>
+   ${story.map(c=>`<div class="card story"><div class="storyem">${c.em}</div>
+     <p class="storyline">${esc(c[L]||c.en)}</p></div>`).join("")}
+   <div class="card lesson">
+    <div class="steps">${T2.steps.map((st,i)=>`<div class="stepline">
+      <b class="num">${esc(st.line)}</b><span>${esc(st[L]||st.en)}</span>
+      ${(V.why||{})[i]?`<i>${esc(w(st,"why"))}</i>`
+        :`<button class="whybtn" onclick="showWhy(${i})">${esc(t("why"))}?</button>`}
+     </div>`).join("")}</div></div>`}
+  <button class="go2" onclick="toGuided()">${esc(t("practise"))}</button>
+  <button class="go2 quiet" onclick="skipTeach()">${esc(t("iknow"))}</button></div>`;
+}
+function seekTo(sec){
+ const v=document.getElementById("theVid");
+ if(v){ try{ v.currentTime=sec; v.play(); }catch(e){} }
+}
+function storyHTML(s,T2){
+ /* v5: the six stops written first had three story screens and four guided
+    steps; the twenty-nine written after had two and three. That difference
+    said nothing about the maths, only about the order they were authored in.
+    Two and three, everywhere. The worked example is left as long as the
+    method genuinely is — long division has seven steps because it has seven
+    steps. */
+ const story=T2.story.slice(0,2);
+ const c=story[Math.min(V.i,story.length-1)], last=V.i>=story.length-1;
+ return `<div class="wrap"><p class="step">${esc(s[L]||s.en)}</p>${phaseBar(0)}
+  <div class="card"><div class="storyem">${c.em}</div>
+   <p class="storyline">${esc(c[L]||c.en)}</p></div>
+  <button class="go2" onclick="${last?"toWatch()":"storyNext()"}">${esc(t("next"))}</button>
+  ${""/* v5: eight screens stood between a child and their first question, even
+       on a stop as ordinary as column addition. Some of them can already do
+       it, and some were sent here by the check five minutes ago and want to
+       get on with it. The door is quiet, not hidden, and being wrong about it
+       costs two questions. */}
+  <button class="go2 quiet" onclick="skipTeach()">${esc(t("iknow"))}</button></div>`;
+}
+function storyNext(){V.i++;render()}
+function skipTeach(){ V.ph="drill"; V.i=0; V.bad=0; V.miss=0; newQ();
+ S.at={id:V.id,ph:"drill",i:0}; save(); render(); }
+function toWatch(){V.ph="watch";V.step=0;S.at={id:V.id,ph:"watch",i:0};save();render()}
+function watchHTML(s,T2){
+ const shown=T2.steps.slice(0,V.step+1), last=V.step>=T2.steps.length-1;
+ return `<div class="wrap"><p class="step">${esc(s[L]||s.en)}</p>${phaseBar(1)}
+  <div class="card"><div class="qbig num">${esc(T2.show)}</div>
+   ${""/* ---- v3: the reason hides until it is wanted ----
+      By the seventh step this screen carried seven methods, seven explanations
+      and seven reasons — over two hundred words on a phone, on the most
+      valuable screen in the app. Worse, the reason was the longest text on
+      each line, so it won the eye from the step it was there to explain.
+      It is behind a tap now. A child who is following does not need it; a
+      child who is lost presses "why". */}
+   ${ART[s.g]?`<div class="artbox">${ART[s.g](V.step)}</div>`:""}
+   <div class="steps">${shown.map((st,i)=>`<div class="stepline${i===V.step?" fresh":""}">
+     <b class="num">${esc(st.line)}</b>
+     <span>${esc(st[L]||st.en)}</span>
+     ${(V.why||{})[i]
+       ? `<i>${esc(w(st,"why"))}</i>`
+       : `<button class="whybtn" onclick="showWhy(${i})">${esc(t("why"))}?</button>`}
+    </div>`).join("")}</div></div>
+  <button class="go2" onclick="${last?"toGuided()":"stepNext()"}">${esc(last?t("gotit"):t("showstep"))}</button></div>`;
+}
+function stepNext(){V.step++;render()}
+function showWhy(i){ if(!V.why) V.why={}; V.why[i]=1; render(); }
+function backToWatch(){ const keep=V.i; V.ph="watch"; V.step=0; V.why={}; V.resumeAt=keep;
+ S.at={id:V.id,ph:"watch",i:0}; save(); render(); }
+function toGuided(){
+ /* coming back from the drill returns you to the drill, not round the loop */
+ if(V.resumeAt!==undefined){ const at=V.resumeAt; V.resumeAt=undefined;
+  V.ph="drill"; V.i=at; V.bad=0; V.miss=0; newQ();
+  S.at={id:V.id,ph:"drill",i:at}; save(); render(); return; }
+ V.ph="guided";V.g=0;V.typed="";V.miss=0;S.at={id:V.id,ph:"guided",i:0};save();render()}
+function guidedHTML(s,T2){
+ const g={show:T2.guided.show, steps:T2.guided.steps.slice(0,3)}, q=g.steps[Math.min(V.g,2)];
+ return `<div class="wrap"><p class="step">${esc(s[L]||s.en)}</p>${phaseBar(2)}
+  <div class="card">${g.show?`<div class="qmid num">${esc(g.show)}</div>`:""}
+   <div class="steps">${g.steps.slice(0,V.g).map(x=>
+     `<div class="stepline done"><b class="num">${esc(x.a)}</b><span>${esc(w(x,"ask"))}</span></div>`).join("")}</div>
+   <p class="guideq">${esc(w(q,"ask"))}</p>
+   ${keypad()}
+   ${V.miss>=2?`<div class="note">${esc(t("look"))} \u2014 ${esc(w(T2.steps[Math.min(V.g,T2.steps.length-1)],"why"))}</div>`:""}
+  </div></div>`;
+}
+function drillHTML(s){
+ /* v5: the character was introduced and then abandoned, including in the
+    practice for her own stop. Two words at the top keep her there. */
+ const who=(TEACH[s.g]&&TEACH[s.g].story[0].em)||"";
+ const q=V.q, dots=Array.from({length:s.n}).map((_,k)=>`<i class="${k<V.i?"on":""}"></i>`).join("");
+ let body="";
+ if(q.ask==="pickAll"){
+  const ch=V.pick||[];
+  body=`<p class="hint">${esc(t("pickall"))} \u2014 ${esc(t(q.lab))} ${q.show?esc(q.show):""}</p>
+   <div class="opts" style="grid-template-columns:repeat(4,1fr)">${q.opts.map(o=>
+   `<button class="opt${ch.includes(o)?(q.ok(o)?" yes":" no"):""}" onclick="tapAll(${o})">${o}</button>`).join("")}</div>`;
+ } else if(q.ask==="share"){
+  body=`<p class="hint">${q.r1} : ${q.r2}</p><div class="qbig num">${esc(q.show)}</div>${keypad()}`;
+ } else {
+  const hint=q.hint?`<p class="hint">${esc(q.hint)}</p>`:(q.ask==="round"?`<p class="hint">${L==="fr"?"au":"to the nearest"} ${esc(q.p)}</p>`:"");
+  const shown=q.ask==="pvDigit"
+   ? esc(q.show).split(" ").map((ch,i)=>i===q.hi?`<b style="color:var(--band)">${ch}</b>`:ch).join(" ")
+   : esc(q.show);
+  body=hint+`<div class="${String(q.show).length>13?"qmid":"qbig"} num">${shown}</div>`+keypad();
+ }
+ const T2=TEACH[s.g];
+ return `<div class="wrap"><p class="step">${who} ${esc(s[L]||s.en)} \u00b7 ${V.i+1} ${esc(t("of"))} ${s.n}</p>
+  ${T2?phaseBar(3):""}
+  ${V.i===0&&TRAP[s.g]?`<div class="trap">\u26a0\ufe0f ${esc(TRAP[s.g][L]||TRAP[s.g].en)}</div>`:""}
+  ${V.said?`<div class="nice${V.saidFix?" fix":""}">${esc(V.said)}</div>`:""}
+  <div class="card">${body}
+  ${V.miss>=2?`<div class="note">${esc(t("look"))} \u2014 ${esc(w(T2.steps[0],"why"))}</div>`:""}
+  ${""/* v5: the teaching was a gate at the front of the stop and nothing more.
+       A child getting them wrong could only be shown the same one-line reason
+       again. Three wrong and the worked example is offered back — the whole
+       of it, not a hint. */}
+  ${""/* v7: a learner missing these repeatedly is sent back to the explainer
+       for this subtopic. This is why the videos are indexed by subtopic rather
+       than sitting in a playlist. */}
+  ${V.bad>=3?`<button class="go2 warm small" onclick="backToWatch()">\u25b6 ${esc(t("vidagain"))}</button>`:""}
+  <div class="tally">${dots}</div></div></div>`;
+}
+function doneHTML(s){
+ return `<div class="wrap"><div class="card res"><div class="em">\u26fa</div>
+  <h2>${esc(t("camp"))}</h2><p class="num">${S.b[s.id]||0} ${esc(t("of"))} ${s.n}</p></div>
+  <button class="go2" onclick="goMap()">${esc(t("back"))}</button>
+  <button class="go2 quiet" onclick="openStop('${V.id}')">${esc(t("again"))}</button></div>`;
+}
+function keypad(){
+ return `<div class="slot ${V.typed===""?"empty":""} num">${V.typed===""?"\u2013":esc(V.typed)}</div>
+  <div class="keys">${[1,2,3,4,5,6,7,8,9].map(n=>`<button class="key" onclick="tap('${n}')">${n}</button>`).join("")}
+   <button class="key" onclick="tap('.')">.</button><button class="key" onclick="tap('0')">0</button>
+   <button class="key" onclick="tap('/')">/</button>
+   <button class="key" onclick="tap('-')">\u2212</button>
+   <button class="key" onclick="del()">\u232b</button>
+   <button class="key go" onclick="check()">\u2713</button></div>`;
+}
+function tap(c){if(V.typed.length<12)V.typed+=c;render()}
+function del(){V.typed=V.typed.slice(0,-1);render()}
+function tapAll(o){
+ const q=V.q; if(!V.pick)V.pick=[];
+ if(!V.pick.includes(o))V.pick.push(o);
+ const need=q.opts.filter(q.ok);
+ if(need.every(x=>V.pick.includes(x))){ if(V.pick.some(x=>!q.ok(x)))V.bad++; advance(); }
+ else if(V.pick.some(x=>!q.ok(x))){V.miss++;V.bad++;}
+ render();
+}
+function check(){
+ if(V.typed==="")return;
+ V.said=null;
+ if(V.ph==="guided"){
+  const g=TEACH[byId(V.id).g].guided, steps=g.steps.slice(0,3);
+  if(norm(V.typed)===norm(steps[V.g].a)){
+   V.g++; V.typed=""; V.miss=0;
+   if(V.g>=steps.length){ V.ph="drill"; V.i=0; V.bad=0; newQ();
+     S.at={id:V.id,ph:"drill",i:0}; save(); }
+  } else { V.miss++; V.typed=""; }
+  render(); return;
+ }
+ if(norm(V.typed)===norm(V.q.a)) advance();
+ else { V.miss++; V.bad++; V.typed="";
+   if(!V.wrongOnce) V.wrongOnce={}; V.wrongOnce[V.i]=1;
+   render(); }
+}
+/* v4: the place is kept. A child doing twenty minutes after school was
+   starting the same stop from question one every time. */
+function resume(){
+ const a=S.at; if(!a) return; const s=byId(a.id); if(!s) return;
+ openStop(a.id);
+ if(a.ph==="drill"){ V.ph="drill"; V.i=Math.min(a.i,s.n-1); V.bad=0; newQ(); }
+ else if(a.ph==="guided") toGuided();
+ else if(a.ph==="watch") toWatch();
+ render();
+}
+function advance(){
+ const s=byId(V.id);
+ /* v6: something happens when a child is right. Before this the counter went
+    up and the next question appeared, 486 times. */
+ const fixed = V.wrongOnce && V.wrongOnce[V.i];
+ V.said = fixed ? (FIXED[L]||FIXED.en) : (NICE[L]||NICE.en)[(V.i+s.id.length)%10];
+ V.saidFix = !!fixed;
+ V.i++;
+ S.at={id:V.id,ph:"drill",i:V.i}; save();
+ if(V.i>=s.n){ S.d[s.id]=1; S.b[s.id]=Math.max(S.b[s.id]||0,Math.max(0,s.n-V.bad)); save(); V.ph="done"; }
+ else newQ();
+ render();
+}
+
+/* ================= the arithmetic paper =================
+   36 questions, 30 minutes, no options, in the proportions Paper 1 actually
+   uses: mostly one-mark calculations, with long multiplication and long
+   division worth two each and placed late, as they are in the real thing. */
+const PAPERMIX=[["colAdd",1],["colSub",1],["tables",1],["mentalPV",1],["shortMul",1],["shortDiv",1],
+ ["pow10",1],["frAddSame",1],["frAddDiff",1],["frMul",1],["frDivWhole",1],["frOfAmount",1],
+ ["decAdd",1],["decMul",1],["pcOf",1],["sqcube",1],["ooo",1],["divRem",1]];
+function openPaper(){
+ const qs=[]; const seed=Date.now()%99991;
+ for(let i=0;i<32;i++){ const g=PAPERMIX[i%PAPERMIX.length][0];
+   qs.push(Object.assign(GEN[g](R(seed+i*7919),1+(i%2)),{m:1})); }
+ qs.splice(13,0,Object.assign(GEN.longMul(R(seed+911),1),{m:2}));
+ qs.splice(24,0,Object.assign(GEN.longDiv(R(seed+922),1),{m:2}));
+ qs.push(Object.assign(GEN.longMul(R(seed+933),2),{m:2}));
+ qs.push(Object.assign(GEN.longDiv(R(seed+944),2),{m:2}));
+ V={s:"paper",qs:qs,i:0,ans:qs.map(()=>""),t0:Date.now(),over:false,mark:null};
+ tick(); render();
+}
+let TID=null;
+function tick(){ clearInterval(TID); TID=setInterval(()=>{
+  if(V.s!=="paper"||V.mark){clearInterval(TID);return}
+  const left=1800-Math.floor((Date.now()-V.t0)/1000);
+  if(left<=0){ clearInterval(TID); markPaper(); return }
+  const e=document.getElementById("clk");
+  if(e){ e.textContent=fmt(left); e.className="timer"+(left<300?" low":""); }
+ },500); }
+const fmt=s=>Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
+function paperHTML(){
+ if(V.mark) {
+  const tot=V.qs.reduce((a,q)=>a+q.m,0);
+  return `<div class="wrap"><div class="card res"><div class="em">\u{1f4c4}</div>
+   <h2 class="num">${V.mark} / ${tot}</h2><p>${esc(t("score"))}</p>
+   <div class="bar2"><i style="width:${Math.round(V.mark/tot*100)}%"></i></div></div>
+   <button class="go2" onclick="goMap()">${esc(t("back"))}</button>
+   <button class="go2 quiet" onclick="openPaper()">${esc(t("again"))}</button></div>`;
+ }
+ const q=V.qs[V.i];
+ return `<div class="wrap">
+  <div class="step" style="display:flex;justify-content:space-between;align-items:center">
+   <span>${V.i+1} ${esc(t("of"))} ${V.qs.length}${q.m>1?"  \u00b7 2 "+esc(t("score")):""}</span>
+   <span class="timer" id="clk">30:00</span></div>
+  <div class="card">
+   <div class="${String(q.show).length>13?"qmid":"qbig"} num">${esc(q.show)}</div>
+   <div class="slot ${V.ans[V.i]===""?"empty":""} num">${V.ans[V.i]===""?"\u2013":esc(V.ans[V.i])}</div>
+   <div class="keys">${[1,2,3,4,5,6,7,8,9].map(n=>`<button class="key" onclick="ptap('${n}')">${n}</button>`).join("")}
+    <button class="key" onclick="ptap('.')">.</button><button class="key" onclick="ptap('0')">0</button>
+    <button class="key" onclick="ptap('/')">/</button>
+    <button class="key" onclick="ptap('-')">\u2212</button>
+    <button class="key" onclick="pdel()">\u232b</button>
+    <button class="key go" onclick="pnext()">\u203a</button></div>
+   <div class="pgrid">${V.qs.map((_,k)=>`<button class="pg${V.ans[k]!==""?" ans":""}${k===V.i?" now":""}"
+     onclick="pgo(${k})">${k+1}</button>`).join("")}</div>
+  </div>
+  <button class="go2 quiet" onclick="markPaper()">${esc(t("finish"))}</button></div>`;
+}
+function ptap(c){ if(V.ans[V.i].length<12) V.ans[V.i]+=c; render(); }
+function pdel(){ V.ans[V.i]=V.ans[V.i].slice(0,-1); render(); }
+function pgo(k){ V.i=k; render(); }
+function pnext(){ V.i=(V.i+1)%V.qs.length; render(); }
+function markPaper(){
+ let m=0; V.qs.forEach((q,k)=>{ if(V.ans[k]!==""&&norm(V.ans[k])===norm(q.a)) m+=q.m; });
+ V.mark=m; S.p=(S.p||[]).concat([m]); save(); render();
+}
+
+if(S.seen) V={s:"shelf",open:null};
+render();
+</script></body></html>
