@@ -288,6 +288,10 @@ main{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
 
 .brand{margin:0 0 3px;font-size:var(--t3);font-weight:700;letter-spacing:.14em;color:var(--band)}
 .covwhy{margin:9px 0 0;font-size:var(--t3);color:var(--muted);line-height:1.5;max-width:30ch}
+
+.reveal{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 0 6px}
+.rl{margin:0;font-size:var(--t3);color:var(--muted)}
+.ra{margin:0;font-size:var(--t8);font-weight:650;color:var(--band);line-height:1.2}
 </style></head><body>
 <header><div class="hrow">
  <div class="htitle"><b id="hT">One Hundred</b><span id="hS">Year 6 SATs maths</span></div>
@@ -1760,6 +1764,9 @@ const T={
  carry:{en:"Carry on where you stopped",fr:"Reprendre o\u00f9 tu t'es arr\u00eat\u00e9"},
  iknow:{en:"I know this \u2014 let me practise",fr:"Je sais faire \u2014 laisse-moi m\u2019entra\u00eener"},
  showme:{en:"Show me how again",fr:"Remontre-moi comment"},
+ giveup:{en:"Show me the answer",fr:"Montre-moi la r\u00e9ponse"},
+ theans:{en:"The answer was",fr:"La r\u00e9ponse \u00e9tait"},
+ moveon:{en:"Next one",fr:"Suivante"},
  got:{en:"answers right so far",fr:"bonnes r\u00e9ponses jusqu\u2019ici"},
  lots:{en:"comes up a lot",fr:"revient beaucoup"},
  some:{en:"comes up often",fr:"revient souvent"},
@@ -2447,9 +2454,10 @@ function drillHTML(s){
  const T2=TEACH[s.g];
  return `<div class="wrap"><p class="step">${who} ${esc(s[L]||s.en)} \u00b7 ${V.i+1} ${esc(t("of"))} ${s.n}</p>
   ${T2?phaseBar(3):""}
-  ${V.i===0&&TRAP[s.g]?`<div class="trap">\u26a0\ufe0f ${esc(TRAP[s.g][L]||TRAP[s.g].en)}</div>`:""}
+  ${!V.shown&&V.i===0&&TRAP[s.g]?`<div class="trap">\u26a0\ufe0f ${esc(TRAP[s.g][L]||TRAP[s.g].en)}</div>`:""}
   ${V.said?`<div class="nice${V.saidFix?" fix":""}">${esc(V.said)}</div>`:""}
-  <div class="card">${body}
+  <div class="card">${V.shown?`<div class="reveal"><p class="rl">${esc(t("theans"))}</p>
+    <p class="ra num">${esc(q.a)}</p></div>`:body}
   ${V.miss>=2?`<div class="note">${esc(t("look"))} \u2014 ${esc(w(T2.steps[0],"why"))}</div>`:""}
   ${""/* v5: the teaching was a gate at the front of the stop and nothing more.
        A child getting them wrong could only be shown the same one-line reason
@@ -2458,8 +2466,11 @@ function drillHTML(s){
   ${""/* v7: a learner missing these repeatedly is sent back to the explainer
        for this subtopic. This is why the videos are indexed by subtopic rather
        than sitting in a playlist. */}
-  ${V.bad>=3?`<button class="go2 warm small" onclick="backToWatch()">\u25b6 ${esc(t("vidagain"))}</button>`:""}
-  <div class="tally">${dots}</div></div></div>`;
+  ${!V.shown&&V.bad>=3?`<button class="go2 warm small" onclick="backToWatch()">\u25b6 ${esc(t("vidagain"))}</button>`:""}
+  <div class="tally">${dots}</div></div>
+  ${V.shown?`<button class="go2" onclick="moveOn()">${esc(t("moveon"))}</button>`:""}
+  ${!V.shown&&V.miss>=2?`<button class="go2 quiet small" onclick="giveUp()">${esc(t("giveup"))}</button>`:""}
+  </div>`;
 }
 function doneHTML(s){
  return `<div class="wrap"><div class="card res"><div class="em">\u26fa</div>
@@ -2486,6 +2497,12 @@ function tapAll(o){
  else if(V.pick.some(x=>!q.ok(x))){V.miss++;V.bad++;}
  render();
 }
+/* v8: the same dead end the English app had. A wrong answer kept a child on
+   the same question for ever — no skip, no reveal, and the only way out was to
+   close the app. Two wrong and the answer is offered; taking it costs the mark
+   and moves on, which is what a teacher would do. */
+function giveUp(){ V.shown=true; render(); }
+function moveOn(){ V.shown=false; V.bad=(V.bad||0)+1; V.said=null; advance(); render(); }
 function check(){
  if(V.typed==="")return;
  V.said=null;
@@ -2520,7 +2537,7 @@ function advance(){
  const fixed = V.wrongOnce && V.wrongOnce[V.i];
  V.said = fixed ? (FIXED[L]||FIXED.en) : (NICE[L]||NICE.en)[(V.i+s.id.length)%10];
  V.saidFix = !!fixed;
- V.i++;
+ V.i++; V.shown=false;
  S.at={id:V.id,ph:"drill",i:V.i}; save();
  if(V.i>=s.n){ S.d[s.id]=1; S.b[s.id]=Math.max(S.b[s.id]||0,Math.max(0,s.n-V.bad)); save(); V.ph="done"; }
  else newQ();
