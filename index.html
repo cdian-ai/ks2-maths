@@ -2147,26 +2147,36 @@ function MASCOT(pose, course, size){
       fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M116 166 L116 174 M108 176 L116 174 L124 176" stroke="${beak}" stroke-width="4.5"
       fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
-  const head = pose==="think" ? `rotate(-9 100 72)` : `rotate(0 100 72)`;
+  /* The head is front-on, so the beak must come FORWARD from between the eyes,
+     not sideways off the cheek. Drawing a profile beak on a face looking at you
+     is why he looked wrong: two viewpoints in one head.
+     The head spans y 41 to 107. Every hat is therefore built to sit across
+     y 26 to 58 so it overlaps the crown and rests on it, rather than hovering
+     above it or being pasted flat across it. */
+  const head = pose==="think" ? `rotate(-8 100 74)` : `rotate(0 100 74)`;
+  const beakShape = `<path d="M88 82 L100 106 L112 82 Z" fill="${beak}"/>
+    <path d="M92 94 L100 106 L108 94 Z" fill="#C07C1F"/>`;
   const eyes = pose==="think"
-    ? `<circle cx="86" cy="70" r="7.5" fill="#fff"/><circle cx="88" cy="71" r="4.2" fill="${D}"/>
-       <circle cx="112" cy="70" r="7.5" fill="#fff"/><circle cx="114" cy="71" r="4.2" fill="${D}"/>
-       <path d="M76 58 C81 53 91 53 96 57" stroke="${D}" stroke-width="3" fill="none" stroke-linecap="round"/>`
+    ? `<circle cx="85" cy="70" r="8" fill="#fff"/><circle cx="87" cy="71" r="4.4" fill="${D}"/>
+       <circle cx="115" cy="70" r="8" fill="#fff"/><circle cx="117" cy="71" r="4.4" fill="${D}"/>
+       <path d="M74 56 C79 51 90 51 95 55" stroke="${D}" stroke-width="3" fill="none" stroke-linecap="round"/>`
     : pose==="cheer"
-    ? `<path d="M79 70 C83 63 92 63 96 70" stroke="${D}" stroke-width="3.6" fill="none" stroke-linecap="round"/>
-       <path d="M104 70 C108 63 117 63 121 70" stroke="${D}" stroke-width="3.6" fill="none" stroke-linecap="round"/>`
-    : `<circle cx="87" cy="70" r="8" fill="#fff"/><circle cx="88" cy="71" r="4.4" fill="${D}"/>
-       <circle cx="113" cy="70" r="8" fill="#fff"/><circle cx="114" cy="71" r="4.4" fill="${D}"/>`;
+    ? `<path d="M77 70 C81 62 91 62 95 70" stroke="${D}" stroke-width="3.8" fill="none" stroke-linecap="round"/>
+       <path d="M105 70 C109 62 119 62 123 70" stroke="${D}" stroke-width="3.8" fill="none" stroke-linecap="round"/>`
+    : `<circle cx="85" cy="70" r="8.5" fill="#fff"/><circle cx="86" cy="71" r="4.6" fill="${D}"/>
+       <circle cx="115" cy="70" r="8.5" fill="#fff"/><circle cx="116" cy="71" r="4.6" fill="${D}"/>`;
+  /* Both hats are cut to the crown: the base line dips to y=58, well inside the
+     head, so the head shows through beneath them and they look worn. */
   const hat = B.hat==="cap"
-    ? `<g transform="rotate(-9 100 40)">
-        <path d="M70 42 C70 26 84 17 100 17 C116 17 130 26 130 42 Z" fill="${B.hue}"/>
-        <path d="M126 42 L154 45 L154 50 L126 48 Z" fill="${B.hue}"/>
-        <circle cx="100" cy="19" r="4.5" fill="${B.warm}"/></g>`
-    : `<g transform="rotate(-7 100 38)">
-        <path d="M62 40 L100 27 L138 40 L100 53 Z" fill="${B.hue}"/>
-        <path d="M83 45 L83 55 C83 59 117 59 117 55 L117 45 Z" fill="${B.hue}" opacity=".92"/>
-        <path d="M135 41 L135 60" stroke="${B.warm}" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="135" cy="62" r="4" fill="${B.warm}"/></g>`;
+    ? `<g transform="rotate(-7 100 44)">
+        <path d="M66 56 C66 33 82 24 100 24 C118 24 134 33 134 56 C120 51 80 51 66 56 Z" fill="${B.hue}"/>
+        <path d="M124 52 C142 50 156 52 158 57 C150 61 134 61 124 58 Z" fill="${B.hue}"/>
+        <circle cx="100" cy="26" r="4.5" fill="${B.warm}"/></g>`
+    : `<g transform="rotate(-6 100 42)">
+        <path d="M70 50 C70 34 84 28 100 28 C116 28 130 34 130 50 C116 46 84 46 70 50 Z" fill="${B.hue}" opacity=".95"/>
+        <path d="M58 44 L100 29 L142 44 L100 59 Z" fill="${B.hue}"/>
+        <path d="M139 45 L139 64" stroke="${B.warm}" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="139" cy="66" r="4.2" fill="${B.warm}"/></g>`;
   return `<svg class="mascot" viewBox="0 0 200 175" width="${s}" height="${s*0.875}"
     xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
    ${tail}
@@ -2175,10 +2185,8 @@ function MASCOT(pose, course, size){
    <path d="M100 116 C116 116 126 130 126 144 C126 157 114 163 100 163 C86 163 74 157 74 144 C74 130 84 116 100 116 Z" fill="${lt}" opacity=".5"/>
    ${wing}
    <g transform="${head}">
-    <path d="M78 82 L34 95 L78 106 Z" fill="${beak}"/>
-    <path d="M78 95 L34 95 L78 106 Z" fill="#C98526"/>
     <ellipse cx="100" cy="74" rx="36" ry="33" fill="${dk}"/>
-    <path d="M78 78 L78 110" stroke="${dk}" stroke-width="0" fill="none"/>
+    ${beakShape}
     ${eyes}
     ${hat}
    </g>
