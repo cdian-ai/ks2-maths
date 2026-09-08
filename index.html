@@ -22,8 +22,8 @@
    chosen from four options — offering options would train a skill the test
    does not reward. */
 :root{
- --ink:#1B2430;--ink2:#4A5A6B;--muted:#8494A4;--paper:#F7F9FA;--card:#fff;--line:#E1E7EC;
- --band:#4E8C6A;--sun:#E0A32E;--sun-bg:#FDF3DE;--yes:#2F7D57;--yes-bg:#E8F4EC;
+ --ink:#1B2430;--ink2:#4A5A6B;--muted:#8494A4;--paper:#FBF8F3;--card:#fff;--line:#E8E1D6;
+ --band:#2F7D62;--sun:#E0A32E;--sun-bg:#FDF3DE;--yes:#2F7D57;--yes-bg:#E8F4EC;
  --no:#B0463C;--no-bg:#FBECEA;
  --t1:9px;--t2:11px;--t3:13px;--t4:15px;--t5:18px;--t6:22px;--t7:28px;--t8:40px;--t9:52px;}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -295,6 +295,31 @@ main{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
 .reveal{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 0 6px}
 .rl{margin:0;font-size:var(--t3);color:var(--muted)}
 .ra{margin:0;font-size:var(--t8);font-weight:650;color:var(--band);line-height:1.2}
+
+/* ---- the house brand, course layer ---- */
+.mwrap{display:flex;justify-content:center;margin:2px 0 4px}
+.mascot{display:block}
+.ticon{display:block}
+.tem{margin:4px auto 0;display:block}
+.today{display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;margin:2px 0 6px;
+ border-radius:22px;border:2px solid var(--band);background:#fff;cursor:pointer;font:inherit;text-align:left;
+ box-shadow:0 2px 0 var(--band)}
+.today.did{border-color:var(--line);box-shadow:0 2px 0 var(--line)}
+.today .mascot{flex:0 0 auto;margin:-6px 0}
+.tdx{flex:1 1 auto;min-width:0}
+.tdx b{display:block;font-size:var(--t5);font-weight:700;color:var(--ink)}
+.tdx small{display:block;font-size:var(--t3);color:var(--muted)}
+.streak{display:flex;flex-direction:column;align-items:center;gap:0;flex:0 0 auto;
+ background:var(--sun-bg);border-radius:14px;padding:7px 11px}
+.streak b{font-size:var(--t6);color:#6A4A05;line-height:1}
+.orpick{margin:14px 0 6px;font-size:var(--t3);color:var(--muted);text-align:center}
+.sesbar{height:8px;border-radius:999px;background:var(--line);overflow:hidden;margin:0 0 8px}
+.sesbar i{display:block;height:100%;background:var(--band);transition:width .35s ease}
+.sestop{margin:0 0 10px;text-align:center;font-size:var(--t3);color:var(--muted)}
+.streakbig{display:flex;align-items:center;justify-content:center;gap:9px;margin:14px 0 4px;
+ background:var(--sun-bg);border-radius:999px;padding:10px 20px;color:#6A4A05}
+.streakbig b{font-size:var(--t7)}
+.streakbig span{font-size:var(--t4)}
 </style></head><body>
 <header><div class="hrow">
  <div class="htitle"><b id="hT">One Hundred</b><span id="hS">Year 6 SATs maths</span></div>
@@ -1764,6 +1789,14 @@ const T={
          fr:"Pas encore de vid\u00e9o ici, donc l\u2019explication compl\u00e8te est \u00e9crite ci-dessous."},
  practise:{en:"Practise this",fr:"S\u2019entra\u00eener"},
  subtopics:{en:"subtopics",fr:"sous-sujets"},
+ todays:{en:"Today\u2019s practice",fr:"L\u2019entra\u00eenement du jour"},
+ tensoon:{en:"10 questions \u00b7 about 5 minutes",fr:"10 questions \u00b7 environ 5 minutes"},
+ sesdone:{en:"Done for today.",fr:"Termin\u00e9 pour aujourd\u2019hui."},
+ sesagain:{en:"Done today \u2014 go again?",fr:"D\u00e9j\u00e0 fait \u2014 encore ?"},
+ days:{en:"days in a row",fr:"jours d\u2019affil\u00e9e"},
+ day1:{en:"day",fr:"jour"},
+ streak:{en:"day streak",fr:"jours d\u2019affil\u00e9e"},
+ browse:{en:"Or pick a topic",fr:"Ou choisir un sujet"},
  carry:{en:"Carry on where you stopped",fr:"Reprendre o\u00f9 tu t'es arr\u00eat\u00e9"},
  iknow:{en:"I know this \u2014 let me practise",fr:"Je sais faire \u2014 laisse-moi m\u2019entra\u00eener"},
  showme:{en:"Show me how again",fr:"Remontre-moi comment"},
@@ -1783,7 +1816,7 @@ const w=(o,k)=>o[k+"_"+L]!==undefined?o[k+"_"+L]:o[k+"_en"];
 const KEY="cl3.v1"; let S=(()=>{try{return JSON.parse(localStorage.getItem(KEY))||{d:{},b:{},p:[]}}catch(e){return{d:{},b:{},p:[]}}})();
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
 const ALL=[]; CAMPS.forEach((c,ci)=>c.stops.forEach((s,si)=>ALL.push(Object.assign({},s,{id:c.id+"."+si,camp:ci}))));
-const BANDS=["#4E8C6A","#5A8079","#6E7F92","#6A7A96","#8FB4CE"];
+const BANDS=["#2F7D62"];
 /* v2: a helper that returned undefined printed the word "undefined" on every
    story screen, and the flow test passed because the phases still advanced.
    esc now refuses to render nothing. */
@@ -1799,7 +1832,8 @@ function render(){
  bar.style.width=Math.round(done/ALL.length*100)+"%";
  back.hidden=(V.s==="cover"||V.s==="shelf");
  back.onclick=(V.s==="stop"&&V.topicFrom!==undefined)?function(){openTopic(V.topicFrom)}:goMap;
- app.innerHTML = V.s==="cover"?coverHTML():V.s==="diag"?diagHTML()
+ app.innerHTML = V.s==="session"?sessionHTML()
+  :V.s==="cover"?coverHTML():V.s==="diag"?diagHTML()
   :V.s==="shelf"?homeHTML():V.s==="topic"?topicHTML()
   :V.s==="stop"?stopHTML():paperHTML();
  if(V.s!=="paper") main.scrollTop=0;
@@ -2062,6 +2096,146 @@ function coverArt(){
    The Pular course keeps its prompt: that one is most often used alone, and
    there the greeting is the point rather than an obstacle. */
 const COURSE="maths";
+/* ================= One Hundred \u2014 the house brand =================
+   Shared by both courses. Notice Me is deliberately untouched: if this earns
+   its place here, it can move up later.
+
+   The rule is that ONE layer changes between courses \u2014 a hue, a hat, a motif.
+   Everything else (type, spacing, radius, card, shadow, the character himself)
+   is identical, so the two read as siblings at a glance and are never confused
+   for each other. */
+const BRAND = {
+  maths:  { hue:"#2F7D62", hue2:"#E7F2EC", ink:"#16302A", hat:"cap",
+            warm:"#E8A33C", warmBg:"#FCF2E0", name:"Maths" },
+  english:{ hue:"#4C5BA8", hue2:"#EAECF8", ink:"#1C2140", hat:"mortar",
+            warm:"#E8A33C", warmBg:"#FCF2E0", name:"English" },
+};
+/* The ground is a warm off-white, not the cold grey it was. A child's app
+   should feel like paper, not like a dashboard. */
+const GROUND="#FBF8F3", CARD="#FFFFFF", LINE="#E8E1D6", MUTED="#8A8378";
+
+/* ---------- the character ----------
+   One hare across both courses, wearing what he is teaching. Drawn rather than
+   borrowed: an emoji is somebody else's artwork and renders differently on
+   every phone, which is why the shelf looked unfinished.
+   Poses: hello, think, cheer, point. Same construction every time \u2014 only the
+   ears, the arm and the mouth move, so he is recognisably one animal. */
+function MASCOT(pose, course, size){
+  const B=BRAND[course]||BRAND.maths;
+  const s=size||120;
+  const body="#D9A05B", body2="#C08843", belly="#F4E2C8", dark="#33261A";
+  /* The hat is small and worn back, and the ears are drawn IN FRONT of it, so
+     the same animal is visible in both courses. The first attempt had the cap
+     swallowing the ears entirely, which made maths and English look like two
+     different creatures — the exact confusion the character exists to end. */
+  const hat = B.hat==="cap"
+    ? `<g transform="rotate(-8 100 44)">
+        <path d="M70 44 C70 30 84 22 100 22 C116 22 130 30 130 44 Z" fill="${B.hue}"/>
+        <path d="M126 44 L152 47 L152 52 L126 50 Z" fill="${B.hue}"/>
+        <circle cx="100" cy="24" r="4.5" fill="${B.warm}"/></g>`
+    : `<g transform="rotate(-6 100 40)">
+        <path d="M64 42 L100 30 L136 42 L100 54 Z" fill="${B.hue}"/>
+        <path d="M84 47 L84 56 C84 60 116 60 116 56 L116 47 Z" fill="${B.hue}" opacity=".9"/>
+        <path d="M133 43 L133 62" stroke="${B.warm}" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="133" cy="64" r="4" fill="${B.warm}"/></g>`;
+  const earL = pose==="think"
+    ? `<path d="M79 40 C74 18 79 6 88 7 C97 8 96 24 91 42 Z" fill="${body}" stroke="${body2}" stroke-width="2"/>
+       <path d="M83 37 C81 22 84 14 88 15 C92 16 91 26 88 38 Z" fill="${belly}"/>`
+    : `<path d="M80 40 C76 16 82 4 90 5 C98 6 98 24 92 42 Z" fill="${body}" stroke="${body2}" stroke-width="2"/>
+       <path d="M84 37 C82 22 85 12 89 13 C93 14 92 26 89 38 Z" fill="${belly}"/>`;
+  const earR = pose==="think"
+    ? `<path d="M112 44 C120 26 134 18 140 25 C146 32 132 44 118 52 Z" fill="${body}" stroke="${body2}" stroke-width="2"/>`
+    : `<path d="M108 42 C104 18 110 5 118 6 C126 7 126 24 120 44 Z" fill="${body}" stroke="${body2}" stroke-width="2"/>
+       <path d="M112 38 C110 22 113 13 117 14 C121 15 120 26 117 38 Z" fill="${belly}"/>`;
+  /* arms belong to the body, not floating beside it */
+  const armL = pose==="cheer"
+    ? `<path d="M66 116 C54 104 50 92 57 87 C64 82 71 94 74 108 Z" fill="${body2}"/>`
+    : `<path d="M68 124 C60 122 56 132 62 138 C68 144 76 138 76 130 Z" fill="${body2}"/>`;
+  const armR = pose==="point"
+    ? `<path d="M132 118 C144 110 152 98 146 92 C140 86 130 96 126 110 Z" fill="${body2}"/>
+       <circle cx="149" cy="89" r="5.5" fill="${body}"/>`
+    : pose==="cheer"
+    ? `<path d="M134 116 C146 104 150 92 143 87 C136 82 129 94 126 108 Z" fill="${body2}"/>`
+    : `<path d="M132 124 C140 122 144 132 138 138 C132 144 124 138 124 130 Z" fill="${body2}"/>`;
+  const mouth = pose==="cheer"
+    ? `<path d="M91 104 C96 114 104 114 109 104 Z" fill="#8A4A3A"/>`
+    : `<path d="M93 103 C97 108 103 108 107 103" stroke="#6B4A22" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  const brow = pose==="think"
+    ? `<path d="M80 74 C84 70 92 70 96 73" stroke="${dark}" stroke-width="2.6" fill="none" stroke-linecap="round"/>`:"";
+  return `<svg class="mascot" viewBox="0 0 200 175" width="${s}" height="${s*0.875}"
+    xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+   <ellipse cx="100" cy="140" rx="38" ry="30" fill="${body}"/>
+   <ellipse cx="100" cy="147" rx="23" ry="21" fill="${belly}"/>
+   ${armL}${armR}
+   <ellipse cx="100" cy="86" rx="33" ry="29" fill="${body}"/>
+   ${hat}
+   ${earL}${earR}
+   <ellipse cx="100" cy="86" rx="33" ry="29" fill="${body}"/>
+   <ellipse cx="100" cy="95" rx="19" ry="14" fill="${belly}"/>
+   ${brow}
+   <circle cx="89" cy="84" r="5.6" fill="${dark}"/><circle cx="111" cy="84" r="5.6" fill="${dark}"/>
+   <circle cx="91" cy="82" r="1.9" fill="#fff"/><circle cx="113" cy="82" r="1.9" fill="#fff"/>
+   <ellipse cx="100" cy="94" rx="4.6" ry="3.4" fill="#8A5C2A"/>
+   ${mouth}
+   ${hat}
+  </svg>`;
+}
+
+/* ---------- topic icons ----------
+   Thirteen drawn marks replacing thirteen emoji. One weight, one corner
+   treatment, one palette, so a row of them looks like a set rather than a
+   handful of things borrowed from a keyboard. */
+function ICON(name, hue, size){
+  const c=hue||"#2F7D62", w="#E8A33C", s=size||44;
+  const P={
+   /* maths */
+   numbers:`<rect x="8" y="12" width="48" height="40" rx="8" fill="none" stroke="${c}" stroke-width="4"/>
+     <text x="32" y="41" text-anchor="middle" font-size="22" font-weight="700" fill="${c}"
+      font-family="ui-sans-serif,system-ui">123</text>`,
+   operations:`<line x1="14" y1="20" x2="26" y2="20" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
+     <line x1="20" y1="14" x2="20" y2="26" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
+     <line x1="38" y1="14" x2="50" y2="26" stroke="${w}" stroke-width="4" stroke-linecap="round"/>
+     <line x1="50" y1="14" x2="38" y2="26" stroke="${w}" stroke-width="4" stroke-linecap="round"/>
+     <line x1="14" y1="44" x2="26" y2="44" stroke="${w}" stroke-width="4" stroke-linecap="round"/>
+     <circle cx="44" cy="38" r="3" fill="${c}"/><line x1="36" y1="44" x2="52" y2="44" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
+     <circle cx="44" cy="50" r="3" fill="${c}"/>`,
+   longmul:`<line x1="16" y1="16" x2="40" y2="40" stroke="${c}" stroke-width="5" stroke-linecap="round"/>
+     <line x1="40" y1="16" x2="16" y2="40" stroke="${c}" stroke-width="5" stroke-linecap="round"/>
+     <line x1="12" y1="52" x2="52" y2="52" stroke="${w}" stroke-width="4" stroke-linecap="round"/>`,
+   fractions:`<circle cx="32" cy="32" r="21" fill="none" stroke="${c}" stroke-width="4"/>
+     <path d="M32 32 L32 11 A21 21 0 0 1 50 43 Z" fill="${w}"/>
+     <line x1="32" y1="32" x2="32" y2="11" stroke="${c}" stroke-width="3"/>
+     <line x1="32" y1="32" x2="50" y2="43" stroke="${c}" stroke-width="3"/>`,
+   shapes:`<path d="M12 50 L32 14 L52 50 Z" fill="none" stroke="${c}" stroke-width="4" stroke-linejoin="round"/>
+     <rect x="24" y="38" width="16" height="12" fill="${w}" opacity=".55"/>`,
+   /* english */
+   spelling:`<text x="32" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="${c}"
+      font-family="ui-sans-serif,system-ui">abc</text>
+     <line x1="12" y1="50" x2="52" y2="50" stroke="${w}" stroke-width="4" stroke-linecap="round"/>`,
+   punctuation:`<text x="22" y="44" text-anchor="middle" font-size="34" font-weight="700" fill="${c}"
+      font-family="ui-sans-serif,system-ui">,</text>
+     <text x="44" y="42" text-anchor="middle" font-size="30" font-weight="700" fill="${w}"
+      font-family="ui-sans-serif,system-ui">;</text>`,
+   wordclass:`<path d="M10 26 L34 10 L54 26 L54 44 L10 44 Z" fill="none" stroke="${c}" stroke-width="4"
+      stroke-linejoin="round"/><circle cx="42" cy="24" r="4" fill="${w}"/>`,
+   tense:`<circle cx="32" cy="32" r="21" fill="none" stroke="${c}" stroke-width="4"/>
+     <line x1="32" y1="32" x2="32" y2="19" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
+     <line x1="32" y1="32" x2="42" y2="38" stroke="${w}" stroke-width="4" stroke-linecap="round"/>`,
+   clauses:`<rect x="8" y="24" width="24" height="16" rx="8" fill="none" stroke="${c}" stroke-width="4"/>
+     <rect x="32" y="24" width="24" height="16" rx="8" fill="none" stroke="${w}" stroke-width="4"/>`,
+   vocab:`<path d="M10 16 C20 12 28 12 32 16 L32 50 C28 46 20 46 10 50 Z" fill="none" stroke="${c}" stroke-width="4" stroke-linejoin="round"/>
+     <path d="M54 16 C44 12 36 12 32 16 L32 50 C36 46 44 46 54 50 Z" fill="none" stroke="${c}" stroke-width="4" stroke-linejoin="round"/>`,
+   standard:`<rect x="18" y="14" width="28" height="24" rx="4" fill="${c}"/>
+     <rect x="10" y="38" width="44" height="6" rx="3" fill="${c}"/>
+     <rect x="18" y="30" width="28" height="6" fill="${w}"/>`,
+   sentence:`<path d="M10 16 H54 V40 H34 L22 52 V40 H10 Z" fill="none" stroke="${c}" stroke-width="4" stroke-linejoin="round"/>
+     <circle cx="24" cy="28" r="3" fill="${w}"/><circle cx="32" cy="28" r="3" fill="${w}"/><circle cx="40" cy="28" r="3" fill="${w}"/>`,
+  };
+  return `<svg class="ticon" viewBox="0 0 64 64" width="${s}" height="${s}"
+   xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${P[name]||P.numbers}</svg>`;
+}
+
+
 
 /* ================= telling Notice Me what was done =================
    The same arrangement the Fulfulde course uses: when this app is opened in a
@@ -2095,7 +2269,7 @@ function coverHTML(){
  const got=Object.keys(S.b||{}).reduce((a,k)=>a+(S.b[k]||0),0);
  const seen=Object.keys(S.d||{}).length>0;
  return `<div class="wrap cover">
-  ${coverArt()}
+  <div class="mwrap">${MASCOT("hello",COURSE,150)}</div>
   ${S.name?"":`<p class="brand">${esc(t("covname"))}</p>`}
   <h1 class="covh">${S.name?`${esc(t(seen?"wb":"hi"))}, ${esc(S.name)}.`:esc(t("cov1"))}</h1>
   <p class="covsub">${esc(t("cov2"))}</p>
@@ -2121,7 +2295,7 @@ function coverHTML(){
 }
 function nameHTML(){
  return `<div class="wrap cover">
-  ${coverArt()}
+  <div class="mwrap">${MASCOT("hello",COURSE,150)}</div>
   <h1 class="covh">${esc(t("hello"))}</h1>
   <p class="covlead">${esc(t("whoare"))}</p>
   <input class="nameinput" id="nm" type="text" maxlength="18" autocomplete="given-name"
@@ -2202,6 +2376,7 @@ function diagResult(){
    does not have, and it put the least important content first. Five square
    tiles, two per row: the whole course visible at once, which is what a
    revision app is actually for. */
+const TICON=["numbers", "operations", "longmul", "fractions", "shapes"];
 let lastTopic;
 function homeHTML(){
  const done=Object.keys(S.d).length;
@@ -2216,11 +2391,19 @@ function homeHTML(){
     <span class="wx"><b>${esc(st[L]||st.en)}</b><small>${esc(t("carry"))}</small></span>
     <span class="wa">\u203a</span></button>`;
  }
- h+=`<div class="tiles">`;
+ const si=streakInfo();
+ h+=`<button class="today${si.doneToday?" did":""}" onclick="startSession()">
+   ${MASCOT(si.doneToday?"cheer":"point",COURSE,86)}
+   <span class="tdx"><b>${esc(si.doneToday?t("sesagain"):t("todays"))}</b>
+    <small>${esc(t("tensoon"))}</small></span>
+   ${si.n?`<span class="streak"><span>\u{1f525}</span><b class="num">${si.n}</b></span>`:""}
+  </button>
+  <p class="orpick">${esc(t("browse"))}</p>
+  <div class="tiles">`;
  CAMPS.forEach((c,ci)=>{
   const mine=ALL.filter(s=>s.camp===ci), dn=mine.filter(s=>S.d[s.id]).length;
   h+=`<button class="tile" onclick="openTopic(${ci})">
-    <span class="tem">${c.em}</span>
+    <span class="tem">${ICON(TICON[ci],getComputedStyle?getComputedStyle(document.documentElement).getPropertyValue("--band").trim()||"#2F7D62":"#2F7D62",50)}</span>
     <span class="tname">${esc(c[L]||c.en)}</span>
     <span class="tsub">${mine.length} ${esc(t("subtopics"))}</span>
     <span class="tbar"><i style="width:${Math.round(dn/mine.length*100)}%"></i></span>
@@ -2231,6 +2414,106 @@ function homeHTML(){
    <span><b>${esc(t("paper"))}</b><span>${esc(t("papersub"))}</span></span></button>
   <button class="go2 quiet" onclick="goCover()">${esc(t("about"))}</button></div>`;
  return h;
+}
+
+/* ================= today =================
+   The courses were a library: forty-odd subtopics, hundreds of questions, no
+   unit of work and no stopping point, so a child never knew how much was
+   enough. Attainment at this age comes from short regular practice rather
+   than from access to material, so there is now a session: ten questions,
+   about five minutes, drawn from what they have not finished. Finish it and
+   the streak goes up. */
+const TODAY=()=>new Date().toISOString().slice(0,10);
+function streakInfo(){
+ const last=S.lastDay, st=S.streak||0, today=TODAY();
+ if(last===today) return {n:st, doneToday:true};
+ const y=new Date(Date.now()-864e5).toISOString().slice(0,10);
+ return {n:(last===y?st:0), doneToday:false};
+}
+function startSession(){
+ const seed=Date.now()%99991;
+ const pool=ALL.filter(s=>!S.d[s.id]);
+ const from=(pool.length?pool:ALL).slice(0,12);
+ const qs=[];
+ for(let i=0;i<10;i++){
+  const s=from[i%from.length];
+  qs.push({s:s, q:GEN[s.g](R(seed+i*7919), i<3?1:(s.lvl||1), s.arg)});
+ }
+ V={s:"session",i:0,qs:qs,right:0,typed:"",pick:null,miss:0,shown:false};
+ render();
+}
+function sessionHTML(){
+ if(V.i>=V.qs.length) return sessionDone();
+ const cur=V.qs[V.i];
+ V.q=cur.q;
+ const dots=V.qs.map((_,k)=>`<i class="${k<V.i?"on":""}"></i>`).join("");
+ return `<div class="wrap">
+  <p class="step">${esc(t("todays"))} \u00b7 ${V.i+1} ${esc(t("of"))} ${V.qs.length}</p>
+  <div class="sesbar"><i style="width:${V.i/V.qs.length*100}%"></i></div>
+  <p class="sestop">${esc(cur.s[L]||cur.s.en)}</p>
+  <div class="card">${V.shown
+   ? `<div class="reveal"><p class="rl">${esc(t("theans"))}</p>
+      <p class="ra">${esc(Array.isArray(cur.q.a)?cur.q.a.join(", "):cur.q.a)}</p></div>`
+   : SESBODY(cur.q)}
+   <div class="tally">${dots}</div></div>
+  ${V.shown?`<button class="go2" onclick="sesNext()">${esc(t("moveon"))}</button>`:""}
+  ${!V.shown&&V.miss>=2?`<button class="go2 quiet small" onclick="sesShow()">${esc(t("giveup"))}</button>`:""}
+  </div>`;
+}
+function sesShow(){V.shown=true;render()}
+function sesNext(){V.shown=false;V.i++;V.typed="";V.pick=null;V.miss=0;render()}
+function sessionDone(){
+ const today=TODAY();
+ if(S.lastDay!==today){
+  const y=new Date(Date.now()-864e5).toISOString().slice(0,10);
+  S.streak=(S.lastDay===y?(S.streak||0):0)+1;
+  S.lastDay=today; S.sessions=(S.sessions||0)+1; save();
+ }
+ const st=S.streak||1;
+ return `<div class="wrap cover">
+  ${MASCOT("cheer",COURSE,150)}
+  <h1 class="covh">${esc(t("sesdone"))}</h1>
+  <p class="covsub num">${V.right} ${esc(t("of"))} ${V.qs.length}</p>
+  <div class="streakbig"><span class="sflame">\u{1f525}</span>
+   <b class="num">${st}</b><span>${esc(st===1?t("day1"):t("days"))}</span></div>
+  <button class="go2" onclick="goShelf()">${esc(t("back"))}</button></div>`;
+}
+
+/* Each course answers questions its own way — the maths app on a keypad, the
+   English app by tapping words or choosing. The session borrows whichever
+   surface the course already uses rather than inventing a third. */
+function SESBODY(q){
+ const shown = q.ask==="pvDigit"
+  ? esc(q.show).split(" ").map((ch,i)=>i===q.hi?`<b style="color:var(--band)">${ch}</b>`:ch).join(" ")
+  : esc(q.show);
+ if(q.ask==="pickAll"){
+  const ch=V.pick||[];
+  return `<p class="hint">${esc(t("pickall"))} — ${esc(t(q.lab))} ${q.show?esc(q.show):""}</p>
+   <div class="opts" style="grid-template-columns:repeat(4,1fr)">${q.opts.map(o=>
+   `<button class="opt${ch.includes(o)?(q.ok(o)?" yes":" no"):""}" onclick="sesTapAll(${o})">${o}</button>`).join("")}</div>`;
+ }
+ const hint=q.hint?`<p class="hint">${esc(q.hint)}</p>`:(q.ask==="round"?`<p class="hint">to the nearest ${esc(q.p)}</p>`:"");
+ return hint+`<div class="${String(q.show).length>13?"qmid":"qbig"} num">${shown}</div>`+
+  `<div class="slot ${V.typed===""?"empty":""} num">${V.typed===""?"–":esc(V.typed)}</div>
+   <div class="keys">${[1,2,3,4,5,6,7,8,9].map(n=>`<button class="key" onclick="tap('${n}')">${n}</button>`).join("")}
+    <button class="key" onclick="tap('.')">.</button><button class="key" onclick="tap('0')">0</button>
+    <button class="key" onclick="tap('/')">/</button><button class="key" onclick="tap('-')">−</button>
+    <button class="key" onclick="del()">⌫</button>
+    <button class="key go" onclick="sesCheck()">✓</button></div>`;
+}
+function sesCheck(){
+ const q=V.qs[V.i].q;
+ if(V.typed==="") return;
+ if(norm(V.typed)===norm(q.a)){ V.right++; sesNext(); }
+ else { V.miss=(V.miss||0)+1; V.typed=""; render(); }
+}
+function sesTapAll(o){
+ const q=V.qs[V.i].q; if(!V.pick)V.pick=[];
+ if(!V.pick.includes(o))V.pick.push(o);
+ const need=q.opts.filter(q.ok);
+ if(need.every(x=>V.pick.includes(x))){ V.right++; sesNext(); }
+ else if(V.pick.some(x=>!q.ok(x))){ V.miss=(V.miss||0)+1; }
+ render();
 }
 function openTopic(ci){ lastTopic=ci; V={s:"topic",ci:ci}; render(); }
 function topicHTML(){
