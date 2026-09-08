@@ -1,0 +1,523 @@
+video_id,language,subtopic,timecode,section,line
+angles-en,en,Missing angles,0:00,the situation,A door swings open. How far did it turn?
+angles-en,en,Missing angles,0:05,why it matters,"Three facts cover almost every angle question: a line is 180°, a point is 360°, a triangle is 180°."
+angles-en,en,Missing angles,0:15,into the method,Here is how to do it.
+angles-en,en,Missing angles,0:19,step 1 — a straight line is 180°,"Angles sitting on a straight line always add to 180. Half a full turn. If you can picture the turn, you never have to remember the number."
+angles-en,en,Missing angles,0:32,step 2 — 180 − 130 = 50,Subtract what you have from what it should be. Every missing-angle question is a subtraction once you know which total to use.
+angles-en,en,Missing angles,0:43,step 3 — 50°,"And it should look like an acute angle. Check the picture agrees. If your answer is 150° but the angle looks tiny, you have used the wrong total."
+angles-en,en,Missing angles,0:57,close,That is the whole method. Try one yourself.
+angles-fr,fr,Angles manquants,0:00,the situation,Une porte s'ouvre. De combien a-t-elle tourné ?
+angles-fr,fr,Angles manquants,0:05,why it matters,"Trois faits couvrent presque tout : une ligne fait 180°, un point 360°, un triangle 180°."
+angles-fr,fr,Angles manquants,0:13,into the method,Voici comment faire.
+angles-fr,fr,Angles manquants,0:16,step 1 — a straight line is 180°,"Les angles sur une ligne droite font toujours 180 ensemble. Un demi-tour complet. Si tu imagines le tour, tu n'as plus à retenir le nombre."
+angles-fr,fr,Angles manquants,0:28,step 2 — 180 − 130 = 50,"Soustrais ce que tu as de ce que ça devrait faire. Toute question d'angle manquant est une soustraction, une fois le total connu."
+angles-fr,fr,Angles manquants,0:40,step 3 — 50°,"Et ça doit ressembler à un angle aigu. Vérifie que le dessin est d'accord. Si tu trouves 150° mais que l'angle est minuscule, tu as pris le mauvais total."
+angles-fr,fr,Angles manquants,0:54,close,Voilà toute la méthode. Essaie-en une.
+areaRect-en,en,Area of rectangles,0:00,the situation,A garden 8 metres long and 5 metres wide. How much turf?
+areaRect-en,en,Area of rectangles,0:07,why it matters,Picture it as rows of one-metre squares: 5 rows of 8.
+areaRect-en,en,Area of rectangles,0:13,into the method,Here is how to do it.
+areaRect-en,en,Area of rectangles,0:16,step 1 — 5 rows of 8 squares,"Area is just counting squares, arranged in rows. That is why it is length times width — it is a multiplication table drawn out."
+areaRect-en,en,Area of rectangles,0:28,step 2 — 8 × 5 = 40,"Forty squares. Do not add. 8 + 5 = 13 is the perimeter's half, not the area."
+areaRect-en,en,Area of rectangles,0:37,step 3 — 40 m²,"Square metres, because you counted squares. The little 2 is not decoration. An answer in m instead of m² loses the mark."
+areaRect-en,en,Area of rectangles,0:48,close,That is the whole method. Try one yourself.
+areaRect-fr,fr,Aire des rectangles,0:00,the situation,Un jardin de 8 mètres sur 5 mètres. Combien de gazon ?
+areaRect-fr,fr,Aire des rectangles,0:07,why it matters,Imagine des rangées de carrés d'un mètre : 5 rangées de 8.
+areaRect-fr,fr,Aire des rectangles,0:13,into the method,Voici comment faire.
+areaRect-fr,fr,Aire des rectangles,0:16,step 1 — 5 rows of 8 squares,"L'aire, c'est compter des carrés rangés en rangées. D'où longueur fois largeur — c'est une table de multiplication dessinée."
+areaRect-fr,fr,Aire des rectangles,0:26,step 2 — 8 × 5 = 40,"Quarante carrés. N'additionne pas. 8 + 5 = 13, c'est la moitié du périmètre, pas l'aire."
+areaRect-fr,fr,Aire des rectangles,0:34,step 3 — 40 m²,"Mètres carrés, parce que tu as compté des carrés. Le petit 2 n'est pas décoratif. Une réponse en m au lieu de m² perd le point."
+areaRect-fr,fr,Aire des rectangles,0:47,close,Voilà toute la méthode. Essaie-en une.
+areaTri-en,en,Triangles and parallelograms,0:00,the situation,"A triangular flag: base 10 cm, height 6 cm."
+areaTri-en,en,Triangles and parallelograms,0:05,why it matters,Draw a rectangle round it. The triangle is exactly half.
+areaTri-en,en,Triangles and parallelograms,0:11,into the method,Here is how to do it.
+areaTri-en,en,Triangles and parallelograms,0:15,step 1 — rectangle: 10 × 6 = 60,First find the rectangle it fits inside. Every triangle is half of some rectangle. That is where the formula comes from.
+areaTri-en,en,Triangles and parallelograms,0:25,step 2 — ÷ 2 = 30,Halve it. Forgetting to halve is the whole of what goes wrong here.
+areaTri-en,en,Triangles and parallelograms,0:32,step 3 — 30 cm²,"Thirty square centimetres. Height means straight up, not the slanted side. That is the other trap."
+areaTri-en,en,Triangles and parallelograms,0:41,the trap,One last thing — the mistake to watch for. Careful: don't forget to halve it.
+areaTri-en,en,Triangles and parallelograms,0:48,close,That is the whole method. Try one yourself.
+areaTri-fr,fr,Triangles et parallélogrammes,0:00,the situation,"Un drapeau triangulaire : base 10 cm, hauteur 6 cm."
+areaTri-fr,fr,Triangles et parallélogrammes,0:06,why it matters,Trace un rectangle autour. Le triangle en est exactement la moitié.
+areaTri-fr,fr,Triangles et parallélogrammes,0:12,into the method,Voici comment faire.
+areaTri-fr,fr,Triangles et parallélogrammes,0:15,step 1 — rectangle: 10 × 6 = 60,Trouve d'abord le rectangle qui l'entoure. Tout triangle est la moitié d'un rectangle. Voilà d'où vient la formule.
+areaTri-fr,fr,Triangles et parallélogrammes,0:24,step 2 — ÷ 2 = 30,"Prends-en la moitié. Oublier de diviser par deux, c'est toute l'erreur possible ici."
+areaTri-fr,fr,Triangles et parallélogrammes,0:31,step 3 — 30 cm²,"Trente centimètres carrés. La hauteur est verticale, pas le côté incliné. C'est l'autre piège."
+areaTri-fr,fr,Triangles et parallélogrammes,0:38,the trap,Une dernière chose — l'erreur à éviter. Attention : n'oublie pas de diviser par deux.
+areaTri-fr,fr,Triangles et parallélogrammes,0:46,close,Voilà toute la méthode. Essaie-en une.
+colAdd-en,en,Adding in columns,0:00,the situation,Two market stalls counted their takings: 2 456 and 1 837.
+colAdd-en,en,Adding in columns,0:06,why it matters,Too big to do in your head. Line them up so ones sit under ones.
+colAdd-en,en,Adding in columns,0:14,into the method,Here is how to do it.
+colAdd-en,en,Adding in columns,0:18,"step 1 — 6 + 7 = 13, write 3 carry 1","Start at the right. 13 is too big for one column. Only one digit fits in each column. The ten goes next door, where tens live."
+colAdd-en,en,Adding in columns,0:31,step 2 — 5 + 3 + 1 = 9,"Now the tens, and do not forget the one you carried. The carried digit is a real ten. Leaving it out loses ten from the answer."
+colAdd-en,en,Adding in columns,0:43,"step 3 — 4+8=12, 2+1=3 → 4 293",Carry on left. The answer is 4 293. Check it roughly: 2500 and 1800 is about 4300. It is.
+colAdd-en,en,Adding in columns,0:53,close,That is the whole method. Try one yourself.
+colAdd-fr,fr,Additionner en colonnes,0:00,the situation,Deux étals ont compté leur recette : 2 456 et 1 837.
+colAdd-fr,fr,Additionner en colonnes,0:07,why it matters,Trop grand pour la tête. Aligne-les pour que les unités soient sous les unités.
+colAdd-fr,fr,Additionner en colonnes,0:14,into the method,Voici comment faire.
+colAdd-fr,fr,Additionner en colonnes,0:17,"step 1 — 6 + 7 = 13, write 3 carry 1","Commence à droite. 13 est trop grand pour une colonne. Un seul chiffre tient par colonne. La dizaine va à côté, où vivent les dizaines."
+colAdd-fr,fr,Additionner en colonnes,0:29,step 2 — 5 + 3 + 1 = 9,"Puis les dizaines, sans oublier la retenue. La retenue est une vraie dizaine. L'oublier fait perdre dix."
+colAdd-fr,fr,Additionner en colonnes,0:38,"step 3 — 4+8=12, 2+1=3 → 4 293",Continue vers la gauche. La réponse est 4 293. Vérifie à peu près : 2500 et 1800 font environ 4300. C'est le cas.
+colAdd-fr,fr,Additionner en colonnes,0:49,close,Voilà toute la méthode. Essaie-en une.
+colSub-en,en,Taking away in columns,0:00,the situation,A library had 5 042 books. 1 968 were borrowed.
+colSub-en,en,Taking away in columns,0:06,why it matters,2 take away 8 does not work. You have to fetch ten from next door.
+colSub-en,en,Taking away in columns,0:14,into the method,Here is how to do it.
+colSub-en,en,Taking away in columns,0:17,step 1 — 2 − 8? borrow → 12 − 8 = 4,"The ones column is too small, so take ten from the tens. Borrowing does not change the number, it changes how it is written."
+colSub-en,en,Taking away in columns,0:29,"step 2 — tens were 4, now 3: 3 − 6? borrow again","The tens are short too, so borrow from the hundreds — which are zero, so keep going left. A zero cannot lend. You have to reach past it to the first column that can."
+colSub-en,en,Taking away in columns,0:46,step 3 — 5 042 − 1 968 = 3 074,Finish the columns. 3 074 books left. Check by adding back: 3 074 + 1 968 should be 5 042.
+colSub-en,en,Taking away in columns,0:56,close,That is the whole method. Try one yourself.
+colSub-fr,fr,Soustraire en colonnes,0:00,the situation,Une bibliothèque avait 5 042 livres. 1 968 ont été empruntés.
+colSub-fr,fr,Soustraire en colonnes,0:06,why it matters,2 moins 8 ne marche pas. Il faut aller chercher dix à côté.
+colSub-fr,fr,Soustraire en colonnes,0:13,into the method,Voici comment faire.
+colSub-fr,fr,Soustraire en colonnes,0:16,step 1 — 2 − 8? borrow → 12 − 8 = 4,"La colonne des unités est trop petite, prends dix aux dizaines. Emprunter ne change pas le nombre, seulement la façon de l'écrire."
+colSub-fr,fr,Soustraire en colonnes,0:27,"step 2 — tens were 4, now 3: 3 − 6? borrow again","Les dizaines manquent aussi : emprunte aux centaines — qui valent zéro, donc continue à gauche. Un zéro ne peut rien prêter. Il faut aller au-delà, jusqu'à la première colonne qui peut."
+colSub-fr,fr,Soustraire en colonnes,0:42,step 3 — 5 042 − 1 968 = 3 074,Termine les colonnes. Il reste 3 074 livres. Vérifie en additionnant : 3 074 + 1 968 doit faire 5 042.
+colSub-fr,fr,Soustraire en colonnes,0:53,close,Voilà toute la méthode. Essaie-en une.
+decAdd-en,en,Adding decimals,0:00,the situation,A drink at £1.45 and a sandwich at £2.30.
+decAdd-en,en,Adding decimals,0:05,why it matters,"Line up the points, not the ends. That is the whole rule."
+decAdd-en,en,Adding decimals,0:12,into the method,Here is how to do it.
+decAdd-en,en,Adding decimals,0:16,step 1 — point under point,Write them with the decimal points in a vertical line. The point is where the whole numbers stop. Line that up and every column is right.
+decAdd-en,en,Adding decimals,0:28,step 2 — fill gaps with zeros,"If one has fewer digits, put zeros in the empty places. 3.5 is 3.50. The zero changes nothing except making the columns match."
+decAdd-en,en,Adding decimals,0:40,step 3 — = 3.75,"Add as normal, and keep the point in line. The point in the answer sits directly under the others. Never move it."
+decAdd-en,en,Adding decimals,0:51,close,That is the whole method. Try one yourself.
+decAdd-fr,fr,Additionner des décimaux,0:00,the situation,"Une boisson à 1,45 £ et un sandwich à 2,30 £."
+decAdd-fr,fr,Additionner des décimaux,0:06,why it matters,"Aligne les virgules, pas les extrémités. C'est toute la règle."
+decAdd-fr,fr,Additionner des décimaux,0:12,into the method,Voici comment faire.
+decAdd-fr,fr,Additionner des décimaux,0:15,step 1 — point under point,Écris-les avec les virgules l'une sous l'autre. La virgule marque la fin des entiers. Aligne-la et toutes les colonnes sont bonnes.
+decAdd-fr,fr,Additionner des décimaux,0:25,step 2 — fill gaps with zeros,"Si l'un a moins de chiffres, mets des zéros dans les places vides. 3,5 vaut 3,50. Le zéro ne change rien, sauf que les colonnes correspondent."
+decAdd-fr,fr,Additionner des décimaux,0:38,step 3 — = 3.75,"Additionne normalement, et garde la virgule alignée. La virgule du résultat est juste sous les autres. Ne la déplace jamais."
+decAdd-fr,fr,Additionner des décimaux,0:48,close,Voilà toute la méthode. Essaie-en une.
+decMul-en,en,Multiplying decimals,0:00,the situation,Petrol is £1.40 a litre. You buy 6 litres.
+decMul-en,en,Multiplying decimals,0:05,why it matters,Cover the point. Do 14 × 6. Then put the point back where it belongs.
+decMul-en,en,Multiplying decimals,0:13,into the method,Here is how to do it.
+decMul-en,en,Multiplying decimals,0:17,step 1 — ignore the point: 14 × 6 = 84,Pretend it is a whole number for a moment. Whole-number multiplication is something you can already do. Use it.
+decMul-en,en,Multiplying decimals,0:27,"step 2 — one decimal place in, one out","1.4 had one digit after the point, so the answer has one. Count the places you started with. That is exactly how many you end with."
+decMul-en,en,Multiplying decimals,0:39,step 3 — = 8.4,"£8.40 of petrol. Check roughly: 1.4 is nearly 1.5, and 1.5 × 6 = 9. Close enough to trust."
+decMul-en,en,Multiplying decimals,0:49,close,That is the whole method. Try one yourself.
+decMul-fr,fr,Multiplier des décimaux,0:00,the situation,"L'essence coûte 1,40 £ le litre. Tu en prends 6 litres."
+decMul-fr,fr,Multiplier des décimaux,0:06,why it matters,Cache la virgule. Fais 14 × 6. Puis remets la virgule à sa place.
+decMul-fr,fr,Multiplier des décimaux,0:14,into the method,Voici comment faire.
+decMul-fr,fr,Multiplier des décimaux,0:17,step 1 — ignore the point: 14 × 6 = 84,"Fais comme si c'était un entier un instant. La multiplication d'entiers, tu sais déjà faire. Sers-t'en."
+decMul-fr,fr,Multiplier des décimaux,0:25,"step 2 — one decimal place in, one out","1,4 avait un chiffre après la virgule, donc la réponse aussi. Compte les décimales de départ. C'est exactement le nombre d'arrivée."
+decMul-fr,fr,Multiplier des décimaux,0:35,step 3 — = 8.4,"8,40 £ d'essence. Vérifie : 1,4 est presque 1,5, et 1,5 × 6 = 9. Assez proche pour y croire."
+decMul-fr,fr,Multiplier des décimaux,0:45,close,Voilà toute la méthode. Essaie-en une.
+divRem-en,en,What is left over,0:00,the situation,29 children need taxis. Each taxi takes 4.
+divRem-en,en,What is left over,0:05,why it matters,7 taxis carry 28. One child is still standing on the pavement.
+divRem-en,en,What is left over,0:11,into the method,Here is how to do it.
+divRem-en,en,What is left over,0:15,step 1 — 4 × 7 = 28,How many whole 4s fit into 29? Seven. Whole ones only. You cannot send seven and a bit of a taxi.
+divRem-en,en,What is left over,0:26,step 2 — 29 − 28 = 1,"One is left over. The remainder must be smaller than 4. If it were 4, another taxi would go."
+divRem-en,en,What is left over,0:35,step 3 — 29 ÷ 4 = 7 r 1,Seven remainder one — but in real life you order 8 taxis. The maths and the answer are not always the same thing. Read the question.
+divRem-en,en,What is left over,0:48,the trap,One last thing — the mistake to watch for. Careful: the remainder must be smaller than what you divided by.
+divRem-en,en,What is left over,0:58,close,That is the whole method. Try one yourself.
+divRem-fr,fr,Ce qui reste,0:00,the situation,29 enfants ont besoin de taxis. Chaque taxi prend 4.
+divRem-fr,fr,Ce qui reste,0:06,why it matters,7 taxis emmènent 28. Un enfant reste sur le trottoir.
+divRem-fr,fr,Ce qui reste,0:11,into the method,Voici comment faire.
+divRem-fr,fr,Ce qui reste,0:14,step 1 — 4 × 7 = 28,Combien de 4 entiers dans 29 ? Sept. Des entiers seulement. On n'envoie pas sept taxis et un morceau.
+divRem-fr,fr,Ce qui reste,0:24,step 2 — 29 − 28 = 1,"Il en reste un. Le reste doit être plus petit que 4. S'il valait 4, un autre taxi partirait."
+divRem-fr,fr,Ce qui reste,0:34,step 3 — 29 ÷ 4 = 7 r 1,"Sept reste un — mais en vrai, on commande 8 taxis. Le calcul et la réponse ne sont pas toujours la même chose. Lis la question."
+divRem-fr,fr,Ce qui reste,0:46,the trap,Une dernière chose — l'erreur à éviter. Attention : le reste doit être plus petit que le diviseur.
+divRem-fr,fr,Ce qui reste,0:56,close,Voilà toute la méthode. Essaie-en une.
+factors-en,en,Factors,0:00,the situation,24 tiles. Can you lay them in a perfect rectangle?
+factors-en,en,Factors,0:06,why it matters,"1×24, 2×12, 3×8, 4×6. Every rectangle you can make gives you two factors."
+factors-en,en,Factors,0:13,into the method,Here is how to do it.
+factors-en,en,Factors,0:16,step 1 — 1 × 24,Start at 1. Every number has 1 and itself. Working in pairs means you never miss one and never repeat one.
+factors-en,en,Factors,0:27,"step 2 — 2 × 12,  3 × 8,  4 × 6","Try 2, then 3, then 4. Each that works gives a pair. Stop when the pair crosses over. After 4×6 comes 6×4, which you already have."
+factors-en,en,Factors,0:40,step 3 — 1 2 3 4 6 8 12 24,Eight factors. 5 is missing because 24 tiles will not make a rectangle five wide.
+factors-en,en,Factors,0:48,close,That is the whole method. Try one yourself.
+factors-fr,fr,Diviseurs,0:00,the situation,24 carreaux. Peux-tu les poser en rectangle parfait ?
+factors-fr,fr,Diviseurs,0:05,why it matters,"1×24, 2×12, 3×8, 4×6. Chaque rectangle possible donne deux diviseurs."
+factors-fr,fr,Diviseurs,0:11,into the method,Voici comment faire.
+factors-fr,fr,Diviseurs,0:14,step 1 — 1 × 24,Commence à 1. Tout nombre a 1 et lui-même. Travailler par paires évite d'en oublier ou d'en répéter.
+factors-fr,fr,Diviseurs,0:23,"step 2 — 2 × 12,  3 × 8,  4 × 6","Essaie 2, puis 3, puis 4. Chaque réussite donne une paire. Arrête quand la paire se croise. Après 4×6 vient 6×4, que tu as déjà."
+factors-fr,fr,Diviseurs,0:35,step 3 — 1 2 3 4 6 8 12 24,Huit diviseurs. 5 manque parce que 24 carreaux ne font pas un rectangle de cinq de large.
+factors-fr,fr,Diviseurs,0:44,close,Voilà toute la méthode. Essaie-en une.
+fdp-en,en,The same thing three ways,0:00,the situation,A shirt is half price. Another is 50% off. Another is 0.5 of the price.
+fdp-en,en,The same thing three ways,0:08,why it matters,All three shops are saying exactly the same thing in three different costumes.
+fdp-en,en,The same thing three ways,0:15,into the method,Here is how to do it.
+fdp-en,en,The same thing three ways,0:19,step 1 — 1/2 → 0.5,Divide the top by the bottom: 1 ÷ 2 = 0.5. A fraction is a division waiting to happen. That is all the line means.
+fdp-en,en,The same thing three ways,0:31,step 2 — 0.5 → 50%,"Multiply by 100. Per cent means out of a hundred. Decimal to percentage is always × 100. Two steps left, then a % sign."
+fdp-en,en,The same thing three ways,0:43,step 3 — learn the common ones,"1/4, 1/5, 3/4, 1/10 — know these without thinking. There are about eight worth memorising. They come up in every paper."
+fdp-en,en,The same thing three ways,0:53,close,That is the whole method. Try one yourself.
+fdp-fr,fr,La même chose de trois façons,0:00,the situation,"Un maillot est à moitié prix. Un autre à −50 %. Un autre à 0,5 du prix."
+fdp-fr,fr,La même chose de trois façons,0:09,why it matters,Les trois magasins disent exactement la même chose sous trois costumes.
+fdp-fr,fr,La même chose de trois façons,0:15,into the method,Voici comment faire.
+fdp-fr,fr,La même chose de trois façons,0:18,step 1 — 1/2 → 0.5,"Divise le haut par le bas : 1 ÷ 2 = 0,5. Une fraction est une division qui attend. La barre ne veut dire que ça."
+fdp-fr,fr,La même chose de trois façons,0:31,step 2 — 0.5 → 50%,"Multiplie par 100. Pour cent veut dire sur cent. Décimal vers pourcentage, c'est toujours × 100. Deux pas à gauche, puis %."
+fdp-fr,fr,La même chose de trois façons,0:42,step 3 — learn the common ones,"1/4, 1/5, 3/4, 1/10 — à connaître sans réfléchir. Il y en a environ huit à mémoriser. Elles reviennent à chaque test."
+fdp-fr,fr,La même chose de trois façons,0:53,close,Voilà toute la méthode. Essaie-en une.
+formula-en,en,Simple formulae,0:00,the situation,"A recipe: cook a chicken for 40 minutes per kilogram, plus 20 minutes."
+formula-en,en,Simple formulae,0:07,why it matters,In maths that is written t = 40w + 20. The letter is just a box waiting for a number.
+formula-en,en,Simple formulae,0:17,into the method,Here is how to do it.
+formula-en,en,Simple formulae,0:21,step 1 — put 4 where x is,"Swap the letter for the number you were given. 3x means 3 times x. The multiplication sign is hidden, not missing."
+formula-en,en,Simple formulae,0:31,step 2 — 3 × 4 = 12,"Multiply first, because × comes before +. The order of operations still applies. It always applies."
+formula-en,en,Simple formulae,0:40,step 3 — 12 + 5 = 17,So y is 17. Algebra is arithmetic with a gap in it. Fill the gap and it is ordinary sums.
+formula-en,en,Simple formulae,0:50,close,That is the whole method. Try one yourself.
+formula-fr,fr,Formules simples,0:00,the situation,"Une recette : 40 minutes par kilo, plus 20 minutes."
+formula-fr,fr,Formules simples,0:06,why it matters,En maths on écrit t = 40p + 20. La lettre est une case qui attend un nombre.
+formula-fr,fr,Formules simples,0:15,into the method,Voici comment faire.
+formula-fr,fr,Formules simples,0:18,step 1 — put 4 where x is,"Remplace la lettre par le nombre donné. 3x veut dire 3 fois x. Le signe est caché, pas absent."
+formula-fr,fr,Formules simples,0:27,step 2 — 3 × 4 = 12,"Multiplie d'abord, car × passe avant +. L'ordre des opérations s'applique toujours."
+formula-fr,fr,Formules simples,0:34,step 3 — 12 + 5 = 17,"Donc y vaut 17. L'algèbre, c'est du calcul avec un trou. Bouche le trou et ce sont des sommes ordinaires."
+formula-fr,fr,Formules simples,0:44,close,Voilà toute la méthode. Essaie-en une.
+frAddDiff-en,en,Different bottoms,0:00,the situation,"Two loaves of bread, the same size. Amina cuts hers into 2 and takes 1 piece. Musa cuts his into 8 and takes 1."
+frAddDiff-en,en,Different bottoms,0:12,why it matters,Amina has 1/2 and Musa has 1/8. Put them together and you cannot say “2 pieces” — the pieces are different sizes.
+frAddDiff-en,en,Different bottoms,0:23,into the method,Here is how to do it.
+frAddDiff-en,en,Different bottoms,0:27,step 1 — 2 × 4 = 8,"8 is a number 2 goes into. So make both bottoms 8. You are not changing the amount, only the size of the pieces you are counting in."
+frAddDiff-en,en,Different bottoms,0:40,step 2 — 1/2 = 4/8,"Multiply top and bottom by 4. Half a loaf is four eighths. Top and bottom by the SAME number, or you have changed how much bread there is."
+frAddDiff-en,en,Different bottoms,0:54,step 3 — 4/8 + 1/8 = 5/8,"Now add the tops. Five eighths. The bottom stays 8 — you are counting eighths, and adding does not change what you are counting in."
+frAddDiff-en,en,Different bottoms,1:06,the trap,One last thing — the mistake to watch for. Careful: never add the bottom numbers.
+frAddDiff-en,en,Different bottoms,1:14,close,That is the whole method. Try one yourself.
+frAddDiff-fr,fr,Dénominateurs différents,0:00,the situation,Deux pains de même taille. Amina coupe le sien en 2 et prend 1 part. Musa coupe le sien en 8 et en prend 1.
+frAddDiff-fr,fr,Dénominateurs différents,0:12,why it matters,"Amina a 1/2 et Musa a 1/8. Ensemble, on ne peut pas dire « 2 parts » — les parts n'ont pas la même taille."
+frAddDiff-fr,fr,Dénominateurs différents,0:25,into the method,Voici comment faire.
+frAddDiff-fr,fr,Dénominateurs différents,0:28,step 1 — 2 × 4 = 8,"8 est un nombre où 2 entre. Rends donc les deux dénominateurs égaux à 8. Tu ne changes pas la quantité, seulement la taille des parts que tu comptes."
+frAddDiff-fr,fr,Dénominateurs différents,0:42,step 2 — 1/2 = 4/8,"Multiplie le haut et le bas par 4. Un demi-pain fait quatre huitièmes. Haut et bas par le MÊME nombre, sinon tu as changé la quantité de pain."
+frAddDiff-fr,fr,Dénominateurs différents,0:55,step 3 — 4/8 + 1/8 = 5/8,"Additionne les numérateurs. Cinq huitièmes. Le dénominateur reste 8 — tu comptes des huitièmes, et additionner ne change pas l'unité."
+frAddDiff-fr,fr,Dénominateurs différents,1:05,the trap,Une dernière chose — l'erreur à éviter. Attention : n'additionne jamais les dénominateurs.
+frAddDiff-fr,fr,Dénominateurs différents,1:12,close,Voilà toute la méthode. Essaie-en une.
+frAddSame-en,en,Same bottom number,0:00,the situation,"A pizza cut into 8. You eat 3 slices, your brother eats 2."
+frAddSame-en,en,Same bottom number,0:07,why it matters,3 slices and 2 slices is 5 slices. The slices did not change size.
+frAddSame-en,en,Same bottom number,0:14,into the method,Here is how to do it.
+frAddSame-en,en,Same bottom number,0:18,step 1 — 3 + 2 = 5,Add the top numbers. The top counts how many slices. That is the only thing changing.
+frAddSame-en,en,Same bottom number,0:27,step 2 — bottom stays 8,"The bottom says what size the slices are. It does not change. 8 + 8 = 16 would mean the slices got smaller, and nobody cut anything."
+frAddSame-en,en,Same bottom number,0:40,step 3 — = 5/8,Five eighths of the pizza is gone. Adding bottoms is the commonest fraction mistake there is. Never do it.
+frAddSame-en,en,Same bottom number,0:49,the trap,One last thing — the mistake to watch for. Careful: the bottom number never changes.
+frAddSame-en,en,Same bottom number,0:57,close,That is the whole method. Try one yourself.
+frAddSame-fr,fr,Même dénominateur,0:00,the situation,"Une pizza coupée en 8. Tu manges 3 parts, ton frère 2."
+frAddSame-fr,fr,Même dénominateur,0:07,why it matters,3 parts et 2 parts font 5 parts. Les parts n'ont pas changé de taille.
+frAddSame-fr,fr,Même dénominateur,0:14,into the method,Voici comment faire.
+frAddSame-fr,fr,Même dénominateur,0:17,step 1 — 3 + 2 = 5,Additionne les numérateurs. Le haut compte les parts. C'est la seule chose qui change.
+frAddSame-fr,fr,Même dénominateur,0:25,step 2 — bottom stays 8,"Le bas dit la taille des parts. Il ne change pas. 8 + 8 = 16 voudrait dire des parts plus petites, or personne n'a recoupé."
+frAddSame-fr,fr,Même dénominateur,0:38,step 3 — = 5/8,Cinq huitièmes de la pizza sont partis. Additionner les dénominateurs est l'erreur de fraction la plus courante. Jamais.
+frAddSame-fr,fr,Même dénominateur,0:47,the trap,Une dernière chose — l'erreur à éviter. Attention : le dénominateur ne change jamais.
+frAddSame-fr,fr,Même dénominateur,0:54,close,Voilà toute la méthode. Essaie-en une.
+frDivWhole-en,en,Dividing by a whole number,0:00,the situation,"A third of a pie, shared between two people."
+frDivWhole-en,en,Dividing by a whole number,0:05,why it matters,Each gets half of a third. Cut every third in two and you have sixths.
+frDivWhole-en,en,Dividing by a whole number,0:13,into the method,Here is how to do it.
+frDivWhole-en,en,Dividing by a whole number,0:17,step 1 — each piece halves,"Sharing between 2 makes every piece half the size. You are not making fewer pieces, you are making smaller ones."
+frDivWhole-en,en,Dividing by a whole number,0:27,step 2 — 3 × 2 = 6,"Twice as many pieces in the whole pie, so the bottom doubles. Dividing by 2 makes the bottom bigger. That feels backwards until you see the pie."
+frDivWhole-en,en,Dividing by a whole number,0:40,step 3 — = 1/6,One sixth each. Check: two sixths make a third. It works.
+frDivWhole-en,en,Dividing by a whole number,0:46,close,That is the whole method. Try one yourself.
+frDivWhole-fr,fr,Diviser par un entier,0:00,the situation,"Un tiers de tarte, partagé entre deux personnes."
+frDivWhole-fr,fr,Diviser par un entier,0:05,why it matters,Chacun a la moitié d'un tiers. Coupe chaque tiers en deux : des sixièmes.
+frDivWhole-fr,fr,Diviser par un entier,0:12,into the method,Voici comment faire.
+frDivWhole-fr,fr,Diviser par un entier,0:15,step 1 — each piece halves,"Partager en 2 rend chaque part deux fois plus petite. Tu ne fais pas moins de parts, tu en fais de plus petites."
+frDivWhole-fr,fr,Diviser par un entier,0:27,step 2 — 3 × 2 = 6,"Deux fois plus de parts dans la tarte, donc le dénominateur double. Diviser par 2 agrandit le dénominateur. C'est déroutant jusqu'à ce qu'on voie la tarte."
+frDivWhole-fr,fr,Diviser par un entier,0:39,step 3 — = 1/6,Un sixième chacun. Vérifie : deux sixièmes font un tiers. Ça marche.
+frDivWhole-fr,fr,Diviser par un entier,0:46,close,Voilà toute la méthode. Essaie-en une.
+frMul-en,en,Multiplying fractions,0:00,the situation,Half a chocolate bar. You give a third of that half away.
+frMul-en,en,Multiplying fractions,0:07,why it matters,"A third of a half is a sixth. “Of” means multiply, and the answer gets smaller."
+frMul-en,en,Multiplying fractions,0:15,into the method,Here is how to do it.
+frMul-en,en,Multiplying fractions,0:19,step 1 — tops: 1 × 1 = 1,Multiply the top numbers together. No common bottom needed. This is the easiest of the four and it looks the hardest.
+frMul-en,en,Multiplying fractions,0:29,step 2 — bottoms: 3 × 2 = 6,"Multiply the bottom numbers together. The pieces get smaller, so the bottom number gets bigger. That is the sense of it."
+frMul-en,en,Multiplying fractions,0:40,step 3 — = 1/6,One sixth of the bar. Multiplying two fractions always makes something smaller than both. That is your check.
+frMul-en,en,Multiplying fractions,0:49,close,That is the whole method. Try one yourself.
+frMul-fr,fr,Multiplier des fractions,0:00,the situation,La moitié d'une tablette. Tu en donnes le tiers.
+frMul-fr,fr,Multiplier des fractions,0:05,why it matters,"Un tiers d'une moitié fait un sixième. « De » veut dire multiplier, et le résultat rétrécit."
+frMul-fr,fr,Multiplier des fractions,0:14,into the method,Voici comment faire.
+frMul-fr,fr,Multiplier des fractions,0:17,step 1 — tops: 1 × 1 = 1,"Multiplie les numérateurs. Pas besoin de dénominateur commun. La plus facile des quatre, et elle a l'air difficile."
+frMul-fr,fr,Multiplier des fractions,0:26,step 2 — bottoms: 3 × 2 = 6,"Multiplie les dénominateurs. Les parts rétrécissent, donc le dénominateur grandit. C'est logique."
+frMul-fr,fr,Multiplier des fractions,0:33,step 3 — = 1/6,Un sixième de la tablette. Multiplier deux fractions donne toujours plus petit que les deux. C'est ta vérification.
+frMul-fr,fr,Multiplier des fractions,0:42,close,Voilà toute la méthode. Essaie-en une.
+frOfAmount-en,en,A fraction of an amount,0:00,the situation,£60 in your pocket. You spend three quarters of it.
+frOfAmount-en,en,A fraction of an amount,0:06,why it matters,Split the 60 into 4 equal parts first. Then take three of them.
+frOfAmount-en,en,A fraction of an amount,0:13,into the method,Here is how to do it.
+frOfAmount-en,en,A fraction of an amount,0:16,step 1 — 60 ÷ 4 = 15,Divide by the bottom number. That is one quarter. The bottom tells you how many pieces to cut the amount into.
+frOfAmount-en,en,A fraction of an amount,0:27,step 2 — 15 × 3 = 45,"Multiply by the top number. You want three of those quarters. Bottom first, then top. Doing it the other way round still works but the numbers get ugly."
+frOfAmount-en,en,A fraction of an amount,0:41,step 3 — = £45,Forty-five pounds spent. Three quarters should be most of it but not all. 45 out of 60 looks right.
+frOfAmount-en,en,A fraction of an amount,0:50,close,That is the whole method. Try one yourself.
+frOfAmount-fr,fr,Une fraction d'une quantité,0:00,the situation,60 £ en poche. Tu en dépenses les trois quarts.
+frOfAmount-fr,fr,Une fraction d'une quantité,0:06,why it matters,Découpe d'abord 60 en 4 parts égales. Puis prends-en trois.
+frOfAmount-fr,fr,Une fraction d'une quantité,0:11,into the method,Voici comment faire.
+frOfAmount-fr,fr,Une fraction d'une quantité,0:14,step 1 — 60 ÷ 4 = 15,Divise par le dénominateur. C'est un quart. Le dénominateur dit en combien de parts découper.
+frOfAmount-fr,fr,Une fraction d'une quantité,0:22,step 2 — 15 × 3 = 45,"Multiplie par le numérateur. Tu veux trois de ces quarts. Le bas d'abord, puis le haut. L'inverse marche aussi mais les nombres deviennent moches."
+frOfAmount-fr,fr,Une fraction d'une quantité,0:34,step 3 — = £45,"Quarante-cinq livres dépensées. Trois quarts, c'est presque tout mais pas tout. 45 sur 60 semble juste."
+frOfAmount-fr,fr,Une fraction d'une quantité,0:42,close,Voilà toute la méthode. Essaie-en une.
+longDiv-en,en,Long division,0:00,the situation,"Fatou has 486 mangoes to take to the market. She packs them into boxes, 18 to a box."
+longDiv-en,en,Long division,0:09,why it matters,"She needs to know how many boxes to bring — too few and the mangoes spoil, too many and she is carrying air."
+longDiv-en,en,Long division,0:21,into the method,Here is how to do it.
+longDiv-en,en,Long division,0:24,step 1 — 18 ) 486,"Write it the long way. The 486 goes inside, the 18 outside. The layout is doing the remembering for you — it keeps track of what is left."
+longDiv-en,en,Long division,0:38,step 2 — 18 into 4?  no,Can 18 go into 4? No. So look at 48 instead. You always start with the smallest part of the number that is big enough.
+longDiv-en,en,Long division,0:50,"step 3 — 18 into 48 = 2,  2×18 = 36","18 twos are 36. 18 threes are 54 — too big. So 2. You are asking how many whole 18s fit, never more."
+longDiv-en,en,Long division,1:02,step 4 — 48 − 36 = 12,"Take the 36 away. 12 is left over from the 48. That 12 has not been shared yet, so it must come down into the next step."
+longDiv-en,en,Long division,1:15,step 5 — bring down the 6 → 126,"Bring the 6 down beside the 12. Now you have 126. The 12 was really 120. Adding the 6 makes 126, which is what is genuinely left."
+longDiv-en,en,Long division,1:28,"step 6 — 18 into 126 = 7,  7×18 = 126","18 sevens are exactly 126. Nothing left. When it lands exactly, there is no remainder — every mango is in a box."
+longDiv-en,en,Long division,1:39,step 7 — 486 ÷ 18 = 27,Fatou needs 27 boxes. Check it the other way: 27 × 18 should give 486 back.
+longDiv-en,en,Long division,1:48,close,That is the whole method. Try one yourself.
+longDiv-fr,fr,Division posée,0:00,the situation,"Fatou a 486 mangues à porter au marché. Elle les met en cartons, 18 par carton."
+longDiv-fr,fr,Division posée,0:08,why it matters,"Elle doit savoir combien de cartons apporter — trop peu et les mangues s'abîment, trop et elle porte du vide."
+longDiv-fr,fr,Division posée,0:18,into the method,Voici comment faire.
+longDiv-fr,fr,Division posée,0:21,step 1 — 18 ) 486,"Écris-la en division posée. 486 dedans, 18 dehors. La disposition se souvient à ta place — elle garde la trace de ce qui reste."
+longDiv-fr,fr,Division posée,0:33,step 2 — 18 into 4?  no,18 entre-t-il dans 4 ? Non. Regarde donc 48. On commence toujours par la plus petite partie du nombre qui soit assez grande.
+longDiv-fr,fr,Division posée,0:45,"step 3 — 18 into 48 = 2,  2×18 = 36","Deux fois 18 font 36. Trois fois 18 font 54 — trop. Donc 2. Tu cherches combien de 18 entiers tiennent, jamais plus."
+longDiv-fr,fr,Division posée,0:56,step 4 — 48 − 36 = 12,"Enlève 36. Il reste 12 sur 48. Ces 12 ne sont pas encore partagés, ils descendent donc à l'étape suivante."
+longDiv-fr,fr,Division posée,1:06,step 5 — bring down the 6 → 126,"Abaisse le 6 à côté du 12. Tu as maintenant 126. Ce 12 valait en fait 120. Avec le 6, cela fait 126, ce qui reste vraiment."
+longDiv-fr,fr,Division posée,1:19,"step 6 — 18 into 126 = 7,  7×18 = 126","Sept fois 18 font exactement 126. Il ne reste rien. Quand ça tombe juste, il n'y a pas de reste — chaque mangue est en carton."
+longDiv-fr,fr,Division posée,1:32,step 7 — 486 ÷ 18 = 27,Fatou a besoin de 27 cartons. Vérifie à l'envers : 27 × 18 doit redonner 486.
+longDiv-fr,fr,Division posée,1:40,close,Voilà toute la méthode. Essaie-en une.
+longMul-en,en,Long multiplication,0:00,the situation,"A builder is laying a wall. Each row takes 46 bricks, and the wall is 27 rows high."
+longMul-en,en,Long multiplication,0:09,why it matters,He has to order the bricks before he starts. Order too few and the lorry comes back next week.
+longMul-en,en,Long multiplication,0:19,into the method,Here is how to do it.
+longMul-en,en,Long multiplication,0:23,step 1 — 46 × 7 = 322,First the 7 rows. 46 sevens are 322. Splitting 27 into 7 and 20 is the whole trick — both parts are easy on their own.
+longMul-en,en,Long multiplication,0:35,step 2 — 46 × 20 = 920,"Now the 20 rows. 46 × 2 = 92, so 46 × 20 = 920. THIS is why the second row starts with a zero. You are multiplying by twenty, not by two."
+longMul-en,en,Long multiplication,0:51,step 3 — 322 + 920 = 1242,Add the two rows together. 7 rows plus 20 rows is 27 rows. The addition is the reassembling.
+longMul-en,en,Long multiplication,1:01,step 4 — 46 × 27 = 1 242,"He orders 1 242 bricks. The forgotten zero is the commonest mistake in this method, and it costs the whole mark."
+longMul-en,en,Long multiplication,1:11,the trap,One last thing — the mistake to watch for. Careful: the second row starts with a zero.
+longMul-en,en,Long multiplication,1:20,close,That is the whole method. Try one yourself.
+longMul-fr,fr,Multiplication posée,0:00,the situation,"Un maçon monte un mur. Chaque rangée prend 46 briques, et le mur fait 27 rangées."
+longMul-fr,fr,Multiplication posée,0:08,why it matters,"Il doit commander les briques avant de commencer. Trop peu, et le camion revient la semaine prochaine."
+longMul-fr,fr,Multiplication posée,0:17,into the method,Voici comment faire.
+longMul-fr,fr,Multiplication posée,0:20,step 1 — 46 × 7 = 322,D'abord les 7 rangées. Sept fois 46 font 322. Couper 27 en 7 et 20 est toute l'astuce — chaque partie est facile seule.
+longMul-fr,fr,Multiplication posée,0:32,step 2 — 46 × 20 = 920,"Puis les 20 rangées. 46 × 2 = 92, donc 46 × 20 = 920. VOILÀ pourquoi la deuxième ligne commence par un zéro. Tu multiplies par vingt, pas par deux."
+longMul-fr,fr,Multiplication posée,0:47,step 3 — 322 + 920 = 1242,Additionne les deux lignes. 7 rangées plus 20 rangées font 27 rangées. L'addition remet tout ensemble.
+longMul-fr,fr,Multiplication posée,0:55,step 4 — 46 × 27 = 1 242,"Il commande 1 242 briques. Le zéro oublié est l'erreur la plus courante, et elle coûte tout le point."
+longMul-fr,fr,Multiplication posée,1:05,the trap,Une dernière chose — l'erreur à éviter. Attention : la deuxième ligne commence par un zéro.
+longMul-fr,fr,Multiplication posée,1:13,close,Voilà toute la méthode. Essaie-en une.
+mean-en,en,The mean,0:00,the situation,"Three fish weighed 5 kg, 3 kg and 10 kg."
+mean-en,en,The mean,0:06,why it matters,The mean is what each would weigh if you shared the weight out evenly.
+mean-en,en,The mean,0:13,into the method,Here is how to do it.
+mean-en,en,The mean,0:17,step 1 — 5 + 3 + 10 = 18,Add them all together. You are pooling everything before sharing it back out.
+mean-en,en,The mean,0:24,step 2 — 18 ÷ 3 = 6,"Divide by how many there were. Count how many, not how big. Three fish means divide by three."
+mean-en,en,The mean,0:33,step 3 — mean = 6 kg,"Six kilograms each, if they were all the same. The mean sits between the smallest and the biggest. If yours does not, check again."
+mean-en,en,The mean,0:45,close,That is the whole method. Try one yourself.
+mean-fr,fr,La moyenne,0:00,the situation,"Trois poissons pesaient 5 kg, 3 kg et 10 kg."
+mean-fr,fr,La moyenne,0:06,why it matters,"La moyenne, c'est ce que pèserait chacun si le poids était partagé équitablement."
+mean-fr,fr,La moyenne,0:13,into the method,Voici comment faire.
+mean-fr,fr,La moyenne,0:16,step 1 — 5 + 3 + 10 = 18,Additionne-les toutes. Tu mets tout en commun avant de repartager.
+mean-fr,fr,La moyenne,0:21,step 2 — 18 ÷ 3 = 6,"Divise par le nombre de valeurs. Compte combien, pas la taille. Trois poissons, donc divise par trois."
+mean-fr,fr,La moyenne,0:30,step 3 — mean = 6 kg,"Six kilos chacun, s'ils étaient tous pareils. La moyenne est entre le plus petit et le plus grand. Sinon, recommence."
+mean-fr,fr,La moyenne,0:40,close,Voilà toute la méthode. Essaie-en une.
+mentalPV-en,en,Using what you know,0:00,the situation,Binta has 30 boxes of eggs. Seven eggs in every box.
+mentalPV-en,en,Using what you know,0:06,why it matters,She already knows 3 sevens are 21. Thirty boxes is ten times three boxes.
+mentalPV-en,en,Using what you know,0:14,into the method,Here is how to do it.
+mentalPV-en,en,Using what you know,0:17,step 1 — 3 × 7 = 21,Do the easy one first. Three sevens are 21. You are not learning a new fact. You are using one you have.
+mentalPV-en,en,Using what you know,0:28,step 2 — 30 is 10 lots of 3,Thirty boxes is ten times as many as three boxes. Ten times bigger going in means ten times bigger coming out.
+mentalPV-en,en,Using what you know,0:39,step 3 — 21 × 10 = 210,So 30 × 7 is 210. This is the most-asked thing in the whole test. It is worth doing until it is automatic.
+mentalPV-en,en,Using what you know,0:50,close,That is the whole method. Try one yourself.
+mentalPV-fr,fr,Se servir de ce qu'on sait,0:00,the situation,Binta a 30 boîtes d'œufs. Sept œufs dans chaque boîte.
+mentalPV-fr,fr,Se servir de ce qu'on sait,0:06,why it matters,"Elle sait déjà que 3 fois 7 font 21. Trente boîtes, c'est dix fois trois boîtes."
+mentalPV-fr,fr,Se servir de ce qu'on sait,0:14,into the method,Voici comment faire.
+mentalPV-fr,fr,Se servir de ce qu'on sait,0:17,step 1 — 3 × 7 = 21,Fais d'abord le facile. Trois fois sept font 21. Tu n'apprends pas un fait nouveau. Tu te sers d'un fait que tu as déjà.
+mentalPV-fr,fr,Se servir de ce qu'on sait,0:29,step 2 — 30 is 10 lots of 3,"Trente boîtes, c'est dix fois plus que trois boîtes. Dix fois plus grand à l'entrée, dix fois plus grand à la sortie."
+mentalPV-fr,fr,Se servir de ce qu'on sait,0:40,step 3 — 21 × 10 = 210,Donc 30 × 7 font 210. C'est ce qu'on demande le plus dans tout le test. Ça vaut la peine jusqu'à l'automatisme.
+mentalPV-fr,fr,Se servir de ce qu'on sait,0:51,close,Voilà toute la méthode. Essaie-en une.
+metric-en,en,Changing units,0:00,the situation,A bottle says 1.5 litres. The recipe asks for millilitres.
+metric-en,en,Changing units,0:06,why it matters,Milli means a thousandth. So one litre is a thousand of them.
+metric-en,en,Changing units,0:12,into the method,Here is how to do it.
+metric-en,en,Changing units,0:16,step 1 — 1 l = 1000 ml,"Know the four that matter: km–m, m–cm, kg–g, l–ml. Three of those four are × 1000. Only m to cm is × 100."
+metric-en,en,Changing units,0:27,step 2 — smaller unit → bigger number,"Going to a smaller unit means more of them, so multiply. Ask yourself: is the answer going to be bigger or smaller? Then you cannot pick the wrong way."
+metric-en,en,Changing units,0:42,step 3 — 1.5 × 1000 = 1500 ml,Fifteen hundred millilitres. 1.5 litres could never be 0.0015 of anything. The size check catches the slip.
+metric-en,en,Changing units,0:50,the trap,One last thing — the mistake to watch for. Careful: smaller unit means a bigger number.
+metric-en,en,Changing units,0:59,close,That is the whole method. Try one yourself.
+metric-fr,fr,Changer d'unité,0:00,the situation,"Une bouteille indique 1,5 litre. La recette demande des millilitres."
+metric-fr,fr,Changer d'unité,0:06,why it matters,Milli veut dire millième. Un litre en contient donc mille.
+metric-fr,fr,Changer d'unité,0:11,into the method,Voici comment faire.
+metric-fr,fr,Changer d'unité,0:14,step 1 — 1 l = 1000 ml,"Retiens les quatre qui comptent : km–m, m–cm, kg–g, l–ml. Trois de ces quatre sont × 1000. Seul m vers cm est × 100."
+metric-fr,fr,Changer d'unité,0:26,step 2 — smaller unit → bigger number,"Vers une unité plus petite, il y en a plus : on multiplie. Demande-toi : la réponse sera-t-elle plus grande ou plus petite ? Impossible de se tromper de sens."
+metric-fr,fr,Changer d'unité,0:41,step 3 — 1.5 × 1000 = 1500 ml,"Mille cinq cents millilitres. 1,5 litre ne peut pas valoir 0,0015. Le contrôle de taille rattrape l'erreur."
+metric-fr,fr,Changer d'unité,0:49,the trap,"Une dernière chose — l'erreur à éviter. Attention : unité plus petite, nombre plus grand."
+metric-fr,fr,Changer d'unité,0:57,close,Voilà toute la méthode. Essaie-en une.
+ooo-en,en,Which comes first,0:00,the situation,Tickets cost £4. You buy 3 and you already had £5.
+ooo-en,en,Which comes first,0:06,why it matters,5 + 3 × 4. Left to right gives 32. That is wrong — and it is wrong by a lot.
+ooo-en,en,Which comes first,0:17,into the method,Here is how to do it.
+ooo-en,en,Which comes first,0:20,step 1 — 3 × 4 = 12,"Multiplication happens first, wherever it sits. × and ÷ bind more tightly than + and −. They grab their numbers first."
+ooo-en,en,Which comes first,0:31,step 2 — 5 + 12 = 17,"Then the addition. 17, not 32. Reading left to right is the single most expensive habit in arithmetic."
+ooo-en,en,Which comes first,0:40,step 3 — brackets beat everything,"(5 + 3) × 4 = 32. Brackets say “do me first”. If you want the adding first, you have to say so with brackets."
+ooo-en,en,Which comes first,0:53,the trap,One last thing — the mistake to watch for. Careful: not left to right.
+ooo-en,en,Which comes first,1:00,close,That is the whole method. Try one yourself.
+ooo-fr,fr,Qui passe en premier,0:00,the situation,Les billets coûtent 4 £. Tu en achètes 3 et tu avais déjà 5 £.
+ooo-fr,fr,Qui passe en premier,0:08,why it matters,"5 + 3 × 4. De gauche à droite, ça fait 32. C'est faux — et très faux."
+ooo-fr,fr,Qui passe en premier,0:17,into the method,Voici comment faire.
+ooo-fr,fr,Qui passe en premier,0:20,step 1 — 3 × 4 = 12,"La multiplication passe d'abord, où qu'elle soit. × et ÷ sont plus « collants » que + et −. Ils prennent leurs nombres d'abord."
+ooo-fr,fr,Qui passe en premier,0:32,step 2 — 5 + 12 = 17,"Ensuite l'addition. 17, pas 32. Lire de gauche à droite est l'habitude la plus coûteuse en calcul."
+ooo-fr,fr,Qui passe en premier,0:41,step 3 — brackets beat everything,"(5 + 3) × 4 = 32. Les parenthèses disent « moi d'abord ». Si tu veux additionner d'abord, il faut le dire avec des parenthèses."
+ooo-fr,fr,Qui passe en premier,0:53,the trap,Une dernière chose — l'erreur à éviter. Attention : pas de gauche à droite.
+ooo-fr,fr,Qui passe en premier,1:01,close,Voilà toute la méthode. Essaie-en une.
+pcOf-en,en,Percentages of amounts,0:00,the situation,A pair of trainers costs £60. The shop takes 15% off in the sale.
+pcOf-en,en,Percentages of amounts,0:07,why it matters,Per cent means “out of a hundred”. 15% means 15 for every 100.
+pcOf-en,en,Percentages of amounts,0:14,into the method,Here is how to do it.
+pcOf-en,en,Percentages of amounts,0:18,step 1 — 10% of 60 = 6,10% is one tenth. Divide by 10. 10% is the one you should never have to think about. Everything else is built from it.
+pcOf-en,en,Percentages of amounts,0:30,step 2 — 5% of 60 = 3,"5% is half of 10%. Half of 6 is 3. Halving is easier than dividing by 20, and it is the same thing."
+pcOf-en,en,Percentages of amounts,0:42,step 3 — 6 + 3 = 9,"15% is 10% and 5% together. £9 off. Any percentage can be built from 10%, 5% and 1%. You never need a formula."
+pcOf-en,en,Percentages of amounts,0:53,the trap,"One last thing — the mistake to watch for. Careful: find 10% first, then build it."
+pcOf-en,en,Percentages of amounts,1:01,close,That is the whole method. Try one yourself.
+pcOf-fr,fr,Pourcentages d'une quantité,0:00,the situation,Une paire de baskets coûte 60 £. Le magasin fait 15 % de réduction.
+pcOf-fr,fr,Pourcentages d'une quantité,0:07,why it matters,"Pour cent veut dire « sur cent ». 15 %, c'est 15 pour chaque 100."
+pcOf-fr,fr,Pourcentages d'une quantité,0:15,into the method,Voici comment faire.
+pcOf-fr,fr,Pourcentages d'une quantité,0:18,step 1 — 10% of 60 = 6,"10 %, c'est un dixième. Divise par 10. 10 % est celui qu'on ne doit jamais avoir à chercher. Tout le reste se construit dessus."
+pcOf-fr,fr,Pourcentages d'une quantité,0:31,step 2 — 5% of 60 = 3,"5 %, c'est la moitié de 10 %. La moitié de 6 fait 3. Prendre la moitié est plus simple que diviser par 20, et c'est pareil."
+pcOf-fr,fr,Pourcentages d'une quantité,0:44,step 3 — 6 + 3 = 9,"15 %, c'est 10 % et 5 % ensemble. 9 £ de réduction. Tout pourcentage se construit à partir de 10 %, 5 % et 1 %. Aucune formule n'est nécessaire."
+pcOf-fr,fr,Pourcentages d'une quantité,0:59,the trap,"Une dernière chose — l'erreur à éviter. Attention : trouve 10 % d'abord, puis construis."
+pcOf-fr,fr,Pourcentages d'une quantité,1:07,close,Voilà toute la méthode. Essaie-en une.
+pow10-en,en,"Ten, a hundred, a thousand",0:00,the situation,One balloon costs 24p. How much for ten? For a hundred?
+pow10-en,en,"Ten, a hundred, a thousand",0:06,why it matters,The digits take a step to the left each time. They do not gain a zero — they move.
+pow10-en,en,"Ten, a hundred, a thousand",0:16,into the method,Here is how to do it.
+pow10-en,en,"Ten, a hundred, a thousand",0:20,step 1 — 2 4 → 2 4 0,"Every digit shifts one place left. The 4 was ones, now it is tens. The zero appears because the ones column is now empty, not because you added it."
+pow10-en,en,"Ten, a hundred, a thousand",0:34,step 2 — × 100 = two places,"A hundred is ten tens, so two steps left. One zero in the 10, two in the 100, three in the 1000 — that is how many steps."
+pow10-en,en,"Ten, a hundred, a thousand",0:47,step 3 — ÷ 10 = one place right,Dividing sends them back the other way. This is why 3.5 × 10 is 35 and not 3.50. Adding a zero is a trick that breaks on decimals.
+pow10-en,en,"Ten, a hundred, a thousand",1:01,close,That is the whole method. Try one yourself.
+pow10-fr,fr,"Dix, cent, mille",0:00,the situation,Un ballon coûte 24 p. Combien pour dix ? Pour cent ?
+pow10-fr,fr,"Dix, cent, mille",0:07,why it matters,Les chiffres font un pas à gauche à chaque fois. Ils ne gagnent pas un zéro — ils bougent.
+pow10-fr,fr,"Dix, cent, mille",0:16,into the method,Voici comment faire.
+pow10-fr,fr,"Dix, cent, mille",0:19,step 1 — 2 4 → 2 4 0,"Chaque chiffre se décale d'une place à gauche. Le 4 était unité, il est dizaine. Le zéro apparaît parce que la colonne des unités est vide, pas parce qu'on l'a ajouté."
+pow10-fr,fr,"Dix, cent, mille",0:34,step 2 — × 100 = two places,"Cent, c'est dix dizaines, donc deux pas à gauche. Un zéro dans 10, deux dans 100, trois dans 1000 — voilà le nombre de pas."
+pow10-fr,fr,"Dix, cent, mille",0:46,step 3 — ÷ 10 = one place right,"Diviser les renvoie dans l'autre sens. C'est pourquoi 3,5 × 10 fait 35 et non 3,50. Ajouter un zéro est une astuce qui casse sur les décimaux."
+pow10-fr,fr,"Dix, cent, mille",1:00,close,Voilà toute la méthode. Essaie-en une.
+primes-en,en,Prime numbers,0:00,the situation,13 biscuits. Can you share them fairly between any group?
+primes-en,en,Prime numbers,0:06,why it matters,"Not between 2, 3, 4, 5, 6… only between 1 person or 13. That makes 13 prime."
+primes-en,en,Prime numbers,0:14,into the method,Here is how to do it.
+primes-en,en,Prime numbers,0:18,step 1 — 2? no.  3? no.  4? no.,Try dividing by each small number. You only need to try up to the point where the pairs would cross over.
+primes-en,en,Prime numbers,0:29,step 2 — only 1 and 13 work,"Exactly two factors: itself and one. Exactly two. Not one, not three. That is the definition."
+primes-en,en,Prime numbers,0:37,step 3 — 1 is NOT prime,"1 has only one factor, so it fails the test. This catches people every year. 1 is not prime and 2 is — the only even one."
+primes-en,en,Prime numbers,0:50,the trap,One last thing — the mistake to watch for. Careful: 1 is not prime.
+primes-en,en,Prime numbers,0:58,close,That is the whole method. Try one yourself.
+primes-fr,fr,Nombres premiers,0:00,the situation,13 biscuits. Peux-tu les partager équitablement dans un groupe ?
+primes-fr,fr,Nombres premiers,0:06,why it matters,"Ni par 2, 3, 4, 5, 6… seulement 1 personne ou 13. 13 est donc premier."
+primes-fr,fr,Nombres premiers,0:14,into the method,Voici comment faire.
+primes-fr,fr,Nombres premiers,0:17,step 1 — 2? no.  3? no.  4? no.,Essaie de diviser par chaque petit nombre. Inutile d'aller au-delà du point où les paires se croisent.
+primes-fr,fr,Nombres premiers,0:26,step 2 — only 1 and 13 work,"Exactement deux diviseurs : lui-même et un. Exactement deux. Ni un, ni trois. C'est la définition."
+primes-fr,fr,Nombres premiers,0:34,step 3 — 1 is NOT prime,"1 n'a qu'un seul diviseur, il échoue au test. Ça piège tout le monde. 1 n'est pas premier et 2 l'est — le seul pair."
+primes-fr,fr,Nombres premiers,0:46,the trap,Une dernière chose — l'erreur à éviter. Attention : 1 n'est pas premier.
+primes-fr,fr,Nombres premiers,0:53,close,Voilà toute la méthode. Essaie-en une.
+pvDigit-en,en,What a digit is worth,0:00,the situation,A stadium says 352 741 people came this season. Someone asks: is that a lot of 5s?
+pvDigit-en,en,What a digit is worth,0:09,why it matters,There is one 5 in that number. But it is not worth five. It is worth fifty thousand.
+pvDigit-en,en,What a digit is worth,0:18,into the method,Here is how to do it.
+pvDigit-en,en,What a digit is worth,0:22,step 1 — 3 5 2   7 4 1,"Count the places from the right: ones, tens, hundreds, thousands, ten thousands, hundred thousands. Always from the right. The right-hand end is where counting starts."
+pvDigit-en,en,What a digit is worth,0:34,step 2 — 5 is in the ten thousands,"The 5 is the fifth place along, which is ten thousands. Each step left multiplies by ten. That is the whole idea of place value."
+pvDigit-en,en,What a digit is worth,0:46,step 3 — 5 × 10 000 = 50 000,"So the 5 is worth 50 000. Same digit, different place, different worth. Move it and the number changes completely."
+pvDigit-en,en,What a digit is worth,0:57,close,That is the whole method. Try one yourself.
+pvDigit-fr,fr,Ce que vaut un chiffre,0:00,the situation,Un stade annonce 352 741 spectateurs cette saison. Quelqu'un demande : ça fait beaucoup de 5 ?
+pvDigit-fr,fr,Ce que vaut un chiffre,0:09,why it matters,Il y a un seul 5 dans ce nombre. Mais il ne vaut pas cinq. Il vaut cinquante mille.
+pvDigit-fr,fr,Ce que vaut un chiffre,0:18,into the method,Voici comment faire.
+pvDigit-fr,fr,Ce que vaut un chiffre,0:21,step 1 — 3 5 2   7 4 1,"Compte les places depuis la droite : unités, dizaines, centaines, milliers, dizaines de mille, centaines de mille. Toujours depuis la droite. C'est là que le comptage commence."
+pvDigit-fr,fr,Ce que vaut un chiffre,0:35,step 2 — 5 is in the ten thousands,"Le 5 est à la cinquième place, celle des dizaines de mille. Chaque pas vers la gauche multiplie par dix. C'est toute l'idée de la valeur de position."
+pvDigit-fr,fr,Ce que vaut un chiffre,0:48,step 3 — 5 × 10 000 = 50 000,"Donc le 5 vaut 50 000. Même chiffre, autre place, autre valeur. Déplace-le et le nombre change complètement."
+pvDigit-fr,fr,Ce que vaut un chiffre,0:57,close,Voilà toute la méthode. Essaie-en une.
+pvNeg-en,en,Below zero,0:00,the situation,It was 3 degrees at breakfast. By night it had dropped to 5 below zero.
+pvNeg-en,en,Below zero,0:08,why it matters,"How far did it fall? Not 2. It fell 3 to reach zero, then 5 more. Eight."
+pvNeg-en,en,Below zero,0:17,into the method,Here is how to do it.
+pvNeg-en,en,Below zero,0:20,step 1 — count up to zero: 5,From −5 up to 0 is five steps. Zero is the meeting point. Always go there first and the sign stops confusing you.
+pvNeg-en,en,Below zero,0:32,step 2 — then on to 3: 3,From 0 up to 3 is three more. The second half is ordinary counting. The minus sign was only ever in the first half.
+pvNeg-en,en,Below zero,0:44,step 3 — 5 + 3 = 8,"Add the two halves: the gap is 8. Never subtract the two numbers. −5 and 3 are 8 apart, not 2."
+pvNeg-en,en,Below zero,0:54,the trap,"One last thing — the mistake to watch for. Careful: count up to zero, then on."
+pvNeg-en,en,Below zero,1:03,close,That is the whole method. Try one yourself.
+pvNeg-fr,fr,Sous zéro,0:00,the situation,"Il faisait 3 degrés au petit déjeuner. La nuit, il faisait 5 sous zéro."
+pvNeg-fr,fr,Sous zéro,0:07,why it matters,"De combien est-il descendu ? Pas 2. Il est descendu de 3 pour atteindre zéro, puis 5 de plus. Huit."
+pvNeg-fr,fr,Sous zéro,0:18,into the method,Voici comment faire.
+pvNeg-fr,fr,Sous zéro,0:21,step 1 — count up to zero: 5,"De −5 à 0, il y a cinq pas. Zéro est le point de rencontre. Va toujours là d'abord et les signes cessent d'embrouiller."
+pvNeg-fr,fr,Sous zéro,0:32,step 2 — then on to 3: 3,"De 0 à 3, trois pas de plus. La seconde moitié est un comptage ordinaire. Le signe moins n'était que dans la première."
+pvNeg-fr,fr,Sous zéro,0:44,step 3 — 5 + 3 = 8,"Additionne les deux moitiés : l'écart est 8. Ne soustrais jamais les deux nombres. −5 et 3 sont à 8 d'écart, pas 2."
+pvNeg-fr,fr,Sous zéro,0:55,the trap,"Une dernière chose — l'erreur à éviter. Attention : compte jusqu'à zéro, puis continue."
+pvNeg-fr,fr,Sous zéro,1:03,close,Voilà toute la méthode. Essaie-en une.
+pvRound-en,en,Rounding,0:00,the situation,"A school trip needs coaches. 187 children are going, and each coach holds 50."
+pvRound-en,en,Rounding,0:07,why it matters,Nobody says “about 187”. They say “about 200”. Rounding is saying a number the way people actually say it.
+pvRound-en,en,Rounding,0:17,into the method,Here is how to do it.
+pvRound-en,en,Rounding,0:21,step 1 — look at the hundreds: 4,"To round to the nearest thousand, look at the digit one place to the right. That digit is the whole decision. Nothing to the right of it matters at all."
+pvRound-en,en,Rounding,0:35,step 2 — 4 is less than 5 → stay,"4 is less than 5, so the thousands stay as they are. It is nearer 3000 than 4000, and that is all rounding means: which is it closer to."
+pvRound-en,en,Rounding,0:50,step 3 — 3 472 → 3 000,"Everything after the thousands becomes zero. You are not deleting the digits, you are saying the number to the nearest thousand."
+pvRound-en,en,Rounding,1:00,close,That is the whole method. Try one yourself.
+pvRound-fr,fr,Arrondir,0:00,the situation,"Une sortie scolaire a besoin de cars. 187 enfants partent, et chaque car prend 50."
+pvRound-fr,fr,Arrondir,0:08,why it matters,"Personne ne dit « environ 187 ». On dit « environ 200 ». Arrondir, c'est dire un nombre comme les gens le disent vraiment."
+pvRound-fr,fr,Arrondir,0:20,into the method,Voici comment faire.
+pvRound-fr,fr,Arrondir,0:23,step 1 — look at the hundreds: 4,"Pour arrondir au millier, regarde le chiffre juste à droite. Ce chiffre décide de tout. Rien à sa droite ne compte."
+pvRound-fr,fr,Arrondir,0:33,step 2 — 4 is less than 5 → stay,"4 est plus petit que 5, donc le millier ne bouge pas. Il est plus proche de 3000 que de 4000, et c'est tout ce que veut dire arrondir."
+pvRound-fr,fr,Arrondir,0:47,step 3 — 3 472 → 3 000,"Tout ce qui suit le millier devient zéro. Tu n'effaces pas les chiffres, tu dis le nombre au millier le plus proche."
+pvRound-fr,fr,Arrondir,0:58,close,Voilà toute la méthode. Essaie-en une.
+ratioShare-en,en,Sharing unequally,0:00,the situation,"30 sweets shared between two brothers, 3 for one and 2 for the other each time."
+ratioShare-en,en,Sharing unequally,0:08,why it matters,"Count the shares first. 3 and 2 makes 5 shares, not 2."
+ratioShare-en,en,Sharing unequally,0:15,into the method,Here is how to do it.
+ratioShare-en,en,Sharing unequally,0:19,step 1 — 3 + 2 = 5 shares,"Add the numbers in the ratio to find how many shares there are. This step is the one everybody skips, and skipping it makes every answer wrong."
+ratioShare-en,en,Sharing unequally,0:32,step 2 — 30 ÷ 5 = 6,"Divide the total by the number of shares. One share is 6. Now you know what a single share is worth, and the rest is multiplying."
+ratioShare-en,en,Sharing unequally,0:45,step 3 — 3 × 6 = 18  and  2 × 6 = 12,"18 and 12. They add back to 30. Always add your two answers back. If they do not make the total, something is wrong."
+ratioShare-en,en,Sharing unequally,0:57,the trap,One last thing — the mistake to watch for. Careful: count the shares first.
+ratioShare-en,en,Sharing unequally,1:04,close,That is the whole method. Try one yourself.
+ratioShare-fr,fr,Partager inégalement,0:00,the situation,"30 bonbons pour deux frères, 3 pour l'un et 2 pour l'autre à chaque fois."
+ratioShare-fr,fr,Partager inégalement,0:08,why it matters,"Compte d'abord les parts. 3 et 2 font 5 parts, pas 2."
+ratioShare-fr,fr,Partager inégalement,0:14,into the method,Voici comment faire.
+ratioShare-fr,fr,Partager inégalement,0:17,step 1 — 3 + 2 = 5 shares,"Additionne les nombres du rapport pour trouver le nombre de parts. C'est l'étape que tout le monde saute, et la sauter rend tout faux."
+ratioShare-fr,fr,Partager inégalement,0:29,step 2 — 30 ÷ 5 = 6,"Divise le total par le nombre de parts. Une part vaut 6. Tu sais ce que vaut une part, le reste n'est que multiplication."
+ratioShare-fr,fr,Partager inégalement,0:41,step 3 — 3 × 6 = 18  and  2 × 6 = 12,"18 et 12. Ensemble, ils refont 30. Additionne toujours tes deux réponses. Si ça ne fait pas le total, il y a une erreur."
+ratioShare-fr,fr,Partager inégalement,0:53,the trap,Une dernière chose — l'erreur à éviter. Attention : compte d'abord les parts.
+ratioShare-fr,fr,Partager inégalement,1:00,close,Voilà toute la méthode. Essaie-en une.
+shortDiv-en,en,Short division,0:00,the situation,852 sweets shared fairly between 4 children.
+shortDiv-en,en,Short division,0:04,why it matters,Work left to right this time — the opposite of adding. Share the biggest pieces first.
+shortDiv-en,en,Short division,0:13,into the method,Here is how to do it.
+shortDiv-en,en,Short division,0:16,step 1 — 8 ÷ 4 = 2,Start at the left. 8 hundreds shared by 4 is 2 hundreds each. Division starts at the big end because that is how you actually share things out.
+shortDiv-en,en,Short division,0:30,"step 2 — 5 ÷ 4 = 1 r 1, carry the 1","4 goes into 5 once, and 1 is left over. Carry it to the next digit. The leftover 1 is really 10, which is why it joins the next column."
+shortDiv-en,en,Short division,0:45,step 3 — 12 ÷ 4 = 3 → 213,The carried 1 makes 12. 12 ÷ 4 is 3. Each child gets 213. Check: 213 × 4 should give 852 back.
+shortDiv-en,en,Short division,0:56,close,That is the whole method. Try one yourself.
+shortDiv-fr,fr,Division courte,0:00,the situation,852 bonbons partagés équitablement entre 4 enfants.
+shortDiv-fr,fr,Division courte,0:04,why it matters,Ici on va de gauche à droite — l'inverse de l'addition. Partage d'abord les plus gros morceaux.
+shortDiv-fr,fr,Division courte,0:13,into the method,Voici comment faire.
+shortDiv-fr,fr,Division courte,0:16,step 1 — 8 ÷ 4 = 2,"Commence à gauche. 8 centaines partagées par 4, cela fait 2 centaines chacun. La division commence par le grand bout, parce que c'est ainsi qu'on partage vraiment."
+shortDiv-fr,fr,Division courte,0:29,"step 2 — 5 ÷ 4 = 1 r 1, carry the 1","4 entre une fois dans 5, il reste 1. Reporte-le sur le chiffre suivant. Ce reste de 1 vaut en fait 10, d'où son passage à la colonne suivante."
+shortDiv-fr,fr,Division courte,0:43,step 3 — 12 ÷ 4 = 3 → 213,La retenue fait 12. 12 ÷ 4 = 3. Chaque enfant a 213. Vérifie : 213 × 4 doit redonner 852.
+shortDiv-fr,fr,Division courte,0:54,close,Voilà toute la méthode. Essaie-en une.
+shortMul-en,en,Short multiplication,0:00,the situation,A shop sells juice in crates of 6. There are 248 crates.
+shortMul-en,en,Short multiplication,0:07,why it matters,"Break 248 into its columns and multiply each one, right to left."
+shortMul-en,en,Short multiplication,0:13,into the method,Here is how to do it.
+shortMul-en,en,Short multiplication,0:17,"step 1 — 8 × 6 = 48, write 8 carry 4","Ones first. 48 is four tens and eight. Same rule as adding: one digit per column, the rest moves left."
+shortMul-en,en,Short multiplication,0:27,"step 2 — 4 × 6 = 24, +4 = 28","Tens next. Multiply, then add what you carried. Multiply first, add the carry after. Doing it the other way gives the wrong answer."
+shortMul-en,en,Short multiplication,0:38,"step 3 — 2 × 6 = 12, +2 = 14 → 1 488","1 488 bottles. Roughly 250 × 6 = 1500, so 1 488 is believable."
+shortMul-en,en,Short multiplication,0:46,close,That is the whole method. Try one yourself.
+shortMul-fr,fr,Multiplication courte,0:00,the situation,Un magasin vend du jus par caisses de 6. Il y a 248 caisses.
+shortMul-fr,fr,Multiplication courte,0:07,why it matters,"Découpe 248 en colonnes et multiplie chacune, de droite à gauche."
+shortMul-fr,fr,Multiplication courte,0:14,into the method,Voici comment faire.
+shortMul-fr,fr,Multiplication courte,0:17,"step 1 — 8 × 6 = 48, write 8 carry 4","Les unités d'abord. 48, c'est quatre dizaines et huit. Même règle que l'addition : un chiffre par colonne, le reste part à gauche."
+shortMul-fr,fr,Multiplication courte,0:28,"step 2 — 4 × 6 = 24, +4 = 28","Puis les dizaines. Multiplie, puis ajoute la retenue. Multiplie d'abord, ajoute la retenue après. L'inverse donne un mauvais résultat."
+shortMul-fr,fr,Multiplication courte,0:38,"step 3 — 2 × 6 = 12, +2 = 14 → 1 488","1 488 bouteilles. Environ 250 × 6 = 1500, donc 1 488 est crédible."
+shortMul-fr,fr,Multiplication courte,0:45,close,Voilà toute la méthode. Essaie-en une.
+sqcube-en,en,Squares and cubes,0:00,the situation,"A square patio, 7 slabs along each side. How many slabs?"
+sqcube-en,en,Squares and cubes,0:06,why it matters,7 rows of 7 is 49. That is what “seven squared” means — a square.
+sqcube-en,en,Squares and cubes,0:14,into the method,Here is how to do it.
+sqcube-en,en,Squares and cubes,0:18,step 1 — 7² = 7 × 7 = 49,"The little 2 says how many sevens to multiply together. It never means × 2. 7² is 49, not 14 — that is the commonest mistake here."
+sqcube-en,en,Squares and cubes,0:31,step 2 — 4³ = 4 × 4 × 4,"Cubed means three of them, like a cube with sides of 4. Squared is a flat square, cubed is a solid box. The words describe shapes."
+sqcube-en,en,Squares and cubes,0:44,step 3 — = 64,"16 × 4 = 64. Do it in steps. 4×4 first, then ×4 again — not all at once."
+sqcube-en,en,Squares and cubes,0:53,the trap,"One last thing — the mistake to watch for. Careful: 7² is 49, not 14."
+sqcube-en,en,Squares and cubes,1:01,close,That is the whole method. Try one yourself.
+sqcube-fr,fr,Carrés et cubes,0:00,the situation,"Une terrasse carrée, 7 dalles de côté. Combien de dalles ?"
+sqcube-fr,fr,Carrés et cubes,0:06,why it matters,7 rangées de 7 font 49. Voilà ce que veut dire « sept au carré » — un carré.
+sqcube-fr,fr,Carrés et cubes,0:16,into the method,Voici comment faire.
+sqcube-fr,fr,Carrés et cubes,0:19,step 1 — 7² = 7 × 7 = 49,"Le petit 2 dit combien de sept multiplier entre eux. Ça ne veut jamais dire × 2. 7² fait 49, pas 14 — l'erreur la plus courante."
+sqcube-fr,fr,Carrés et cubes,0:32,step 2 — 4³ = 4 × 4 × 4,"Au cube, c'est trois fois, comme un cube de côté 4. Au carré, c'est un carré plat ; au cube, une boîte. Les mots décrivent des formes."
+sqcube-fr,fr,Carrés et cubes,0:45,step 3 — = 64,"16 × 4 = 64. Fais-le par étapes. 4×4 d'abord, puis ×4 encore — pas tout à la fois."
+sqcube-fr,fr,Carrés et cubes,0:55,the trap,"Une dernière chose — l'erreur à éviter. Attention : 7² fait 49, pas 14."
+sqcube-fr,fr,Carrés et cubes,1:02,close,Voilà toute la méthode. Essaie-en une.
+tables-en,en,Tables to twelve,0:00,the situation,"Every morning Binta collects eggs. Six nests, seven eggs in each."
+tables-en,en,Tables to twelve,0:06,why it matters,"She could count them one by one, every morning, for the rest of her life. Or she could know that 6 sevens are 42."
+tables-en,en,Tables to twelve,0:18,into the method,Here is how to do it.
+tables-en,en,Tables to twelve,0:22,step 1 — 6 × 7 = 42,Six sevens are forty-two. This one is worth knowing cold — it turns up inside long division constantly.
+tables-en,en,Tables to twelve,0:31,step 2 — 7 × 6 = 42,"And the other way round is the same. You only ever learn half a table. 6 rows of 7 and 7 rows of 6 are the same eggs, counted differently."
+tables-en,en,Tables to twelve,0:46,close,That is the whole method. Try one yourself.
+tables-fr,fr,Tables jusqu'à douze,0:00,the situation,"Chaque matin Binta ramasse les œufs. Six nids, sept œufs dans chacun."
+tables-fr,fr,Tables jusqu'à douze,0:07,why it matters,"Elle pourrait les compter un par un, chaque matin, toute sa vie. Ou elle pourrait savoir que 6 fois 7 font 42."
+tables-fr,fr,Tables jusqu'à douze,0:18,into the method,Voici comment faire.
+tables-fr,fr,Tables jusqu'à douze,0:21,step 1 — 6 × 7 = 42,Six fois sept font quarante-deux. Celle-ci vaut la peine d'être sue par cœur — elle revient sans cesse dans la division posée.
+tables-fr,fr,Tables jusqu'à douze,0:31,step 2 — 7 × 6 = 42,"Et dans l'autre sens, c'est pareil. On n'apprend jamais qu'une demi-table. 6 rangées de 7 et 7 rangées de 6, ce sont les mêmes œufs, comptés autrement."
+tables-fr,fr,Tables jusqu'à douze,0:45,close,Voilà toute la méthode. Essaie-en une.
+twoUnknowns-en,en,Two unknowns,0:00,the situation,Two numbers. They add to 7. They multiply to 12.
+twoUnknowns-en,en,Two unknowns,0:06,why it matters,Do not guess wildly. List the pairs that multiply to 12 and check which adds to 7.
+twoUnknowns-en,en,Two unknowns,0:14,into the method,Here is how to do it.
+twoUnknowns-en,en,Two unknowns,0:18,"step 1 — pairs making 12: 1×12, 2×6, 3×4","Start with the multiplying, because there are fewer options. Multiplication narrows things down fast. Addition has far too many pairs."
+twoUnknowns-en,en,Two unknowns,0:28,step 2 — which adds to 7? 3 + 4,Check each pair against the second fact. Two facts about two numbers is always enough. You just have to use both.
+twoUnknowns-en,en,Two unknowns,0:39,step 3 — 3 and 4,The numbers are 3 and 4. Test them both ways before you write anything down.
+twoUnknowns-en,en,Two unknowns,0:47,close,That is the whole method. Try one yourself.
+twoUnknowns-fr,fr,Deux inconnues,0:00,the situation,Deux nombres. Leur somme fait 7. Leur produit fait 12.
+twoUnknowns-fr,fr,Deux inconnues,0:06,why it matters,Ne devine pas au hasard. Liste les paires qui font 12 et vois laquelle fait 7.
+twoUnknowns-fr,fr,Deux inconnues,0:14,into the method,Voici comment faire.
+twoUnknowns-fr,fr,Deux inconnues,0:17,"step 1 — pairs making 12: 1×12, 2×6, 3×4",Commence par la multiplication : il y a moins de possibilités. La multiplication réduit vite le champ. L'addition a bien trop de paires.
+twoUnknowns-fr,fr,Deux inconnues,0:28,step 2 — which adds to 7? 3 + 4,Vérifie chaque paire avec le second fait. Deux faits sur deux nombres suffisent toujours. Il faut se servir des deux.
+twoUnknowns-fr,fr,Deux inconnues,0:38,step 3 — 3 and 4,Les nombres sont 3 et 4. Teste-les dans les deux sens avant d'écrire.
+twoUnknowns-fr,fr,Deux inconnues,0:45,close,Voilà toute la méthode. Essaie-en une.
+volume-en,en,Volume,0:00,the situation,A box 4 cm by 3 cm by 5 cm. How many centimetre cubes fit?
+volume-en,en,Volume,0:08,why it matters,"Fill the bottom layer first, then count how many layers."
+volume-en,en,Volume,0:14,into the method,Here is how to do it.
+volume-en,en,Volume,0:17,step 1 — bottom layer: 4 × 3 = 12,Twelve cubes cover the base. The base is just an area. You already know how to do that bit.
+volume-en,en,Volume,0:27,step 2 — 5 layers,The box is 5 cubes tall. Volume is area with a third dimension stacked on top of it.
+volume-en,en,Volume,0:36,step 3 — 12 × 5 = 60 cm³,"Sixty cubic centimetres. Little 3 this time, because you counted cubes rather than squares."
+volume-en,en,Volume,0:44,close,That is the whole method. Try one yourself.
+volume-fr,fr,Volume,0:00,the situation,Une boîte de 4 cm sur 3 cm sur 5 cm. Combien de cubes d'un centimètre ?
+volume-fr,fr,Volume,0:09,why it matters,"Remplis d'abord la couche du bas, puis compte les couches."
+volume-fr,fr,Volume,0:14,into the method,Voici comment faire.
+volume-fr,fr,Volume,0:17,step 1 — bottom layer: 4 × 3 = 12,Douze cubes couvrent le fond. Le fond n'est qu'une aire. Tu sais déjà faire.
+volume-fr,fr,Volume,0:25,step 2 — 5 layers,"La boîte fait 5 cubes de haut. Le volume, c'est l'aire avec une troisième dimension empilée dessus."
+volume-fr,fr,Volume,0:34,step 3 — 12 × 5 = 60 cm³,"Soixante centimètres cubes. Petit 3 cette fois, parce que tu as compté des cubes, pas des carrés."
+volume-fr,fr,Volume,0:42,close,Voilà toute la méthode. Essaie-en une.
