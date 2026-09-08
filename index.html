@@ -82,9 +82,10 @@ main{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
 .qbig{font-size:var(--t9);font-weight:600;line-height:1.1;letter-spacing:.01em;margin:14px 0}
 .qmid{font-size:var(--t7);font-weight:600;margin:14px 0}
 .hint{font-size:var(--t3);color:var(--muted);margin:0 0 4px}
-.slot{min-height:56px;display:flex;align-items:center;justify-content:center;
+.slot{min-height:62px;display:flex;align-items:center;justify-content:center;
  font-size:var(--t8);font-weight:600;color:var(--band);margin:2px 0 6px}
-.slot.empty{color:var(--line)}
+.slot.empty{color:var(--muted);opacity:.45}
+.slot{border-bottom:2.5px solid var(--line);width:72%;max-width:250px;margin:2px auto 8px}
 .slot.wrong{color:var(--no)}
 .keys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;max-width:320px;margin-top:8px}
 .key{border:1.5px solid var(--line);border-radius:14px;background:#fff;font:inherit;
@@ -320,6 +321,19 @@ main{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
  background:var(--sun-bg);border-radius:999px;padding:10px 20px;color:#6A4A05}
 .streakbig b{font-size:var(--t7)}
 .streakbig span{font-size:var(--t4)}
+
+.qq{font-size:var(--t5);line-height:1.45;margin:2px 4px 10px;max-width:30ch;color:var(--ink);text-align:center}
+
+/* v10: the icon sat small in the top-left of a big tile with the label jammed
+   against the bottom, so a tile read as mostly empty space. Icon to 64,
+   everything centred, label given room. */
+.tile{align-items:center;text-align:center;padding:16px 12px;justify-content:center;gap:2px}
+.tem{margin:6px auto 2px;font-size:0}
+.tem svg{width:64px;height:64px;display:block;margin:0 auto}
+.tname{margin-top:8px;padding-top:0;text-align:center;line-height:1.25}
+.tsub{text-align:center;width:100%}
+.tbar{margin-top:10px}
+.tnum{top:10px;right:12px}
 </style></head><body>
 <header><div class="hrow">
  <div class="htitle"><b id="hT">One Hundred</b><span id="hS">Year 6 SATs maths</span></div>
@@ -350,7 +364,12 @@ const GEN = {
     let d=[]; for(let i=0;i<len;i++) d.push(between(r, i===0?1:0, 9));
     const n = d.join(""), at = between(r,0,len-1);
     const worth = +d[at] * Math.pow(10, len-1-at);
-    return {ask:"pvDigit", show:sp(n), hi:at, a:sp(worth)};
+    /* v10: this asked nothing at all. The screen showed a number and a keypad
+       and no question, so it could not be answered — and the highlight split on
+       spaces, so it marked a whole group of three digits or none. The digit is
+       named in the prompt now and coloured in the number. */
+    return {ask:"pvDigit", show:sp(n), hi:at, a:sp(worth), digit:d[at],
+            hint:"What is the "+d[at]+" worth?", hintFr:"Que vaut le "+d[at]+" ?"};
   },
   pvRound(r,lvl){
     const n = between(r, lvl>=2?100000:1000, lvl>=2?9999999:99999);
@@ -360,7 +379,11 @@ const GEN = {
   },
   pvNeg(r,lvl){
     const a0 = -between(r,1,lvl>=2?20:9), b0 = between(r,1,lvl>=2?20:9);
-    return {ask:"negGap", show:a0+"  \u2192  "+b0, a:String(b0-a0)};
+    /* v10: "\u22126 \u2192 4" on its own does not say what is being asked \u2014 the gap?
+       the difference? Name it. */
+    return {ask:"negGap", show:a0+"  \u2192  "+b0, a:String(b0-a0),
+            hint:"How far is it from "+a0+" to "+b0+"?",
+            hintFr:"Quel \u00e9cart de "+a0+" \u00e0 "+b0+" ?"};
   },
   /* ---- calculation ---- */
   tables(r){ const a=between(r,2,12), b=between(r,2,12); return {ask:"calc", show:a+" \u00d7 "+b, a:String(a*b)}; },
@@ -2415,7 +2438,7 @@ function homeHTML(){
  CAMPS.forEach((c,ci)=>{
   const mine=ALL.filter(s=>s.camp===ci), dn=mine.filter(s=>S.d[s.id]).length;
   h+=`<button class="tile" onclick="openTopic(${ci})">
-    <span class="tem">${ICON(TICON[ci],getComputedStyle?getComputedStyle(document.documentElement).getPropertyValue("--band").trim()||"#2F7D62":"#2F7D62",50)}</span>
+    <span class="tem">${ICON(TICON[ci],getComputedStyle?getComputedStyle(document.documentElement).getPropertyValue("--band").trim()||"#2F7D62":"#2F7D62",64)}</span>
     <span class="tname">${esc(c[L]||c.en)}</span>
     <span class="tsub">${mine.length} ${esc(t("subtopics"))}</span>
     <span class="tbar"><i style="width:${Math.round(dn/mine.length*100)}%"></i></span>
@@ -2495,9 +2518,7 @@ function sessionDone(){
    English app by tapping words or choosing. The session borrows whichever
    surface the course already uses rather than inventing a third. */
 function SESBODY(q){
- const shown = q.ask==="pvDigit"
-  ? esc(q.show).split(" ").map((ch,i)=>i===q.hi?`<b style="color:var(--band)">${ch}</b>`:ch).join(" ")
-  : esc(q.show);
+ const shown = q.ask==="pvDigit" ? pvMark(q) : esc(q.show);
  if(q.ask==="pickAll"){
   const ch=V.pick||[];
   return `<p class="hint">${esc(t("pickall"))} — ${esc(t(q.lab))} ${q.show?esc(q.show):""}</p>
@@ -2761,6 +2782,15 @@ function guidedHTML(s,T2){
    ${V.miss>=2?`<div class="note">${esc(t("look"))} \u2014 ${esc(w(T2.steps[Math.min(V.g,T2.steps.length-1)],"why"))}</div>`:""}
   </div></div>`;
 }
+/* Marks the single digit the question is about. The number is printed with a
+   thin space every three, so splitting on spaces marked a whole group. */
+function pvMark(q){
+ let k=-1;
+ return String(q.show).split("").map(ch=>{
+  if(/[0-9]/.test(ch)){ k++; if(k===q.hi) return '<b style="color:var(--band)">'+ch+'</b>'; }
+  return esc(ch);
+ }).join("");
+}
 function drillHTML(s){
  /* v5: the character was introduced and then abandoned, including in the
     practice for her own stop. Two words at the top keep her there. */
@@ -2775,10 +2805,9 @@ function drillHTML(s){
  } else if(q.ask==="share"){
   body=`<p class="hint">${q.r1} : ${q.r2}</p><div class="qbig num">${esc(q.show)}</div>${keypad()}`;
  } else {
-  const hint=q.hint?`<p class="hint">${esc(q.hint)}</p>`:(q.ask==="round"?`<p class="hint">${L==="fr"?"au":"to the nearest"} ${esc(q.p)}</p>`:"");
-  const shown=q.ask==="pvDigit"
-   ? esc(q.show).split(" ").map((ch,i)=>i===q.hi?`<b style="color:var(--band)">${ch}</b>`:ch).join(" ")
-   : esc(q.show);
+  const hint=q.hint?`<p class="qq">${esc(L==="fr"&&q.hintFr?q.hintFr:q.hint)}</p>`
+   :(q.ask==="round"?`<p class="qq">${L==="fr"?"au":"to the nearest"} ${esc(q.p)}</p>`:"");
+  const shown = q.ask==="pvDigit" ? pvMark(q) : esc(q.show);
   body=hint+`<div class="${String(q.show).length>13?"qmid":"qbig"} num">${shown}</div>`+keypad();
  }
  const T2=TEACH[s.g];
