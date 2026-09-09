@@ -334,6 +334,9 @@ main{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
 .tsub{text-align:center;width:100%}
 .tbar{margin-top:10px}
 .tnum{top:10px;right:12px}
+
+.qartbox{width:100%;display:flex;justify-content:center;margin:2px 0 10px}
+.qart{width:100%;max-width:300px;height:auto;display:block}
 </style></head><body>
 <header><div class="hrow">
  <div class="htitle"><b id="hT">One Hundred</b><span id="hS">Year 6 SATs maths</span></div>
@@ -2791,6 +2794,133 @@ function pvMark(q){
   return esc(ch);
  }).join("");
 }
+
+/* ================= drawings for the question in front of you =================
+   ART[] draws the worked example and always shows the same numbers. QART[]
+   draws whatever is currently being asked \u2014 the child's own number in the
+   place-value columns, their own rectangle, their own jump across zero.
+   A picture that shows a different question is worse than no picture. */
+const QART={
+ pvDigit(q){
+  const d=String(q.show).replace(/\D/g,"").split("");
+  const lab=["1","10","100","1 000","10 000","100 000","1 000 000"];
+  const w=Math.min(42, 300/d.length);
+  return `<svg class="qart" viewBox="0 0 ${d.length*w+10} 84" xmlns="http://www.w3.org/2000/svg">
+   ${d.map((ch,i)=>{
+     const hi=(i===q.hi), x=5+i*w;
+     const place=lab[d.length-1-i]||"";
+     return `<rect x="${x}" y="8" width="${w-5}" height="44" rx="6"
+        fill="${hi?"var(--band)":"#fff"}" stroke="${hi?"var(--band)":"var(--line)"}" stroke-width="2"/>
+       <text x="${x+(w-5)/2}" y="39" text-anchor="middle" font-size="23" font-weight="600"
+        fill="${hi?"#fff":"var(--ink)"}">${ch}</text>
+       <text x="${x+(w-5)/2}" y="70" text-anchor="middle" font-size="8.5"
+        fill="var(--muted)">${place}</text>`;}).join("")}
+  </svg>`;
+ },
+ negGap(q){
+  const m=String(q.show).match(/(-?\d+)\D+(-?\d+)/); if(!m) return "";
+  const a=+m[1], b=+m[2];
+  const lo=Math.min(a,b,0)-1, hi=Math.max(a,b,0)+1, n=hi-lo;
+  const W=280, X=v=>10+(v-lo)/n*(W-20);
+  let s=`<line x1="10" y1="52" x2="${W-10}" y2="52" stroke="var(--line)" stroke-width="2"/>`;
+  for(let v=lo;v<=hi;v++){
+   s+=`<line x1="${X(v)}" y1="47" x2="${X(v)}" y2="57" stroke="${v===0?"var(--ink)":"var(--line)"}"
+       stroke-width="${v===0?2:1}"/>`;
+   if(n<=14||v%2===0) s+=`<text x="${X(v)}" y="72" text-anchor="middle" font-size="9"
+       fill="var(--muted)">${v}</text>`;
+  }
+  s+=`<path d="M${X(a)} 44 Q${X((a+b)/2)} 12 ${X(b)} 44" fill="none"
+      stroke="var(--band)" stroke-width="2.5"/>
+      <circle cx="${X(a)}" cy="52" r="4.5" fill="var(--band)"/>
+      <circle cx="${X(b)}" cy="52" r="4.5" fill="var(--sun)"/>`;
+  return `<svg class="qart" viewBox="0 0 ${W} 80" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
+ },
+ areaRect(q){
+  const m=String(q.show).match(/(\d+)cm \u00d7 (\d+)cm/); if(!m) return "";
+  const a=+m[1], b=+m[2], cell=Math.min(20, 240/a, 120/b);
+  let s="";
+  for(let r=0;r<b;r++) for(let c=0;c<a;c++)
+   s+=`<rect x="${14+c*cell}" y="${10+r*cell}" width="${cell-1.5}" height="${cell-1.5}" rx="1.5"
+      fill="var(--band)" opacity=".28" stroke="var(--line)" stroke-width=".8"/>`;
+  s+=`<text x="${14+a*cell/2}" y="${22+b*cell}" text-anchor="middle" font-size="10"
+      fill="var(--muted)">${a} cm</text>
+      <text x="8" y="${10+b*cell/2}" font-size="10" fill="var(--muted)"
+      transform="rotate(-90 8 ${10+b*cell/2})">${b} cm</text>`;
+  return `<svg class="qart" viewBox="0 0 ${24+a*cell} ${30+b*cell}" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
+ },
+ areaTri(q){
+  const m=String(q.show).match(/base (\d+)cm, height (\d+)cm/); if(!m) return "";
+  const a=+m[1], b=+m[2], k=Math.min(13, 250/a, 110/b);
+  const W=a*k+30, H=b*k+34;
+  return `<svg class="qart" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+   <rect x="15" y="10" width="${a*k}" height="${b*k}" fill="none" stroke="var(--line)"
+     stroke-width="1.8" stroke-dasharray="4 3"/>
+   <path d="M15 ${10+b*k} L${15+a*k/2} 10 L${15+a*k} ${10+b*k} Z" fill="var(--band)" opacity=".3"
+     stroke="var(--band)" stroke-width="2"/>
+   <line x1="${15+a*k/2}" y1="10" x2="${15+a*k/2}" y2="${10+b*k}" stroke="var(--sun)"
+     stroke-width="2" stroke-dasharray="3 3"/>
+   <text x="${15+a*k/2}" y="${24+b*k}" text-anchor="middle" font-size="10" fill="var(--muted)">base ${a} cm</text>
+   <text x="${19+a*k}" y="${12+b*k/2}" font-size="10" fill="var(--sun)">height ${b}</text></svg>`;
+ },
+ volume(q){
+  const m=String(q.show).match(/(\d+) \u00d7 (\d+) \u00d7 (\d+)/); if(!m) return "";
+  const a=+m[1], b=+m[2], c=+m[3];
+  /* v11b: 8\u00d78\u00d77 drew 448 individual cubes and read as a smudge \u2014 a picture
+     harder to read than the sum is worse than none. Past a certain size the
+     drawing stops counting cubes and starts showing the shape: one layer of
+     cubes at the bottom, the box around it, and the number of layers said in
+     words. Small boxes still get every cube, because for those the counting
+     IS the explanation. */
+  if(a*b*c<=60){
+   const u=Math.min(17, 150/(a+b), 84/c);
+   let s="";
+   for(let L=c-1;L>=0;L--) for(let r=0;r<b;r++) for(let col=0;col<a;col++)
+    s+=`<rect x="${20+col*u*1.15+r*u*.55}" y="${74-L*u*.82+r*u*.42}" width="${u}" height="${u*.8}" rx="1.5"
+       fill="var(--band)" opacity="${.24+.1*L}" stroke="#fff" stroke-width=".7"/>`;
+   s+=`<text x="14" y="14" font-size="10" fill="var(--muted)">${a} \u00d7 ${b} \u00d7 ${c}</text>`;
+   return `<svg class="qart" viewBox="0 0 ${44+a*u*1.15+b*u*.55} ${100+b*u*.42}" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
+  }
+  const u=Math.min(15, 150/(a+b));
+  const dx=u*1.15, dy=u*.55, W=30+a*dx+b*dy, top=26, H=110;
+  let s=`<text x="12" y="14" font-size="10" fill="var(--muted)">${a} \u00d7 ${b} \u00d7 ${c}</text>`;
+  for(let r=0;r<b;r++) for(let col=0;col<a;col++)
+   s+=`<rect x="${16+col*dx+r*dy}" y="${H-30-r*dy*.75}" width="${u}" height="${u*.7}" rx="1.5"
+      fill="var(--band)" opacity=".38" stroke="#fff" stroke-width=".7"/>`;
+  /* the dashed box enclosed nothing and read as a broken bracket. One arrow up
+     from the layer, and the count beside it. */
+  const cx=16+(a*dx+b*dy)/2;
+  s+=`<defs><marker id="vup" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+       ${""/* orient="auto" turns the marker so its x-axis follows the line, so
+             the head must point along +x, not up. Mine pointed up and came out
+             sideways. */}
+       <path d="M0 0 L8 4 L0 8 Z" fill="var(--sun)"/></marker></defs>
+      <line x1="${cx}" y1="${H-46}" x2="${cx}" y2="${top+4}" stroke="var(--sun)" stroke-width="2.2"
+        stroke-dasharray="5 4" marker-end="url(#vup)"/>
+      <text x="${cx+9}" y="${top+18}" font-size="11" font-weight="600" fill="var(--sun)">\u00d7 ${c} layers</text>
+      <text x="16" y="${H-12}" font-size="10" fill="var(--muted)">one layer is ${a} \u00d7 ${b} = ${a*b}</text>`;
+  return `<svg class="qart" viewBox="0 0 ${W+70} ${H}" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
+ },
+ ratioShare(q){
+  const n=q.r1+q.r2, w=Math.min(46, 260/n);
+  let s=`<text x="8" y="12" font-size="10" fill="var(--muted)">${q.show} shared into ${n} equal parts</text>`;
+  for(let i=0;i<n;i++)
+   s+=`<rect x="${8+i*(w+4)}" y="20" width="${w}" height="34" rx="5"
+      fill="${i<q.r1?"var(--band)":"var(--sun)"}"/>`;
+  s+=`<text x="${8+q.r1*(w+4)/2}" y="70" text-anchor="middle" font-size="10" fill="var(--band)">${q.r1}</text>
+      <text x="${8+q.r1*(w+4)+q.r2*(w+4)/2}" y="70" text-anchor="middle" font-size="10" fill="var(--sun)">${q.r2}</text>`;
+  return `<svg class="qart" viewBox="0 0 ${16+n*(w+4)} 78" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
+ },
+ frOfAmount(q){
+  const m=String(q.show).match(/(\d+)\/(\d+) of/); if(!m) return "";
+  const top=+m[1], bot=+m[2], w=Math.min(40, 250/bot);
+  let s="";
+  for(let i=0;i<bot;i++)
+   s+=`<rect x="${8+i*(w+3)}" y="14" width="${w}" height="36" rx="4"
+      fill="${i<top?"var(--band)":"var(--line)"}"/>`;
+  s+=`<text x="8" y="66" font-size="10" fill="var(--muted)">${top} of the ${bot} parts</text>`;
+  return `<svg class="qart" viewBox="0 0 ${16+bot*(w+3)} 74" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
+ },
+};
 function drillHTML(s){
  /* v5: the character was introduced and then abandoned, including in the
     practice for her own stop. Two words at the top keep her there. */
@@ -2808,7 +2938,12 @@ function drillHTML(s){
   const hint=q.hint?`<p class="qq">${esc(L==="fr"&&q.hintFr?q.hintFr:q.hint)}</p>`
    :(q.ask==="round"?`<p class="qq">${L==="fr"?"au":"to the nearest"} ${esc(q.p)}</p>`:"");
   const shown = q.ask==="pvDigit" ? pvMark(q) : esc(q.show);
-  body=hint+`<div class="${String(q.show).length>13?"qmid":"qbig"} num">${shown}</div>`+keypad();
+  /* v11: the drawing was made for the worked example and shown once. Here it
+     is again, drawn from THIS question — the child's own number in the columns,
+     their own rectangle, their own jump across zero. */
+  const pic = QART[q.ask]||QART[s.g];
+  const drawn = pic ? `<div class="qartbox">${pic(q)}</div>` : "";
+  body=hint+drawn+`<div class="${String(q.show).length>13?"qmid":"qbig"} num">${shown}</div>`+keypad();
  }
  const T2=TEACH[s.g];
  return `<div class="wrap"><p class="step">${who} ${esc(s[L]||s.en)} \u00b7 ${V.i+1} ${esc(t("of"))} ${s.n}</p>
